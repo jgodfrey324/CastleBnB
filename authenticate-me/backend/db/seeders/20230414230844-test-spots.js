@@ -58,7 +58,7 @@ module.exports = {
     {
       ownerId: 2,
       address: '3456 Wonderful Lane',
-      city: 'Petunia',
+      city: 'petunia',
       state: 'Maryland',
       country: 'USA',
       lat: -80.8888,

@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
       validate: {
-        len: [5, 100]
+        len: [5, 100],
+        notEmpty: true
       }
     },
     city: {
@@ -36,17 +37,9 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [3, 50],
         isAlpha: true,
+        notEmpty: true,
         isCapitalized(value) {
-          let flag = false;
 
-          const flagCheck = function(value) {
-            value.split(' ').forEach(part => {
-              if (part.toLowerCase() ===  part) flag = true});
-          }
-
-          if (flagCheck(value)) {
-            throw new Error('City must be capitalized.')
-          }
         }
       }
     },
@@ -56,17 +49,9 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [3, 50],
         isAlpha: true,
+        notEmpty: true,
         isCapitalized(value) {
-          let flag = false;
 
-          const flagCheck = function(value) {
-            value.split(' ').forEach(part => {
-              if (part.toLowerCase() ===  part) flag = true});
-          }
-
-          if (flagCheck(value)) {
-            throw new Error('City must be capitalized.')
-          }
         }
       }
     },
@@ -76,17 +61,9 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [2, 50],
         isAlpha: true,
+        notEmpty: true,
         isCapitalized(value) {
-          let flag = false;
 
-          const flagCheck = function(value) {
-            value.split(' ').forEach(part => {
-              if (part.length > 3 && part.toLowerCase() ===  part) flag = true});
-          }
-
-          if (flagCheck(value)) {
-            throw new Error('City must be capitalized.')
-          }
         }
       }
     },
@@ -108,14 +85,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 80]
+        len: [3, 80],
+        notEmpty: true
       }
     },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 350]
+        len: [3, 350],
+        notEmpty: true
       }
     },
     price: {
