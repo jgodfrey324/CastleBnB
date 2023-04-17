@@ -55,7 +55,20 @@ router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
         const err = new Error('Validation error');
         err.status = 500;
         err.title = 'Valiation error';
-        err.errors = { [e.path]: e.message }
+
+        const errors = [];
+        e.errors.forEach(error => {
+            const errObj = {};
+
+            errObj.message = error.message,
+            errObj.type = error.type,
+            errObj.field = error.path
+
+            errors.push(errObj);
+        });
+
+        err.errors = errors;
+
         return next(err);
     }
 })
