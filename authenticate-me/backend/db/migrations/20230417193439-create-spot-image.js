@@ -5,11 +5,11 @@ let options = {};
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA
 }
-options.tableName = 'Reviews';
+options.tableName = 'SpotImages';
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Reviews', {
+    await queryInterface.createTable('SpotImages', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -23,16 +23,14 @@ module.exports = {
           model: 'Spots'
         }
       },
-      userId: {
-        type: Sequelize.INTEGER,
+      url: {
+        type: Sequelize.STRING,
         allowNull: false
       },
-      review: {
-        type: Sequelize.STRING
-      },
-      stars: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+      preview: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,

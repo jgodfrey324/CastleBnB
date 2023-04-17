@@ -2,7 +2,7 @@ const express = require('express');
 const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { Spot, Review } = require('../../db/models');
+const { Spot, Review, SpotImage } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
@@ -67,6 +67,15 @@ router.get('/', async (req, res) => {
         } else {
             spotObj.avgRating = 'No reviews yet';
         }
+
+        const previewUrl = await SpotImage.findOne({
+            where: {
+                spotId: spotObj.id,
+                preview: true
+            }
+        });
+
+        spotObj.previewImage = previewUrl.url
 
         spotsWithRating.push(spotObj);
     }
