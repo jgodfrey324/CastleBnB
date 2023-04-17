@@ -34,13 +34,13 @@ module.exports = {
     },
     {
       spotId: 4,
-      userId: 2,
+      userId: 4,
       review: "Excellent trip. I've always wanted to vist the petunias. They were in full bloom.",
       stars: 5
     },
     {
       spotId: 4,
-      userId: 2,
+      userId: 4,
       review: "Amazing, beautiful, wonderful, etc.",
       stars: 5
     },
