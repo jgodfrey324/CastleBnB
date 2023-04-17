@@ -143,7 +143,11 @@ router.get('/current', requireAuth, async (req, res) => {
             }
         });
 
-        spotObj.previewImage = previewUrl.url
+        if (previewUrl) {
+            spotObj.previewImage = previewUrl.url
+        } else {
+            spotObj.previewImage = 'No preview image yet'
+        }
 
         spotsWithRating.push(spotObj);
     }
