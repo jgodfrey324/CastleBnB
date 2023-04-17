@@ -11,7 +11,7 @@ const validateSpot = [
     check('address')
         .exists({ checkFalsy: true })
         .isLength({ min: 5 })
-        .withMessage('Please provide a valid address.'),
+        .withMessage('Street address is required.'),
     check('city')
         .exists({ checkFalsy: true })
         .withMessage('City is required.'),
@@ -26,22 +26,39 @@ const validateSpot = [
         .withMessage('Country is required.'),
     check('lat')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide valid coordinates.'),
+        .withMessage('Latitude is not valid.'),
     check('lng')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide valid coordinates.'),
+        .withMessage('Longitude is not valid.'),
     check('name')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a name for your spot.'),
+        .isLength({ max: 50 })
+        .withMessage('Name must be less than 50 characters.'),
     check('description')
         .exists({ checkFalsy: true })
         .isLength({ min: 10 })
-        .withMessage('Please provide a description longer than 10 characters'),
+        .withMessage('Description is required.'),
     check('price')
         .exists({ checkFalsy: true })
-        .withMessage('Please list the price of your spot.'),
+        .withMessage('Price per day is required.'),
     handleValidationErrors
 ];
+
+router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
+    const { address, city, state, country, lat, lng, name, description, price } = req.body;
+
+    try {
+        const newSpot = await Spot.create({ ownerId: req.user.id, address, city, state, country, lat, lng, name, description, price });
+
+        return res.status(201).json(newSpot);
+    } catch(e) {
+        const err = new Error('Validation error');
+        err.status = 500;
+        err.title = 'Valiation error';
+        err.errors = { [e.path]: e.message }
+        return next(err);
+    }
+})
 
 router.get('/', async (req, res) => {
     const spots = await Spot.findAll();
@@ -75,7 +92,11 @@ router.get('/', async (req, res) => {
             }
         });
 
-        spotObj.previewImage = previewUrl.url
+        if (previewUrl) {
+            spotObj.previewImage = previewUrl.url
+        } else {
+            spotObj.previewImage = 'No preview image yet'
+        }
 
         spotsWithRating.push(spotObj);
     }
