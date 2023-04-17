@@ -27,8 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
       validate: {
-        len: [5, 100],
-        notEmpty: true
+        len: [5, 100]
       }
     },
     city: {
@@ -37,9 +36,19 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [3, 50],
         isAlpha: true,
-        notEmpty: true,
         isCapitalized(value) {
+          const parts = value.split(' ');
+          let flag = false;
 
+          parts.forEach(part => {
+            if (part[0] !== part[0].toUpperCase()) {
+              flag = true;
+            }
+          });
+
+          if (flag) {
+            throw new Error('City must be capitalized')
+          }
         }
       }
     },
@@ -49,9 +58,19 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [3, 50],
         isAlpha: true,
-        notEmpty: true,
         isCapitalized(value) {
+          const parts = value.split(' ');
+          let flag = false;
 
+          parts.forEach(part => {
+            if (part[0] !== part[0].toUpperCase()) {
+              flag = true;
+            }
+          });
+
+          if (flag) {
+            throw new Error('City must be capitalized')
+          }
         }
       }
     },
@@ -61,9 +80,19 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [2, 50],
         isAlpha: true,
-        notEmpty: true,
         isCapitalized(value) {
+          const parts = value.split(' ');
+          let flag = false;
 
+          parts.forEach(part => {
+            if (part[0] !== part[0].toUpperCase()) {
+              flag = true;
+            }
+          });
+
+          if (flag) {
+            throw new Error('City must be capitalized')
+          }
         }
       }
     },
@@ -85,16 +114,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 80],
-        notEmpty: true
+        len: [3, 80]
       }
     },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 350],
-        notEmpty: true
+        len: [3, 350]
       }
     },
     price: {
@@ -109,7 +136,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Spot',
     indexes: [
       {
-        fields: [['name', 'ownerId'], ['lat', 'lng']],
+        fields: ['lat', 'lng'],
         unique: true
       }
     ]

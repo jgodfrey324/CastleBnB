@@ -58,16 +58,16 @@ module.exports = {
     {
       ownerId: 2,
       address: '3456 Wonderful Lane',
-      city: 'petunia',
+      city: 'Petunia',
       state: 'Maryland',
       country: 'USA',
       lat: -80.8888,
       lng: 45.4730326,
-      name: 'Up High',
-      description: 'The number one place to escape, go off the radar',
+      name: 'Somewhere Nice',
+      description: 'Where you go to find the petunias',
       price: 308
     }
-   ])
+   ], {})
   },
 
   async down (queryInterface, Sequelize) {

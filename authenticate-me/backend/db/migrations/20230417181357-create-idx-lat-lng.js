@@ -1,10 +1,13 @@
 'use strict';
 
+/** @type {import('sequelize-cli').Migration} */
+
 let options = {};
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA
 }
-/** @type {import('sequelize-cli').Migration} */
+options.tableName = 'Spots';
+
 module.exports = {
   async up (queryInterface, Sequelize) {
     /**
@@ -13,9 +16,7 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    options.tableName = 'Spots';
-    await queryInterface.addIndex(options, {
-      fields: ['lat', 'lng'],
+    await queryInterface.addIndex(options, ['lat', 'lng'], {
       unique: true
     });
   },
@@ -27,7 +28,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    options.tableName = 'Spots';
-    await queryInterface.removeIndex(options);
+    await queryInterface.removeIndex(options, ['lat', 'lng']);
   }
 };
