@@ -1,7 +1,7 @@
 const express = require('express');
 const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
-const { setTokenCookie, restoreUser } = require('../../utils/auth');
+const { restoreUser, requireAuth } = require('../../utils/auth');
 const { Spot, Review, SpotImage, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -83,6 +83,57 @@ router.get('/', async (req, res) => {
     return res.json(spotsWithRating);
 });
 
+router.get('/current', requireAuth, async (req, res) => {
+    const currentUser = await User.findByPk(req.user.id, {
+        attributes: [],
+        include: {
+            model: Spot
+        }
+    });
+
+    const spots = currentUser.Spots;
+    const spotsWithRating = [];
+
+    for(let i = 0; i < spots.length; i++) {
+        const spotObj = spots[i].toJSON();
+
+        const reviewsCount = await Review.count({
+            where: {
+                spotId: spotObj.id
+            }
+        });
+        const starReviewSum = await Review.sum('stars', {
+            where: {
+                spotId: spotObj.id
+            }
+        });
+        const starAvg = starReviewSum / reviewsCount;
+
+        if (starAvg) {
+            spotObj.avgRating = (starAvg).toFixed(1);
+        } else {
+            spotObj.avgRating = 'No reviews yet';
+        }
+
+        const previewUrl = await SpotImage.findOne({
+            where: {
+                spotId: spotObj.id,
+                preview: true
+            }
+        });
+
+        spotObj.previewImage = previewUrl.url
+
+        spotsWithRating.push(spotObj);
+    }
+
+    const returnUser = currentUser.toJSON();
+
+    returnUser.Spots = spotsWithRating;
+
+    return res.json(returnUser);
+});
+
 router.get('/:spotId', async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId, {
         include: [
@@ -130,7 +181,8 @@ router.get('/:spotId', async (req, res, next) => {
     }
 
     return res.json(spotObj);
-})
+});
+
 
 
 
