@@ -2,7 +2,7 @@ const express = require('express');
 const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { Spot, Review, SpotImage } = require('../../db/models');
+const { Spot, Review, SpotImage, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
@@ -82,6 +82,55 @@ router.get('/', async (req, res) => {
 
     return res.json(spotsWithRating);
 });
+
+router.get('/:spotId', async (req, res, next) => {
+    const spot = await Spot.findByPk(req.params.spotId, {
+        include: [
+            {
+                model: SpotImage,
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt', 'spotId']
+                }
+            },
+            {
+                model: User,
+                as: 'Owner',
+                attributes: ['id', 'firstName', 'lastName']
+            }
+        ]
+    });
+
+    if (!spot) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        err.title = "Spot couldn't be found";
+        return next(err);
+    }
+
+    const spotObj = spot.toJSON();
+
+    const reviewsCount = await Review.count({
+        where: {
+            spotId: spotObj.id
+        }
+    });
+    const starReviewSum = await Review.sum('stars', {
+        where: {
+            spotId: spotObj.id
+        }
+    });
+    const starAvg = starReviewSum / reviewsCount;
+
+    if (reviewsCount && starAvg) {
+        spotObj.numReviews = reviewsCount;
+        spotObj.avgStarRating = (starAvg).toFixed(1);
+    } else {
+        spotObj.numReviews = 'No reviews yet';
+        spotObj.avgRating = 'No reviews yet';
+    }
+
+    return res.json(spotObj);
+})
 
 
 
