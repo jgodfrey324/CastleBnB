@@ -86,13 +86,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: [2, 50],
-        isAlpha: true,
         isCapitalized(value) {
           const parts = value.split(' ');
           let flag = false;
 
           parts.forEach(part => {
-            if (part[0] !== part[0].toUpperCase()) {
+            if (part[0] !== part[0].toUpperCase() && part.length > 3) {
               flag = true;
             }
           });
