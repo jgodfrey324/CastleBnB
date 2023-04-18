@@ -44,6 +44,30 @@ const validateSpot = [
     handleValidationErrors
 ];
 
+
+//want to add middleware to check authorization...
+const checkAuthorization = async (req, res, next) => {
+    const spot = await Spot.findByPk(req.params.spotId);
+
+    if (!spot) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        err.title = "Spot couldn't be found";
+        return next(err);
+    }
+
+    if (spot.ownerId !== req.user.id) {
+        const err = new Error("Unauthorized");
+        err.status = 401;
+        err.title = "Unauthorized";
+        return next(err);
+    }
+
+    next();
+}
+
+
+
 router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
@@ -221,22 +245,8 @@ router.get('/:spotId', async (req, res, next) => {
     return res.json(spotObj);
 });
 
-router.put('/:spotId', [requireAuth, validateSpot], async (req, res, next) => {
+router.put('/:spotId', [requireAuth, validateSpot, checkAuthorization], async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId);
-
-    if (!spot) {
-        const err = new Error("Spot couldn't be found");
-        err.status = 404;
-        err.title = "Spot couldn't be found";
-        return next(err);
-    }
-
-    if (spot.ownerId !== req.user.id) {
-        const err = new Error("Unauthorized");
-        err.status = 401;
-        err.title = "Unauthorized";
-        return next(err);
-    }
 
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
@@ -254,8 +264,8 @@ router.put('/:spotId', [requireAuth, validateSpot], async (req, res, next) => {
         });
 
         await spot.save();
-
         return res.json(spot);
+
     } catch (e) {
         const err = new Error('Bad request');
         err.status = 400;
@@ -276,6 +286,15 @@ router.put('/:spotId', [requireAuth, validateSpot], async (req, res, next) => {
 
         return next(err);
     }
+});
+
+router.delete('/:spotId', [requireAuth, checkAuthorization], async (req, res, next) => {
+    const spot = await Spot.findByPk(req.params.spotId);
+
+    await spot.destroy();
+    return res.json({
+        message: 'Successfully deleted'
+    });
 });
 
 
