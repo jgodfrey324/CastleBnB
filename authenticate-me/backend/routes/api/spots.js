@@ -2,7 +2,7 @@ const express = require('express');
 const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
 const { restoreUser, requireAuth } = require('../../utils/auth');
-const { Spot, Review, SpotImage, User } = require('../../db/models');
+const { Spot, Review, SpotImage, User, ReviewImage } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
@@ -302,7 +302,33 @@ router.delete('/:spotId', [requireAuth, checkAuthorization], async (req, res, ne
     });
 });
 
+router.get('/:spotId/reviews', async (req, res, next) => {
+    const spotReviews = await Spot.findByPk(req.params.spotId, {
+        attributes: [],
+        include: {
+            model: Review,
+            include: [
+                {
+                    model: User,
+                    attributes: ['id', 'firstName', 'lastName']
+                },
+                {
+                    model: ReviewImage,
+                    attributes: ['id', 'url']
+                }
+            ]
+        }
+    });
 
+    if (!spotReviews) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        err.title = "Spot couldn't be found";
+        return next(err);
+    }
+
+    return res.json(spotReviews);
+});
 
 
 
