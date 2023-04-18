@@ -221,6 +221,63 @@ router.get('/:spotId', async (req, res, next) => {
     return res.json(spotObj);
 });
 
+router.put('/:spotId', [requireAuth, validateSpot], async (req, res, next) => {
+    const spot = await Spot.findByPk(req.params.spotId);
+
+    if (!spot) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        err.title = "Spot couldn't be found";
+        return next(err);
+    }
+
+    if (spot.ownerId !== req.user.id) {
+        const err = new Error("Unauthorized");
+        err.status = 401;
+        err.title = "Unauthorized";
+        return next(err);
+    }
+
+    const { address, city, state, country, lat, lng, name, description, price } = req.body;
+
+    try {
+        spot.set({
+            address,
+            city,
+            state,
+            country,
+            lat,
+            lng,
+            name,
+            description,
+            price
+        });
+
+        await spot.save();
+
+        return res.json(spot);
+    } catch (e) {
+        const err = new Error('Bad request');
+        err.status = 400;
+        err.title = 'Bad request';
+
+        const errors = [];
+        e.errors.forEach(error => {
+            const errObj = {};
+
+            errObj.message = error.message,
+            errObj.type = error.type,
+            errObj.field = error.path
+
+            errors.push(errObj);
+        });
+
+        err.errors = errors;
+
+        return next(err);
+    }
+});
+
 
 
 
