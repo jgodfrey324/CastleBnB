@@ -87,7 +87,7 @@ router.get('/current', requireAuth, async (req, res) => {
     return res.json(userObj);
 });
 
-router.put('/:reviewId', [requireAuth, checkAuthorization, validateReview], async (req, res, next) => {
+router.put('/:reviewId', [requireAuth, checkAuthorization, validateReview], async (req, res) => {
     const updateReview = await Review.findByPk(req.params.reviewId);
 
     const { review, stars } = req.body;
@@ -102,6 +102,15 @@ router.put('/:reviewId', [requireAuth, checkAuthorization, validateReview], asyn
     return res.json(updateReview);
 });
 
+router.delete('/:reviewId', [requireAuth, checkAuthorization], async (req, res) => {
+    const review = await Review.findByPk(req.params.reviewId);
+
+    await review.destroy();
+
+    return res.json({
+        message: 'Successfully deleted'
+    });
+})
 
 
 module.exports = router;
