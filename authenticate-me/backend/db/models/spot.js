@@ -42,7 +42,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: [3, 50],
-        isAlpha: true,
         isCapitalized(value) {
           const parts = value.split(' ');
           let flag = false;
@@ -64,7 +63,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: [3, 50],
-        isAlpha: true,
         isCapitalized(value) {
           const parts = value.split(' ');
           let flag = false;
