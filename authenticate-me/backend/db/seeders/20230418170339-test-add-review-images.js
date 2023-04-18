@@ -6,7 +6,7 @@ let options = {};
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA
 }
-options.tableName = 'Reviews';
+options.tableName = 'ReviewImages';
 
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -21,34 +21,16 @@ module.exports = {
     */
    await queryInterface.bulkInsert(options, [
     {
-      spotId: 3,
-      userId: 3,
-      review: "I thought this was Sherlock Holmes house...I guess I should've read the series before booking here...",
-      stars: 2
+      reviewId: 1,
+      url: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/ap/disney%20up%20house%20visitors--2134566421_v2.jpg"
     },
     {
-      spotId: 1,
-      userId: 1,
-      review: "For the house being on Disney Lane the experience sure wasn't magical...simply average.",
-      stars: 3
+      reviewId: 3,
+      url: "https://s3.amazonaws.com/finegardening.s3.tauntoncloud.com/app/uploads/2018/01/23202107/6-11-2012-Barker1-thumb16x9.jpg"
     },
     {
-      spotId: 4,
-      userId: 4,
-      review: "Excellent trip. I've always wanted to vist the petunias. They were in full bloom.",
-      stars: 5
-    },
-    {
-      spotId: 2,
-      userId: 4,
-      review: "Amazing, beautiful, wonderful, etc.",
-      stars: 5
-    },
-    {
-      spotId: 2,
-      userId: 2,
-      review: "This is a very hot city, too hot for me.",
-      stars: 3
+      reviewId: 2,
+      url: "https://st.hzcdn.com/simgs/pictures/living-rooms/grand-traditional-mansion-in-fairfax-va-asta-homes-img~af61f08d0cd26c9b_4-1873-1-4a9897e.jpg"
     }
    ], {})
   },
