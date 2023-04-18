@@ -52,9 +52,9 @@ router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
 
         return res.status(201).json(newSpot);
     } catch(e) {
-        const err = new Error('Validation error');
-        err.status = 500;
-        err.title = 'Valiation error';
+        const err = new Error('Bad request');
+        err.status = 400;
+        err.title = 'Bad request';
 
         const errors = [];
         e.errors.forEach(error => {
