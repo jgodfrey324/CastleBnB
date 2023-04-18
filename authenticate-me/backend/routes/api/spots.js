@@ -372,7 +372,7 @@ router.post('/:spotId/reviews', [requireAuth, validateReview], async (req, res, 
     });
 
     return res.json(newReview);
-})
+});
 
 
 
