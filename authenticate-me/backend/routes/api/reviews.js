@@ -8,6 +8,37 @@ const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
 
 
+const validateReview = [
+    check('review')
+        .exists({ checkFalsy: true })
+        .withMessage('Review text is required.'),
+    check('stars')
+        .exists({ checkFalsy: true })
+        .isInt({ min: 1, max: 5 })
+        .withMessage('Stars must be an integer from 1 to 5.'),
+    handleValidationErrors
+];
+//want to add middleware to check authorization...
+const checkAuthorization = async (req, res, next) => {
+    const review = await Review.findByPk(req.params.reviewId);
+
+    if (!review) {
+        const err = new Error("Review couldn't be found");
+        err.status = 404;
+        err.title = "Review couldn't be found";
+        return next(err);
+    }
+
+    if (review.userId !== req.user.id) {
+        const err = new Error("Unauthorized");
+        err.status = 401;
+        err.title = "Unauthorized";
+        return next(err);
+    }
+
+    next();
+}
+
 router.get('/current', requireAuth, async (req, res) => {
     const user = await User.findByPk(req.user.id, {
         attributes: [],
@@ -56,6 +87,20 @@ router.get('/current', requireAuth, async (req, res) => {
     return res.json(userObj);
 });
 
+router.put('/:reviewId', [requireAuth, checkAuthorization, validateReview], async (req, res, next) => {
+    const updateReview = await Review.findByPk(req.params.reviewId);
+
+    const { review, stars } = req.body;
+
+    updateReview.set({
+        review,
+        stars
+    });
+
+    await updateReview.save();
+
+    return res.json(updateReview);
+});
 
 
 
