@@ -18,9 +18,6 @@ const validateSpot = [
     check('state')
         .exists({ checkFalsy: true })
         .withMessage('State is required.'),
-    check('state')
-        .isLength({ min: 3 })
-        .withMessage('State cannot be abbreviated.'),
     check('country')
         .exists({ checkFalsy: true })
         .withMessage('Country is required.'),
