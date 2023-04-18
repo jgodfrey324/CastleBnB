@@ -41,6 +41,17 @@ const validateSpot = [
     handleValidationErrors
 ];
 
+//for validating review created for spot
+const validateReview = [
+    check('review')
+        .exists({ checkFalsy: true })
+        .withMessage('Review text is required.'),
+    check('stars')
+        .exists({ checkFalsy: true })
+        .isInt({ min: 1, max: 5 })
+        .withMessage('Stars must be an integer from 1 to 5.'),
+    handleValidationErrors
+];
 
 //want to add middleware to check authorization...
 const checkAuthorization = async (req, res, next) => {
@@ -326,6 +337,42 @@ router.get('/:spotId/reviews', async (req, res, next) => {
 
     return res.json(spotReviews);
 });
+
+router.post('/:spotId/reviews', [requireAuth, validateReview], async (req, res, next) => {
+    const { review, stars } = req.body;
+
+    const spot = await Spot.findByPk(req.params.spotId);
+
+    if (!spot) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        err.title = "Spot couldn't be found";
+        return next(err);
+    }
+
+    const checkOldReview = await Review.findOne({
+        where: {
+            spotId: spot.id,
+            userId: req.user.id
+        }
+    });
+
+    if (checkOldReview) {
+        const err = new Error("User already has a review for this spot");
+        err.status = 500;
+        err.title = "Review already exists";
+        return next(err);
+    }
+
+    const newReview = await Review.create({
+        userId: req.user.id,
+        spotId: req.params.spotId,
+        review,
+        stars
+    });
+
+    return res.json(newReview);
+})
 
 
 
