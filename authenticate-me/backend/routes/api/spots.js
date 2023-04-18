@@ -256,12 +256,17 @@ router.put('/:spotId', [requireAuth, validateSpot, checkAuthorization], async (r
             city,
             state,
             country,
-            lat,
-            lng,
             name,
             description,
             price
         });
+
+        if (lat !== spot.lat) {
+            spot.lat = lat;
+        }
+        if (lng !== spot.lng) {
+            spot.lng = lng;
+        }
 
         await spot.save();
         return res.json(spot);
