@@ -110,6 +110,48 @@ router.delete('/:reviewId', [requireAuth, checkAuthorization], async (req, res) 
     return res.json({
         message: 'Successfully deleted'
     });
+});
+
+router.post('/:reviewId/images', [requireAuth, checkAuthorization], async (req, res, next) => {
+    const { url } = req.body;
+
+    const review = await Review.findByPk(req.params.reviewId);
+    if (!review) {
+        const err = new Error("Review couldn't be found");
+        err.status = 404;
+        err.title = "Review couldn't be found";
+        return next(err);
+    }
+
+    const reviewImgCount = await ReviewImage.count({
+        where: {
+            reviewId: review.id
+        }
+    });
+
+    if (reviewImgCount === 10) {
+        const err = new Error("Maximum number of images for this resource was reached");
+        err.status = 403;
+        err.title = "Couldn't add image";
+        return next(err);
+    }
+
+    let newImage;
+    if (url) {
+        newImage = await ReviewImage.create({
+            reviewId: req.params.reviewId,
+            url
+        });
+    }
+
+    const returnImg = await ReviewImage.findOne({
+        where: {
+            url
+        },
+        attributes: ['id', 'url']
+    });
+
+    return res.json(returnImg);
 })
 
 
