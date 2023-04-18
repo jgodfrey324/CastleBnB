@@ -25,7 +25,10 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Users'
+        }
       },
       review: {
         type: Sequelize.STRING
