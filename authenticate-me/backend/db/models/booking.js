@@ -32,29 +32,27 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE'
     },
     startDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
         isDate: true
       }
     },
     endDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
         isDate: true,
-        isAfter: this.startDate
+        isAfterStart(value) {
+          if(value <= this.startDate) {
+            throw new Error('endDate cannot be on or before startDate')
+          }
+        }
       }
     }
   }, {
     sequelize,
     modelName: 'Booking',
-    indexes: [
-      {
-        fields: ['startDate', 'endDate', 'spotId'],
-        unique: true
-      }
-    ]
   });
   return Booking;
 };
