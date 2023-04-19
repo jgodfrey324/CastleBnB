@@ -24,11 +24,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     url: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     }
   }, {
     sequelize,
     modelName: 'ReviewImage',
+    defaultScope: {
+      attributes: ['id', 'url']
+    }
   });
   return ReviewImage;
 };

@@ -115,17 +115,9 @@ router.delete('/:reviewId', [requireAuth, checkAuthorization], async (req, res) 
 router.post('/:reviewId/images', [requireAuth, checkAuthorization], async (req, res, next) => {
     const { url } = req.body;
 
-    const review = await Review.findByPk(req.params.reviewId);
-    if (!review) {
-        const err = new Error("Review couldn't be found");
-        err.status = 404;
-        err.title = "Review couldn't be found";
-        return next(err);
-    }
-
     const reviewImgCount = await ReviewImage.count({
         where: {
-            reviewId: review.id
+            reviewId: req.params.reviewId
         }
     });
 
@@ -136,9 +128,8 @@ router.post('/:reviewId/images', [requireAuth, checkAuthorization], async (req, 
         return next(err);
     }
 
-    let newImage;
     if (url) {
-        newImage = await ReviewImage.create({
+        await ReviewImage.create({
             reviewId: req.params.reviewId,
             url
         });
@@ -147,12 +138,11 @@ router.post('/:reviewId/images', [requireAuth, checkAuthorization], async (req, 
     const returnImg = await ReviewImage.findOne({
         where: {
             url
-        },
-        attributes: ['id', 'url']
+        }
     });
 
     return res.json(returnImg);
-})
+});
 
 
 module.exports = router;
