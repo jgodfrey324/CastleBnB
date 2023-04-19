@@ -2,7 +2,7 @@ const express = require('express');
 const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
 const { restoreUser, requireAuth } = require('../../utils/auth');
-const { Spot, Review, SpotImage, User, ReviewImage } = require('../../db/models');
+const { Spot, Review, SpotImage, User, ReviewImage, Booking } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
@@ -394,6 +394,44 @@ router.post('/:spotId/images', [requireAuth, checkAuthorization], async (req, re
     });
 
     return res.json(returnImg);
+});
+
+router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
+    const spot = await Spot.findByPk(req.params.spotId);
+
+    if (!spot) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        err.title = "Spot couldn't be found";
+        return next(err);
+    }
+
+    if (req.user.id !== spot.ownerId) {
+        const spotBookings = await Spot.findByPk(req.params.spotId, {
+            attributes: [],
+            include: {
+                model: Booking,
+                attributes: ['spotId', 'startDate', 'endDate']
+            }
+        });
+
+        return res.json(spotBookings);
+    }
+
+    const spotBookings = await Spot.findByPk(req.params.spotId, {
+        attributes: [],
+        include: [
+            {
+                model: Booking,
+                include: {
+                    model: User,
+                    attributes: ['id', 'firstName', 'lastName']
+                }
+            }
+        ]
+    });
+
+    return res.json(spotBookings);
 });
 
 
