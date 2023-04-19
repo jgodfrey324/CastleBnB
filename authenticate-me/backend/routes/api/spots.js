@@ -66,6 +66,85 @@ const validateBooking = [
     handleValidationErrors
 ]
 
+//validate query params
+const validateQueryFilters = [
+    check('page')
+        .custom( value => {
+            if (value) {
+                if (isNaN(value)) return false
+                return true
+            }
+            return true
+        })
+        .withMessage('Page must be greater than or equal to 1'),
+    check('size')
+        .custom( value => {
+            if (value) {
+                if (isNaN(value)) return false
+                return true
+            }
+            return true
+        })
+        .withMessage('Size must be greater than or equal to 1'),
+    check('maxLat')
+        .custom( value => {
+            if (value) {
+                if (isNaN(value)) return false
+                return true
+            }
+            return true
+        })
+        .withMessage('Maximum latitude is invalid'),
+    check('minLat')
+        .custom( value => {
+            if (value) {
+                if (isNaN(value)) return false
+                return true
+            }
+            return true
+        })
+        .withMessage('Minimum latitude is invalid'),
+    check('maxLng')
+        .custom( value => {
+            if (value) {
+                if (isNaN(value)) return false
+                return true
+            }
+            return true
+        })
+        .withMessage('Maximum longitutde is invalid'),
+    check('minLng')
+        .custom( value => {
+            if (value) {
+                if (isNaN(value)) return false
+                return true
+            }
+            return true
+        })
+        .withMessage('Minimum longitude is invalid'),
+    check('minPrice')
+        .custom( value => {
+            if (value) {
+                if (isNaN(value)) return false
+                if (Number(value) < 0) return false
+                return true
+            }
+            return true
+        })
+        .withMessage('Minimun price must be greater than or equal to 0'),
+    check('maxPrice')
+        .custom( value => {
+            if (value) {
+                if (isNaN(value)) return false
+                if (Number(value) < 0) return false
+                return true
+            }
+            return true
+        })
+        .withMessage('Maximum price must be greater than or equal to 0'),
+    handleValidationErrors
+]
+
 //want to add middleware to check authorization...
 const checkAuthorization = async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId);
@@ -139,8 +218,28 @@ router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
     }
 })
 
-router.get('/', async (req, res) => {
-    const spots = await Spot.findAll();
+router.get('/', validateQueryFilters, async (req, res) => {
+    let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
+    if (!page) page = 1;
+    if (!size) size = 20;
+
+    const limit = size;
+    const offset = size * (page - 1);
+
+    const where = {};
+
+    if (minLat) where.lat = { [Op.gte]: minLat }
+    if (maxLat) where.lat = { [Op.lte]: maxLat }
+    if (maxLng) where.lng = { [Op.lte]: maxLng }
+    if (minLng) where.lng = { [Op.gte]: minLng }
+    if (minPrice) where.price = { [Op.gte]: minPrice }
+    if (maxPrice) where.price = { [Op.lte]: maxPrice }
+
+    const spots = await Spot.findAll({
+        where,
+        limit,
+        offset
+    });
 
     const spotsWithRating = [];
 
@@ -180,7 +279,12 @@ router.get('/', async (req, res) => {
         spotsWithRating.push(spotObj);
     }
 
-    return res.json(spotsWithRating);
+
+    return res.json({
+        Spots: spotsWithRating,
+        page: Number(page),
+        size: Number(size)
+    });
 });
 
 router.get('/current', requireAuth, async (req, res) => {
