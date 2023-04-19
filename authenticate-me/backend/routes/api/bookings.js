@@ -138,7 +138,7 @@ router.put('/:bookingId', [requireAuth, checkAuthorization, validateBooking], as
     if (currentTime > end) {
         const err = new Error("Past bookings can't be modified");
         err.status = 403;
-        err.title = "Unable to complete request";
+        err.title = "Unable to process request";
         return next(err);
     }
 
@@ -150,6 +150,47 @@ router.put('/:bookingId', [requireAuth, checkAuthorization, validateBooking], as
     await editBooking.save();
 
     return res.json(editBooking);
+});
+
+router.delete('/:bookingId', requireAuth, async (req, res, next) => {
+    const booking = await Booking.findByPk(req.params.bookingId);
+
+    if (!booking) {
+        const err = new Error("Booking couldn't be found");
+        err.status = 404;
+        err.title = "Booking couldn't be found";
+        return next(err);
+    }
+
+    const spot = await Spot.findOne({
+        where: {
+            ownerId: req.user.id,
+            id: booking.spotId
+        }
+    });
+
+    if (booking.userId !== req.user.id && !spot) {
+        const err = new Error("Unauthorized");
+        err.status = 401;
+        err.title = "Unauthorized";
+        return next(err);
+    }
+
+    const currentTime = new Date().getTime();
+    const startTime = new Date(booking.startDate).getTime();
+
+    if (currentTime >= startTime) {
+        const err = new Error("Bookings that have been started can't be deleted");
+        err.status = 403;
+        err.title = "Unable to process request";
+        return next(err);
+    }
+
+    await booking.destroy();
+
+    return res.json({
+        message: 'Successfully deleted'
+    });
 });
 
 
