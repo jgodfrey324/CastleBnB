@@ -88,7 +88,7 @@ const checkAuthorization = async (req, res, next) => {
 }
 
 //make sure booking user is not owner of spot
-const checkForBooking = async (req, res, next) => {
+const checkIfOwned = async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId);
 
     if (!spot) {
@@ -468,7 +468,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
     return res.json(spotBookings);
 });
 
-router.post('/:spotId/bookings', [requireAuth, checkForBooking, validateBooking], async (req, res, next) => {
+router.post('/:spotId/bookings', [requireAuth, checkIfOwned, validateBooking], async (req, res, next) => {
     let { startDate, endDate } = req.body;
 
     let start = new Date(startDate).getTime();
@@ -523,6 +523,7 @@ router.post('/:spotId/bookings', [requireAuth, checkForBooking, validateBooking]
 
     return res.json(newBooking);
 });
+
 
 
 
