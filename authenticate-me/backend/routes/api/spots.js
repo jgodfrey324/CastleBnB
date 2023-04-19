@@ -53,6 +53,19 @@ const validateReview = [
     handleValidationErrors
 ];
 
+//validate bookings
+const validateBooking = [
+    check('startDate')
+        .exists({ checkFalsy: true })
+        .isDate({ format: 'YYYY-MM-DD' })
+        .withMessage('startDate must be formatted YYYY-MM-DD'),
+    check('endDate')
+        .exists({ checkFalsy: true })
+        .isDate({ format: 'YYYY-MM-DD' })
+        .withMessage('endDate must be formatted YYYY-MM-DD'),
+    handleValidationErrors
+]
+
 //want to add middleware to check authorization...
 const checkAuthorization = async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId);
@@ -66,6 +79,27 @@ const checkAuthorization = async (req, res, next) => {
 
     if (spot.ownerId !== req.user.id) {
         const err = new Error("Unauthorized");
+        err.status = 401;
+        err.title = "Unauthorized";
+        return next(err);
+    }
+
+    next();
+}
+
+//make sure booking user is not owner of spot
+const checkForBooking = async (req, res, next) => {
+    const spot = await Spot.findByPk(req.params.spotId);
+
+    if (!spot) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        err.title = "Spot couldn't be found";
+        return next(err);
+    }
+
+    if (spot.ownerId === req.user.id) {
+        const err = new Error("Spot owned by user");
         err.status = 401;
         err.title = "Unauthorized";
         return next(err);
@@ -432,6 +466,62 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
     });
 
     return res.json(spotBookings);
+});
+
+router.post('/:spotId/bookings', [requireAuth, checkForBooking, validateBooking], async (req, res, next) => {
+    let { startDate, endDate } = req.body;
+
+    let start = new Date(startDate).getTime();
+    let end = new Date(endDate).getTime();
+
+    if (start >= end) {
+        const err = new Error("Bad Request");
+        err.status = 400;
+        err.title = "Bad Request";
+        err.errors = {
+            endDate: 'endDate cannot be on or before startDate'
+        }
+        return next(err);
+    }
+
+    const bookingStartCheck = await Booking.findOne({
+        where: {
+            spotId: Number(req.params.spotId),
+            startDate: {
+                [Op.between]: [start, end]
+            }
+        }
+    });
+
+    const bookingEndCheck = await Booking.findOne({
+        where: {
+            spotId: Number(req.params.spotId),
+            endDate: {
+                [Op.between]: [start, end]
+            }
+        }
+    });
+
+    if (bookingStartCheck || bookingEndCheck) {
+        const err = new Error("Sorry, this spot is already booked for the specified dates");
+        err.status = 403;
+        err.title = "Booking already exists";
+        err.errors = {
+            startDate: 'Start date conflicts with an existing booking',
+            endDate: 'End date conflicts with an existing booking'
+        }
+
+        return next(err);
+    }
+
+    const newBooking = await Booking.create({
+        spotId: Number(req.params.spotId),
+        userId: req.user.id,
+        startDate,
+        endDate
+    });
+
+    return res.json(newBooking);
 });
 
 
