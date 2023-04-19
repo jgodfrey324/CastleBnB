@@ -138,7 +138,8 @@ router.post('/:reviewId/images', [requireAuth, checkAuthorization], async (req, 
     const returnImg = await ReviewImage.findOne({
         where: {
             url
-        }
+        },
+        attributes: ['id', 'url']
     });
 
     return res.json(returnImg);

@@ -389,7 +389,8 @@ router.post('/:spotId/images', [requireAuth, checkAuthorization], async (req, re
     const returnImg = await SpotImage.findOne({
         where: {
             url
-        }
+        },
+        attributes: ['id', 'url', 'preview']
     });
 
     return res.json(returnImg);
