@@ -374,6 +374,27 @@ router.post('/:spotId/reviews', [requireAuth, validateReview], async (req, res, 
     return res.status(201).json(newReview);
 });
 
+router.post('/:spotId/images', [requireAuth, checkAuthorization], async (req, res, next) => {
+    let { url, preview } = req.body;
+
+    let newImage;
+    if (url && (preview === true || preview === false)) {
+        newImage = await SpotImage.create({
+            spotId: req.params.spotId,
+            url,
+            preview
+        });
+    }
+
+    const returnImg = await SpotImage.findOne({
+        where: {
+            url
+        }
+    });
+
+    return res.json(returnImg);
+});
+
 
 
 module.exports = router;
