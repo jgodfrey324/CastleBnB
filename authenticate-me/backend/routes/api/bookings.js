@@ -106,7 +106,7 @@ router.put('/:bookingId', [requireAuth, checkAuthorization, validateBooking], as
 
     const currentTime = new Date().getTime();
 
-    if (currentTime > end) {
+    if (currentTime > start) {
         const err = new Error("Past bookings can't be modified");
         err.status = 403;
         err.title = "Unable to process request";
