@@ -544,8 +544,9 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
         return next(err);
     }
 
+    let spotBookings;
     if (req.user.id !== spot.ownerId) {
-        const spotBookings = await Spot.findByPk(req.params.spotId, {
+        spotBookings = await Spot.findByPk(req.params.spotId, {
             attributes: [],
             include: {
                 model: Booking,
@@ -554,20 +555,20 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
         });
 
         return res.json(spotBookings);
-    }
-
-    const spotBookings = await Spot.findByPk(req.params.spotId, {
-        attributes: [],
-        include: [
-            {
-                model: Booking,
-                include: {
-                    model: User,
-                    attributes: ['id', 'firstName', 'lastName']
+    } else {
+        spotBookings = await Spot.findByPk(req.params.spotId, {
+            attributes: [],
+            include: [
+                {
+                    model: Booking,
+                    include: {
+                        model: User,
+                        attributes: ['id', 'firstName', 'lastName']
+                    }
                 }
-            }
-        ]
-    });
+            ]
+        });
+    }
 
     return res.json(spotBookings);
 });
