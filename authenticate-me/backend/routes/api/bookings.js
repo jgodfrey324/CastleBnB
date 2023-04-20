@@ -104,6 +104,15 @@ router.put('/:bookingId', [requireAuth, checkAuthorization, validateBooking], as
         return next(err);
     }
 
+    const currentTime = new Date().getTime();
+
+    if (currentTime > end) {
+        const err = new Error("Past bookings can't be modified");
+        err.status = 403;
+        err.title = "Unable to process request";
+        return next(err);
+    }
+
     const bookingStartCheck = await Booking.findOne({
         where: {
             spotId: editBooking.spotId,
@@ -130,15 +139,6 @@ router.put('/:bookingId', [requireAuth, checkAuthorization, validateBooking], as
             endDate: 'End date conflicts with an existing booking'
         }
 
-        return next(err);
-    }
-
-    const currentTime = new Date().getTime();
-
-    if (currentTime > end) {
-        const err = new Error("Past bookings can't be modified");
-        err.status = 403;
-        err.title = "Unable to process request";
         return next(err);
     }
 
