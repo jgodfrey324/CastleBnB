@@ -254,6 +254,11 @@ router.get('/', validateQueryFilters, async (req, res) => {
 
     for(let i = 0; i < spots.length; i++) {
         const spotObj = spots[i].toJSON();
+
+        spotObj.price = Number(spotObj.price);
+        spotObj.lat = Number(spotObj.lat);
+        spotObj.lng = Number(spotObj.lng);
+
         const reviewsCount = await Review.count({
             where: {
                 spotId: spotObj.id
