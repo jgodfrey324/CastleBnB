@@ -304,14 +304,11 @@ router.get('/', validateQueryFilters, async (req, res) => {
         spotsWithRating.push(spotObj);
     }
 
-    let returnSpots = spots.toJSON();
-    returnSpots = {
+    return res.json({
         Spots: spotsWithRating,
         page: Number(page),
         size: Number(size)
-    }
-
-    return res.json(returnSpots);
+    });
 });
 
 router.get('/current', requireAuth, async (req, res) => {
