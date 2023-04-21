@@ -70,6 +70,10 @@ router.get('/current', requireAuth, async (req, res) => {
     for (let i = 0; i < userObj.Reviews.length; i ++) {
         const review = userObj.Reviews[i];
 
+        review.Spot.price = Number(review.Spot.price);
+        review.Spot.lat = Number(review.Spot.lat);
+        review.Spot.lng = Number(review.Spot.lng);
+
         const previewImg = await SpotImage.findOne({
             where: {
                 spotId: review.Spot.id,
