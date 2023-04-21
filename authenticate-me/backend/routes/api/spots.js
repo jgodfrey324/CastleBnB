@@ -228,8 +228,8 @@ router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
         city,
         state,
         country,
-        lat,
-        lng,
+        lat: Number(lat),
+        lng: Number(lng),
         name,
         description,
         price: Number(price)
@@ -304,12 +304,14 @@ router.get('/', validateQueryFilters, async (req, res) => {
         spotsWithRating.push(spotObj);
     }
 
-
-    return res.json({
+    let returnSpots = spots.toJSON();
+    returnSpots = {
         Spots: spotsWithRating,
         page: Number(page),
         size: Number(size)
-    });
+    }
+
+    return res.json(returnSpots);
 });
 
 router.get('/current', requireAuth, async (req, res) => {
