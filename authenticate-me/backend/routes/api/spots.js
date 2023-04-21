@@ -232,7 +232,8 @@ router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
         lng: Number(lng),
         name,
         description,
-        price: Number(price) });
+        price: Number(price)
+    });
 
     return res.status(201).json(newSpot);
 });
@@ -303,12 +304,14 @@ router.get('/', validateQueryFilters, async (req, res) => {
         spotsWithRating.push(spotObj);
     }
 
-
-    return res.json({
+    let returnSpots = spots.toJSON();
+    returnSpots = {
         Spots: spotsWithRating,
         page: Number(page),
         size: Number(size)
-    });
+    }
+
+    return res.json(returnSpots);
 });
 
 router.get('/current', requireAuth, async (req, res) => {
