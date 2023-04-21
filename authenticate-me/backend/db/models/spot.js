@@ -36,7 +36,6 @@ module.exports = (sequelize, DataTypes) => {
     address: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
       validate: {
         len: [5, 100]
       }
@@ -142,12 +141,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Spot',
-    indexes: [
-      {
-        fields: ['lat', 'lng'],
-        unique: true
-      }
-    ]
   });
   return Spot;
 };

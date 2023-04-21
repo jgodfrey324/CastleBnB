@@ -192,31 +192,40 @@ const checkIfOwned = async (req, res, next) => {
 router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
-    try {
-        const newSpot = await Spot.create({ ownerId: req.user.id, address, city, state, country, lat, lng, name, description, price });
+    const errors = {};
 
-        return res.status(201).json(newSpot);
-    } catch(e) {
-        const err = new Error('Bad request');
-        err.status = 400;
-        err.title = 'Bad request';
+    const foundAddress = await Spot.findOne({
+        where: {
+            address
+        }
+    });
+    const foundCoordinates = await Spot.findOne({
+        where: {
+            lat,
+            lng
+        }
+    });
 
-        const errors = [];
-        e.errors.forEach(error => {
-            const errObj = {};
+    if (foundAddress) {
+        errors.address = "Spot with that address already exists";
+    }
+    if (foundCoordinates) {
+        errors.lat = "Spot with that latitude and longitude already exists";
+        errors.lng = "Spot with that latitude and longitude already exists";
+    }
 
-            errObj.message = error.message,
-            errObj.type = error.type,
-            errObj.field = error.path
-
-            errors.push(errObj);
-        });
-
+    if (errors.address || errors.lat) {
+        const err = Error("Spot already exists.");
         err.errors = errors;
-
+        err.status = 500;
+        err.title = "Spot already exists.";
         return next(err);
     }
-})
+
+    const newSpot = await Spot.create({ ownerId: req.user.id, address, city, state, country, lat, lng, name, description, price });
+
+    return res.status(201).json(newSpot);
+});
 
 router.get('/', validateQueryFilters, async (req, res) => {
     let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
@@ -258,7 +267,7 @@ router.get('/', validateQueryFilters, async (req, res) => {
         const starAvg = starReviewSum / reviewsCount;
 
         if (starAvg) {
-            spotObj.avgRating = (starAvg).toFixed(1);
+            spotObj.avgRating = Number((starAvg).toFixed(1));
         } else {
             spotObj.avgRating = 'No reviews yet';
         }
@@ -314,7 +323,7 @@ router.get('/current', requireAuth, async (req, res) => {
         const starAvg = starReviewSum / reviewsCount;
 
         if (starAvg) {
-            spotObj.avgRating = (starAvg).toFixed(1);
+            spotObj.avgRating = Number((starAvg).toFixed(1));
         } else {
             spotObj.avgRating = 'No reviews yet';
         }
@@ -382,7 +391,7 @@ router.get('/:spotId', async (req, res, next) => {
 
     if (reviewsCount && starAvg) {
         spotObj.numReviews = reviewsCount;
-        spotObj.avgStarRating = (starAvg).toFixed(1);
+        spotObj.avgStarRating = Number((starAvg).toFixed(1));
     } else {
         spotObj.numReviews = 'No reviews yet';
         spotObj.avgRating = 'No reviews yet';
@@ -396,47 +405,51 @@ router.put('/:spotId', [requireAuth, validateSpot, checkAuthorization], async (r
 
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
-    try {
-        spot.set({
-            address,
-            city,
-            state,
-            country,
-            name,
-            description,
-            price
-        });
+    const errors = {};
 
-        if (lat !== spot.lat) {
-            spot.lat = lat;
+    const checkAddress = await Spot.findOne({
+        where: {
+            address
         }
-        if (lng !== spot.lng) {
-            spot.lng = lng;
+    });
+    const checkCoordinates = await Spot.findOne({
+        where: {
+            lat,
+            lng
         }
+    });
 
-        await spot.save();
-        return res.json(spot);
+    if (checkAddress && checkAddress.id !== Number(req.params.spotId)) {
+        console.log("I went in here******************************************************")
+        errors.address = "Spot with that address already exists";
+    }
+    if (checkCoordinates && checkCoordinates.id !== Number(req.params.spotId)) {
+        errors.lat = "Spot with that latitude and longitude already exists";
+        errors.lng = "Spot with that latitude and longitude already exists"
+    }
 
-    } catch (e) {
-        const err = new Error('Bad request');
-        err.status = 400;
-        err.title = 'Bad request';
-
-        const errors = [];
-        e.errors.forEach(error => {
-            const errObj = {};
-
-            errObj.message = error.message,
-            errObj.type = error.type,
-            errObj.field = error.path
-
-            errors.push(errObj);
-        });
-
+    if (errors.lat || errors.address) {
+        const err = Error("Spot already exists.");
         err.errors = errors;
-
+        err.status = 500;
+        err.title = "Spot already exists.";
         return next(err);
     }
+
+    spot.set({
+        address,
+        city,
+        state,
+        country,
+        lat: Number(lat),
+        lng: Number(lng),
+        name,
+        description,
+        price: Number(price)
+    });
+
+    await spot.save();
+    return res.json(spot);
 });
 
 router.delete('/:spotId', [requireAuth, checkAuthorization], async (req, res, next) => {
@@ -504,9 +517,9 @@ router.post('/:spotId/reviews', [requireAuth, validateReview], async (req, res, 
 
     const newReview = await Review.create({
         userId: req.user.id,
-        spotId: req.params.spotId,
+        spotId: Number(req.params.spotId),
         review,
-        stars
+        stars: Number(stars)
     });
 
     return res.status(201).json(newReview);
