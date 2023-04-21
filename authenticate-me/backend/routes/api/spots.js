@@ -222,7 +222,17 @@ router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
         return next(err);
     }
 
-    const newSpot = await Spot.create({ ownerId: req.user.id, address, city, state, country, lat, lng, name, description, price });
+    const newSpot = await Spot.create({
+        ownerId: req.user.id,
+        address,
+        city,
+        state,
+        country,
+        lat: Number(lat),
+        lng: Number(lng),
+        name,
+        description,
+        price: Number(price) });
 
     return res.status(201).json(newSpot);
 });
