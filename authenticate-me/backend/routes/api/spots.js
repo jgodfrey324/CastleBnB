@@ -315,6 +315,10 @@ router.get('/current', requireAuth, async (req, res) => {
     for(let i = 0; i < spots.length; i++) {
         const spotObj = spots[i].toJSON();
 
+        spotObj.price = Number(spotObj.price);
+        spotObj.lat = Number(spotObj.lat);
+        spotObj.lng = Number(spotObj.lng);
+
         const reviewsCount = await Review.count({
             where: {
                 spotId: spotObj.id
@@ -381,6 +385,10 @@ router.get('/:spotId', async (req, res, next) => {
     }
 
     const spotObj = spot.toJSON();
+
+    spotObj.price = Number(spotObj.price);
+    spotObj.lat = Number(spotObj.lat);
+    spotObj.lng = Number(spotObj.lng);
 
     const reviewsCount = await Review.count({
         where: {
