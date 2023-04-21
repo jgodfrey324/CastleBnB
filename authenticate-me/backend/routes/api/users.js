@@ -33,34 +33,55 @@ const validateSignup = [
     handleValidationErrors
 ];
 
-router.post('/', validateSignup, async (req, res, next) => {
+router.post('/', [validateSignup], async (req, res, next) => {
     const { email, password, username, firstName, lastName } = req.body;
-    const hashedPassword = bcrypt.hashSync(password);
 
-    try {
-        const user = await User.create({ firstName, lastName, email, username, hashedPassword });
+    const errors = {};
 
-        const safeUser = {
-            id: user.id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            username: user.username
-        };
+    const foundUsername = await User.findOne({
+        where: {
+            username: username
+        }
+    });
 
-        setTokenCookie(res, safeUser);
+    const foundEmail = await User.findOne({
+        where: {
+            email: email
+        }
+    });
 
-        return res.json({
-            user: safeUser
-        });
+    if (foundUsername) {
+        errors.username = "User with that username already exists";
+    }
+    if (foundEmail) {
+        errors.email = "User with that email already exists"
+    }
 
-    } catch (e) {
-        const err = new Error('User already exists');
+    if (errors.username || errors.email) {
+        const err = Error("User already exists.");
+        err.errors = errors;
         err.status = 500;
-        err.title = 'User already exists';
-        err.errors = {[e.fields]: `User with that ${e.fields} already exists`}
+        err.title = "User already exists.";
         return next(err);
     }
+
+    const hashedPassword = bcrypt.hashSync(password);
+
+    const user = await User.create({ firstName, lastName, email, username, hashedPassword });
+
+    const safeUser = {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        username: user.username
+    };
+
+    setTokenCookie(res, safeUser);
+
+    return res.json({
+        user: safeUser
+    });
 });
 
 
