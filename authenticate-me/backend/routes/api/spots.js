@@ -228,11 +228,12 @@ router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
         city,
         state,
         country,
-        lat: Number(lat),
-        lng: Number(lng),
+        lat,
+        lng,
         name,
         description,
-        price: Number(price) });
+        price: Number(price)
+    });
 
     return res.status(201).json(newSpot);
 });
