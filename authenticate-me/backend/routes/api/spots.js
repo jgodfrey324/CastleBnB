@@ -261,6 +261,8 @@ router.get('/', validateQueryFilters, async (req, res) => {
         offset
     });
 
+    console.log(spots);
+    console.log(spots.length);
     const spotsWithRating = [];
 
     for(let i = 0; i < spots.length; i++) {
