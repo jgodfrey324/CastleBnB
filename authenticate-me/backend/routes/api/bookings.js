@@ -63,9 +63,9 @@ router.get('/current', requireAuth, async (req, res) => {
     for (let i = 0; i < bookings.length; i ++) {
          const spotObj = bookings[i].toJSON();
 
-         spotObj.price = Number(spotObj.price);
-         spotObj.lat = Number(spotObj.lat);
-         spotObj.lng = Number(spotObj.lng);
+         spotObj.Spot.price = Number(spotObj.Spot.price);
+         spotObj.Spot.lat = Number(spotObj.Spot.lat);
+         spotObj.Spot.lng = Number(spotObj.Spot.lng);
 
          const previewUrl = await SpotImage.findOne({
             where: {
