@@ -27,8 +27,19 @@ button.logout-button {
 }
 
 button.profile-button {
-    padding: 12px;
+    padding: 8px;
     margin-bottom: 20px;
-    border: 1px solid #010466;
-    border-radius: 30px;
+    border: .5px solid #010466;
+    border-radius: 20px;
+}
+
+button.profile-button:hover,
+button.logout-button:hover {
+    cursor: pointer;
+    /* box-shadow: 0 1px 2px #010466; */
+    border: 2px solid #010466;
+}
+
+.hidden {
+    display: none;
 }

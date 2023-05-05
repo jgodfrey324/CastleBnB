@@ -51,12 +51,11 @@ button.nice-button {
     width: 300px;
     margin-top: 50px;
     margin-bottom: 0;
+    box-shadow: 1px 1px 0 #665200;
+    border: 1px solid #665200;
 }
 
 button.nice-button:hover {
-    box-shadow: 1px 1px 0 #665200;
-    border: 1px solid #665200;
-    background-color: #b390029f;
     cursor: pointer;
 }
 
