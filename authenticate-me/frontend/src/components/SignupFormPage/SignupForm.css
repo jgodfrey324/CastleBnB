@@ -8,20 +8,22 @@
 }
 
 div.signup-house > h1 {
-    margin-bottom: 20px;
+    font-family: 'MedievalSharp', cursive;
+    color: #010466;
+    margin-bottom: 10px;
     padding: 0 90px 20px 90px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #010466;
 }
 
 div.signup-house {
-    border: 1px solid maroon;
+    border: 1px solid #010466;
     border-radius: 30px;
-    box-shadow: 0 3px 8px maroon;
-    background-color: rgb(255, 240, 240);
+    box-shadow: 0 3px 7px #010466;
+    background-color: #1c24ff08;
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 100px 0;
+    /* justify-content: center; */
+    margin: 70px 200px;
     padding: 80px 120px;
-    width: fit-content;
 }

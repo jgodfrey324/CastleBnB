@@ -1,38 +1,23 @@
 /* i am here for you :) */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    /* font-family:'Courier New', Courier, monospace; */
-}
-
 div.login-house {
-    border: 1px solid maroon;
+    border: 1px solid #010466;
     border-radius: 30px;
-    box-shadow: 0 3px 8px maroon;
-    background-color: rgb(255, 240, 240);
+    box-shadow: 0 3px 7px #010466;
+    background-color: #1c24ff08;
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 100px;
+    /* justify-content: center; */
+    margin: 70px 200px;
     padding: 80px 120px;
-    width: fit-content;
-}
-
-div#root {
-    display: flex;
-    justify-content: center;
 }
 
 div.login-house > h1 {
     font-family: 'MedievalSharp', cursive;
-    margin-bottom: 30px;
+    color: #010466;
+    margin-bottom: 10px;
     padding: 0 105px 20px 105px;
-    border-bottom: 1px solid black;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
+    border-bottom: 1px solid #010466;
 }
 
 label.box-label,
@@ -45,13 +30,22 @@ button.nice-button {
 
 label.box-label {
     font-size: 18px;
+    color: #010466;
+    margin: 40px 20px;
+}
+
+input {
+    border: .8px solid #0108B3;
+    height: 25px;
+    background-color: white;
 }
 
 button.nice-button {
     display: flex;
     align-items: center;
     padding: 10px;
-    border: 1px solid black;
+    background-color: #b3900280;
+    border: .5px solid #665200;
     border-radius: 20px;
     font-size: 20px;
     width: 300px;
@@ -60,14 +54,14 @@ button.nice-button {
 }
 
 button.nice-button:hover {
-    box-shadow: 1px 1px 0 maroon;
-    border: 1px solid maroon;
-    background-color: whitesmoke;
+    box-shadow: 1px 1px 0 #665200;
+    border: 1px solid #665200;
+    background-color: #b390029f;
     cursor: pointer;
 }
 
 p.display-errors {
-    color: red;
+    color: #B37414;
     font-size: 14px;
     font-family: 'Courier New', Courier, monospace;
     width: 300px;
