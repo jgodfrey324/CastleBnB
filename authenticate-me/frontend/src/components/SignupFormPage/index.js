@@ -60,7 +60,7 @@ const SignupFormPage = () => {
             required
           />
         </label>
-        {errors.email && <p>{errors.email}</p>}
+        {errors.email && <p className="display-errors">{errors.email}</p>}
         <label className="box-label">
           Username
           <input
@@ -70,7 +70,7 @@ const SignupFormPage = () => {
             required
           />
         </label>
-        {errors.username && <p>{errors.username}</p>}
+        {errors.username && <p className="display-errors">{errors.username}</p>}
         <label className="box-label">
           First Name
           <input
@@ -80,7 +80,7 @@ const SignupFormPage = () => {
             required
           />
         </label>
-        {errors.firstName && <p>{errors.firstName}</p>}
+        {errors.firstName && <p className="display-errors">{errors.firstName}</p>}
         <label className="box-label">
           Last Name
           <input
@@ -90,7 +90,7 @@ const SignupFormPage = () => {
             required
           />
         </label>
-        {errors.lastName && <p>{errors.lastName}</p>}
+        {errors.lastName && <p className="display-errors">{errors.lastName}</p>}
         <label className="box-label">
           Password
           <input
@@ -100,7 +100,7 @@ const SignupFormPage = () => {
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
+        {errors.password && <p className="display-errors">{errors.password}</p>}
         <label className="box-label">
           Confirm Password
           <input
@@ -110,7 +110,7 @@ const SignupFormPage = () => {
             required
           />
         </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        {errors.confirmPassword && <p className="display-errors">{errors.confirmPassword}</p>}
         <button type="submit" className="nice-button">Sign Up</button>
       </form>
     </div>

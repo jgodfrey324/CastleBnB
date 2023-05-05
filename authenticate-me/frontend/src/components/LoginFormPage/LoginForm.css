@@ -43,12 +43,20 @@ button.nice-button {
     flex-direction: column;
 }
 
+label.box-label {
+    font-size: 18px;
+}
+
 button.nice-button {
     display: flex;
     align-items: center;
     padding: 10px;
     border: 1px solid black;
     border-radius: 20px;
+    font-size: 20px;
+    width: 300px;
+    margin-top: 50px;
+    margin-bottom: 0;
 }
 
 button.nice-button:hover {
@@ -56,4 +64,13 @@ button.nice-button:hover {
     border: 1px solid maroon;
     background-color: whitesmoke;
     cursor: pointer;
+}
+
+p.display-errors {
+    color: red;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    width: 300px;
+    padding-left: 20px;
+    /* border: 1px solid red; */
 }
