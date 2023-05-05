@@ -2,7 +2,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-family:'Courier New', Courier, monospace;
+    /* font-family:'Courier New', Courier, monospace; */
 }
 
 div.login-house {
@@ -24,8 +24,9 @@ div#root {
 }
 
 div.login-house > h1 {
-    margin-bottom: 35px;
-    padding: 0 30px 15px 30px;
+    font-family: 'MedievalSharp', cursive;
+    margin-bottom: 30px;
+    padding: 0 105px 20px 105px;
     border-bottom: 1px solid black;
 }
 
@@ -42,16 +43,34 @@ button.nice-button {
     flex-direction: column;
 }
 
+label.box-label {
+    font-size: 18px;
+}
+
 button.nice-button {
     display: flex;
     align-items: center;
     padding: 10px;
     border: 1px solid black;
     border-radius: 20px;
+    font-size: 20px;
+    width: 300px;
+    margin-top: 50px;
+    margin-bottom: 0;
 }
 
 button.nice-button:hover {
     box-shadow: 1px 1px 0 maroon;
     border: 1px solid maroon;
     background-color: whitesmoke;
+    cursor: pointer;
+}
+
+p.display-errors {
+    color: red;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    width: 300px;
+    padding-left: 20px;
+    /* border: 1px solid red; */
 }
