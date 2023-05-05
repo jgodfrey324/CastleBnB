@@ -2,7 +2,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-family:'Courier New', Courier, monospace;
+    /* font-family:'Courier New', Courier, monospace; */
 }
 
 div.login-house {
@@ -24,8 +24,9 @@ div#root {
 }
 
 div.login-house > h1 {
-    margin-bottom: 35px;
-    padding: 0 30px 15px 30px;
+    font-family: 'MedievalSharp', cursive;
+    margin-bottom: 30px;
+    padding: 0 105px 20px 105px;
     border-bottom: 1px solid black;
 }
 
@@ -54,4 +55,5 @@ button.nice-button:hover {
     box-shadow: 1px 1px 0 maroon;
     border: 1px solid maroon;
     background-color: whitesmoke;
+    cursor: pointer;
 }
