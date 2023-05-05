@@ -1,0 +1,57 @@
+/* i am here for you :) */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family:'Courier New', Courier, monospace;
+}
+
+div.login-house {
+    border: 1px solid maroon;
+    border-radius: 30px;
+    box-shadow: 0 3px 8px maroon;
+    background-color: rgb(255, 240, 240);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    padding: 80px 120px;
+    width: fit-content;
+}
+
+div#root {
+    display: flex;
+    justify-content: center;
+}
+
+div.login-house > h1 {
+    margin-bottom: 35px;
+    padding: 0 30px 15px 30px;
+    border-bottom: 1px solid black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label.box-label,
+button.nice-button {
+    /* border: 3px solid green; */
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+button.nice-button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+button.nice-button:hover {
+    box-shadow: 1px 1px 0 maroon;
+    border: 1px solid maroon;
+    background-color: whitesmoke;
+}
