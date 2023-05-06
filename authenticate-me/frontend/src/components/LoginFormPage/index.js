@@ -11,11 +11,21 @@ const LoginFormPage = () => {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
 
+    //redirects if a session is found
     if (sessionUser) return <Redirect to="/" />;
 
-    const disabled = (credential, password) => {
-      if (credential < 4 || password < 6) return true;
-      return false;
+    //disables button for incomplete forms
+    const disabled = (credential, password) => credential.length >= 4 && password.length >= 6 ? false : true;
+
+    //return val of disabled func
+    const disabledFuncReturn = disabled(credential, password);
+
+    //set additional class name for buttons that are disabled
+    const buttonClassFunc = (disabledFuncReturn) => {
+      let buttonClass;
+      if (disabledFuncReturn) buttonClass = 'nice-button hover-off';
+      else buttonClass = 'nice-button'
+      return buttonClass;
     }
 
     const handleSubmit = (e) => {
@@ -52,7 +62,7 @@ const LoginFormPage = () => {
             />
           </label>
           {errors.credential && <p className="display-errors">{errors.credential}</p>}
-          <button type="submit" disabled={disabled(credential, password)} className="nice-button">Log In</button>
+          <button type="submit" disabled={disabledFuncReturn} className={buttonClassFunc(disabledFuncReturn)}>Log In</button>
         </form>
       </div>
     );
