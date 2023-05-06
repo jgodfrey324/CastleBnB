@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -12,6 +12,11 @@ const LoginFormPage = () => {
     const [errors, setErrors] = useState({});
 
     if (sessionUser) return <Redirect to="/" />;
+
+    const disabled = (credential, password) => {
+      if (credential < 4 || password < 6) return true;
+      return false;
+    }
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -47,7 +52,7 @@ const LoginFormPage = () => {
             />
           </label>
           {errors.credential && <p className="display-errors">{errors.credential}</p>}
-          <button type="submit" className="nice-button">Log In</button>
+          <button type="submit" disabled={disabled(credential, password)} className="nice-button">Log In</button>
         </form>
       </div>
     );

@@ -18,6 +18,11 @@ const SignupFormPage = () => {
   //if user currently logged in, redirection
   if (sessionUser) return <Redirect to="/" />;
 
+  const disabled = (email, username, firstName, lastName, password, confirmPassword) => {
+    if (!email || !username || !firstName || !lastName || !password || !confirmPassword) return true;
+    return false;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     //if passwords match...
@@ -111,7 +116,7 @@ const SignupFormPage = () => {
           />
         </label>
         {errors.confirmPassword && <p className="display-errors">{errors.confirmPassword}</p>}
-        <button type="submit" className="nice-button">Sign Up</button>
+        <button type="submit" disabled={disabled(email, username, firstName, lastName, password, confirmPassword)} className="nice-button">Sign Up</button>
       </form>
     </div>
   );
