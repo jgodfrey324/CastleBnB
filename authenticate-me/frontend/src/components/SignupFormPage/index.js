@@ -18,9 +18,21 @@ const SignupFormPage = () => {
   //if user currently logged in, redirection
   if (sessionUser) return <Redirect to="/" />;
 
+  //disable buttton if form not filled
   const disabled = (email, username, firstName, lastName, password, confirmPassword) => {
     if (!email || !username || !firstName || !lastName || !password || !confirmPassword) return true;
     return false;
+  }
+
+  //return val of disabled func
+  const disabledFuncReturn = disabled(email, username, firstName, lastName, password, confirmPassword);
+
+  //set additional class name for buttons that are disabled
+  const buttonClassFunc = (disabledFuncReturn) => {
+    let buttonClass;
+    if (disabledFuncReturn) buttonClass = 'nice-button hover-off';
+    else buttonClass = 'nice-button'
+    return buttonClass;
   }
 
   const handleSubmit = (e) => {
@@ -116,7 +128,7 @@ const SignupFormPage = () => {
           />
         </label>
         {errors.confirmPassword && <p className="display-errors">{errors.confirmPassword}</p>}
-        <button type="submit" disabled={disabled(email, username, firstName, lastName, password, confirmPassword)} className="nice-button">Sign Up</button>
+        <button type="submit" disabled={disabledFuncReturn} className={buttonClassFunc(disabledFuncReturn)}>Sign Up</button>
       </form>
     </div>
   );

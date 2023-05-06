@@ -1,29 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  //grab ref of the <ul> that the maps to the vDOM
+  const ulRef = useRef();
 
-//   const openMenu = () => {
-//     if (showMenu) return;
-//     setShowMenu(true);
-//   };
+  //add event listener if showMenu is true, register to document, remove listener before running again
+  useEffect(() => {
+    //if showMenu false, we don't want any of this business (mostly on initial load)
+    if (!showMenu) return;
+
+    const closeMenu = (e) => {
+      //only closing menu if click is outside current ref
+      if (!ulRef.current.contains(e.target)) setShowMenu(false);
+    };
+    document.addEventListener('click', closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+    //listen for when showMenu changes
+  }, [showMenu]);
+
+  //opens profile menu on button click
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
 
 //   const logout = (e) => {
 //     e.preventDefault();
 //     dispatch(logout());
 //   };
 
+  //sets class name for hidden menu functionality
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
     <>
-      <button className='profile-button' style={{color: '#0108B3'}} onClick={() => setShowMenu(!showMenu)}>
-        <i class="fa-regular fa-chess-queen fa-l"></i>
+      <button className='profile-button' style={{color: '#0108B3'}} onClick={openMenu}>
+        <i className="fa-regular fa-chess-queen fa-l"></i>
       </button>
-      <ul className={ulClassName}>
+      <ul className={ulClassName} ref={ulRef}>
         <li>{user.username}</li>
         <li>{user.firstName} {user.lastName}</li>
         <li>{user.email}</li>
