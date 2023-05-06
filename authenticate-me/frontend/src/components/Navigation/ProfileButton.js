@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  //grab ref of the <ul> that the maps to the vDOM
+  const ulRef = useRef();
 
   //add event listener if showMenu is true, register to document, remove listener before running again
   useEffect(() => {
@@ -12,7 +14,8 @@ const ProfileButton = ({ user }) => {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      setShowMenu(false);
+      //only closing menu if click is outside current ref
+      if (!ulRef.current.contains(e.target)) setShowMenu(false);
     };
     document.addEventListener('click', closeMenu);
 
@@ -39,7 +42,7 @@ const ProfileButton = ({ user }) => {
       <button className='profile-button' style={{color: '#0108B3'}} onClick={openMenu}>
         <i className="fa-regular fa-chess-queen fa-l"></i>
       </button>
-      <ul className={ulClassName}>
+      <ul className={ulClassName} ref={ulRef}>
         <li>{user.username}</li>
         <li>{user.firstName} {user.lastName}</li>
         <li>{user.email}</li>
