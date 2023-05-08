@@ -41,7 +41,7 @@ button.logout-button:hover {
 .profile-dropdown {
     border: 2px solid #010466;
     padding: 0;
-    width: fill;
+    width: stretch;
 }
 
 .list-house > li.drop-down-content {
