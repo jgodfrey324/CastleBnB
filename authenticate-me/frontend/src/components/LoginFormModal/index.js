@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from '../../context/Modal';
+import DemoUser from './DemoUser';
 import "./LoginForm.css";
 
 const LoginFormModal = () => {
@@ -63,6 +64,7 @@ const LoginFormModal = () => {
           {errors.credential && <p className="display-errors">{errors.credential}</p>}
           <button type="submit" disabled={disabledFuncReturn} className={buttonClassFunc(disabledFuncReturn)}>Log In</button>
         </form>
+        <DemoUser />
       </div>
     );
   }
