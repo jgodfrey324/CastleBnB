@@ -1,10 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { getSpots } from '../../store/spots';
 import './SpotsLanding.css';
 
 const SpotsLanding = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const spots = useSelector(state => state.spots);
 
     useEffect (() => {
@@ -22,7 +24,11 @@ const SpotsLanding = () => {
         <div className='spots-house'>
             {spots.Spots.map(spot => {
                 return (
-                    <div key={spot.id} className='spot-room'>
+                    <div key={spot.id} className='spot-room'
+                        onClick={() => {
+                            console.log('spot ->', spot)
+                            history.push(`/spots/${spot.id}`);
+                            }}>
                         <img src={spot.previewImage}></img>
                         <div className='spot-city-rating'>
                             <span className='spot-city'>{spot.city}, {spot.state}</span>

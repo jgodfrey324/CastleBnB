@@ -51,7 +51,7 @@ const ProfileButton = ({ user }) => {
         {user ? (
           <>
             <div className="drop-down-user-info">
-              <li>Hello, {user.firstName}</li>
+              <li className='dropdown-user-greeting'>Hello, {user.firstName}</li>
               <li>{user.email}</li>
             </div>
             <li>MANAGE SPOTS HERE</li>
