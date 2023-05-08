@@ -20,16 +20,12 @@ div.login-house > h1 {
 
 .demo-user-link {
     color: #010466;
-    /* border: none; */
-    /* padding: 0; */
-    /* border-bottom: 1px solid #010466; */
     font-size: 16px;
     margin-top: 20px;
-    /* background-color: transparent; */
+    font-family: 'Montserrat', sans-serif;
 }
 
 .demo-user-link:hover {
     cursor: pointer;
-    /* border-bottom: 2px solid #010466; */
     font-weight: bold;
 }

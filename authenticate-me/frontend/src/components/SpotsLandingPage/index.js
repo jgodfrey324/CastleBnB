@@ -10,20 +10,29 @@ const SpotsLanding = () => {
     useEffect (() => {
         dispatch(getSpots());
     }, [dispatch])
-    // console.log('spots.Spots ', spots.Spots[0])
 
-    if (!spots.Spots) {
-        console.log('i went am null');
-        return null
-    };
+    const starRating = (spot) => {
+        if (spot.avgRating === 'No reviews yet') return 'New';
+        return spot.avgRating;
+    }
+
+    if (!spots.Spots) return null;
+
     return (
         <div className='spots-house'>
             {spots.Spots.map(spot => {
                 return (
                     <div key={spot.id} className='spot-room'>
                         <img src={spot.previewImage}></img>
-                        <p>{spot.city}, {spot.state}</p>
-                        <p>${spot.price} /night</p>
+                        <div className='spot-city-rating'>
+                            <span className='spot-city'>{spot.city}, {spot.state}</span>
+                            <div className='spot-star-rating'>
+                                <i className="fa-solid fa-star" style={{color: '#b39003'}}></i>
+                                <span>{starRating(spot)}</span>
+                            </div>
+                        </div>
+                        <span className='spot-price'>${spot.price}</span>
+                        <span>  night</span>
                     </div>
                 )
             })}

@@ -26,15 +26,16 @@
 
   .modal-button {
     display: flex;
-    background-color: #1c24ff08;
+    background-color: transparent;
     font-size: 12px;
     width: stretch;
     border: none;
     padding: 8px;
     padding-left: 12px;
+    border-radius: 10px;
   }
 
   .modal-button:hover {
-    font-weight: bold;
+    background-color: #1c24ff16;
     cursor: pointer;
   }

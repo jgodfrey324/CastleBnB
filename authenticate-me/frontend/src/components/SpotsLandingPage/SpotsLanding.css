@@ -1,7 +1,8 @@
 .spot-room {
-    border: 3px solid red;
+    /* border: 3px solid red; */
     height: fit-content;
-    margin: 20px 10px;
+    margin: 20px 12px;
+    /* width: stretch; */
 }
 
 .spot-room:hover {
@@ -9,14 +10,37 @@
 }
 
 .spot-room > img {
-    width: 400px;
-    height: 400px;
+    width: 275px;
+    height: 275px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .spots-house {
-    border-top: 1px solid #B39002;
+    border-top: 1px solid #b3900295;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 40px;
+    background-color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+    color: #010466;
+    font-size: 14px;
+    border:
+}
 
+.spot-city-rating {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px dashed green; */
+    margin: 8px 0 12px 0;
+}
+
+.spot-star-rating > i {
+    margin-right: 5px;
+}
+
+.spot-price,
+.spot-city {
+    font-weight: 600;
 }
