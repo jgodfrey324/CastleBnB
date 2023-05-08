@@ -10,36 +10,51 @@ ul.list-house {
 }
 
 ul.list-house > li {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     padding: 20px;
 }
 
-ul.list-house > li > span {
-    /* border: 1px solid green; */
-    margin-right: 20px;
-}
-
 button.logout-button {
-    padding: 10px;
+    padding: 12px;
     margin-top: 20px;
-    border-radius: 15px;
+    border-radius: 20px;
     border: 1px solid #010466;
 }
 
 button.profile-button {
-    padding: 8px;
-    margin-bottom: 20px;
+    padding: 12px;
+    margin: 10px 50px 0 50px;
     border: .5px solid #010466;
-    border-radius: 20px;
+    border-radius: 25px;
 }
 
 button.profile-button:hover,
 button.logout-button:hover {
     cursor: pointer;
-    /* box-shadow: 0 1px 2px #010466; */
     border: 2px solid #010466;
 }
 
 .hidden {
     display: none;
+}
+
+.profile-dropdown {
+    border: 2px solid #010466;
+    padding: 0;
+    width: fill;
+}
+
+.list-house > li.drop-down-content {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    padding: 0;
+    width: 150px;
+}
+
+.drop-down-user-info {
+    /* border: 1px solid red; */
+    padding-bottom: 10px;
+    margin: 10px;
+    border-bottom: 1px solid #010466;
 }
