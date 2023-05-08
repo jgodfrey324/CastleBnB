@@ -1,0 +1,22 @@
+.spot-room {
+    border: 3px solid red;
+    height: fit-content;
+    margin: 20px 10px;
+}
+
+.spot-room:hover {
+    cursor: pointer;
+}
+
+.spot-room > img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.spots-house {
+    border-top: 1px solid #B39002;
+    display: flex;
+    flex-wrap: wrap;
+
+}

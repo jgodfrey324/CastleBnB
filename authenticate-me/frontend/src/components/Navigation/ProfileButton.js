@@ -44,7 +44,7 @@ const ProfileButton = ({ user }) => {
 
   return (
     <>
-      <button className='profile-button' style={{color: '#0108B3'}} onClick={openMenu}>
+      <button className='profile-button' style={{color: '#010466'}} onClick={openMenu}>
         <i className="fa-regular fa-chess-queen fa-xl"></i>
       </button>
       <ul className={ulClassName} ref={ulRef}>
