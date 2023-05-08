@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useModal } from '../../context/Modal';
 import { signup } from "../../store/session";
 import "./SignupForm.css";
 
-const SignupFormPage = () => {
+const SignupFormModal = () => {
   const dispatch = useDispatch();
-  //getting current user (if any)
-  const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -15,8 +13,7 @@ const SignupFormPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
-  //if user currently logged in, redirection
-  if (sessionUser) return <Redirect to="/" />;
+  const { closeModal } = useModal();
 
   //disable buttton if form not filled
   const disabled = (email, username, firstName, lastName, password, confirmPassword) => {
@@ -37,11 +34,8 @@ const SignupFormPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //if passwords match...
     if (password === confirmPassword) {
-      //reset errors
       setErrors({});
-      //dispatch with signup func
       return dispatch(signup({
           email,
           username,
@@ -49,16 +43,15 @@ const SignupFormPage = () => {
           lastName,
           password,
         })
-        //catch (if any) from signup validation
-      ).catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          //set new error state
-          setErrors(data.errors);
-        }
-      });
+      )
+        .then(closeModal)
+        .catch(async (res) => {
+          const data = await res.json();
+          if (data && data.errors) {
+            setErrors(data.errors);
+          }
+        });
     }
-    //set new error state if passwords don't match
     return setErrors({
       confirmPassword: "Confirm Password field must be the same as the Password field"
     });
@@ -134,4 +127,4 @@ const SignupFormPage = () => {
   );
 }
 
-export default SignupFormPage;
+export default SignupFormModal;

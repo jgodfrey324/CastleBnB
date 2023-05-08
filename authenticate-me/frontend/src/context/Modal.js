@@ -7,6 +7,7 @@ const ModalContext = React.createContext();
 export const ModalProvider = ({ children }) => {
     const modalRef = useRef();
     const [modalContent, setModalContent] = useState(null);
+    // callback function that will be called when modal is closing
     const [onModalClose, setOnModalClose] = useState(null);
 
     const closeModal = () => {
@@ -20,10 +21,11 @@ export const ModalProvider = ({ children }) => {
     };
 
     const contextValue = {
-      modalRef, // reference to modal div
-      modalContent, // React component to render inside modal
-      setModalContent, // function to set the React component to render inside modal
-      setOnModalClose, // function to set the callback function to be called when modal is closing
+        modalRef, // reference to modal div
+        modalContent, // React component to render inside modal
+        setModalContent, // function to set the React component to render inside modal
+        setOnModalClose, // function to set the callback function called when modal is closing
+        closeModal, // function to close the modal
     };
 
   return (

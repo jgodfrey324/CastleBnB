@@ -26,7 +26,7 @@ p.display-errors {
 button.nice-button {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 15px 10px;
     background-color: #b3900280;
     border: 1px solid #665200;
     /* border-radius: 20px; */
