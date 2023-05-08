@@ -12,23 +12,25 @@ router.get("/api/csrf/restore", (req, res) => {
 
 router.use('/api', apiRouter);
 
-//Static routes
-//serve React build files in production
+// Static routes
+// Serve React build files in production
 if (process.env.NODE_ENV === 'production') {
   const path = require('path');
-  //serve frontend index.html file at root route
+  // Serve the frontend's index.html file at the root route
   router.get('/', (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
-    return res.sendFile(
+    res.sendFile(
       path.resolve(__dirname, '../../frontend', 'build', 'index.html')
     );
   });
-  //serve static assets from frontend build folder
+
+  // Serve the static assets in the frontend's build folder
   router.use(express.static(path.resolve("../frontend/build")));
-  //serve frontend index.html file at all other routes not starting with '/api'
+
+  // Serve the frontend's index.html file at all other routes NOT starting with /api
   router.get(/^(?!\/?api).*/, (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
-    return res.sendFile(
+    res.sendFile(
       path.resolve(__dirname, '../../frontend', 'build', 'index.html')
     );
   });
@@ -38,7 +40,7 @@ if (process.env.NODE_ENV === 'production') {
 if (process.env.NODE_ENV !== 'production') {
   router.get('/api/csrf/restore', (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
-    return res.json({});
+    res.status(201).json({});
   });
 }
 
