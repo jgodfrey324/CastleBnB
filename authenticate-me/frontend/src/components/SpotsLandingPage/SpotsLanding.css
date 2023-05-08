@@ -17,16 +17,13 @@
 }
 
 .spots-house {
-    border-top: 1px solid #b3900295;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 0 40px;
-    background-color: whitesmoke;
     font-family: 'Montserrat', sans-serif;
     color: #010466;
     font-size: 14px;
-    border:
 }
 
 .spot-city-rating {

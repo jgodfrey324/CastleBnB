@@ -9,7 +9,8 @@ ul.profile-dropdown {
     /* justify-content: flex-end; */
     flex-direction: row-reverse;
     justify-content: space-between;
-    background-color: #b3900214;
+    /* background-color: #b390020f; */
+    border-bottom: 1px solid #b3900295;
 }
 
 .list-house {
@@ -22,11 +23,16 @@ ul.list-house > li {
 }
 
 button.logout-button {
-    padding: 12px;
+    padding: 10px 15px;
     margin-top: 20px;
-    border-radius: 20px;
-    border: 1px solid #010466;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #1c24ff3d;
     font-family: 'Montserrat', sans-serif;
+}
+
+.logout-button:hover {
+    background-color: #1c24ff16;
 }
 
 button.profile-button {
@@ -52,10 +58,11 @@ button.logout-button:hover {
 .profile-dropdown {
     /* border: 1px solid #010466; */
     border-radius: 10px;
-    box-shadow: -1px 1px 6px #1c24ff43;
+    box-shadow: 1px 2px 8px #1c24ff4b;
     padding: 0;
     width: stretch;
     background-color: #1c24ff08;
+    margin-right: 5px;
     /* display: flex;
     flex-direction: column;
     align-items: center; */
@@ -83,8 +90,14 @@ button.logout-button:hover {
     /* border: 1px solid red; */
     padding-bottom: 10px;
     margin: 10px;
-    border-bottom: 1px solid #010466;
+    border-bottom: 1px solid #01046689;
     font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    padding-left: 15px;
+}
+
+.dropdown-user-greeting {
+    margin-bottom: 5px;
 }
 
 .logo-icon {
