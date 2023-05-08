@@ -7,7 +7,7 @@ div.login-house {
     align-items: center;
     flex-direction: column;
     /* margin: 70px 400px; */
-    padding: 80px 120px;
+    padding: 50px 120px;
 }
 
 div.login-house > h1 {
@@ -16,4 +16,20 @@ div.login-house > h1 {
     margin-bottom: 10px;
     padding: 0 105px 20px 105px;
     border-bottom: 1px solid #010466;
+}
+
+.demo-user-link {
+    color: #010466;
+    /* border: none; */
+    /* padding: 0; */
+    /* border-bottom: 1px solid #010466; */
+    font-size: 16px;
+    margin-top: 20px;
+    /* background-color: transparent; */
+}
+
+.demo-user-link:hover {
+    cursor: pointer;
+    /* border-bottom: 2px solid #010466; */
+    font-weight: bold;
 }
