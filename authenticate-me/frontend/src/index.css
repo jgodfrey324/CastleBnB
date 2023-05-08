@@ -1,4 +1,6 @@
 /* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
 div#root {
     margin: 0;
     padding: 0;

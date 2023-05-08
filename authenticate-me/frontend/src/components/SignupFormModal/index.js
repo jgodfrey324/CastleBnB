@@ -18,6 +18,7 @@ const SignupFormModal = () => {
   //disable buttton if form not filled
   const disabled = (email, username, firstName, lastName, password, confirmPassword) => {
     if (!email || !username || !firstName || !lastName || !password || !confirmPassword) return true;
+    if (username.length < 4 || password.length < 6) return true;
     return false;
   }
 
