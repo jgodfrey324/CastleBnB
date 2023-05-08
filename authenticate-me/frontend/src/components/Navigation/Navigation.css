@@ -26,19 +26,23 @@ button.logout-button {
     margin-top: 20px;
     border-radius: 20px;
     border: 1px solid #010466;
+    font-family: 'Montserrat', sans-serif;
 }
 
 button.profile-button {
     padding: 12px;
-    margin: 10px 50px 0 50px;
-    border: .5px solid #010466;
+    margin: 15px 50px 10px 50px;
+    border: .5px solid #1c24ff3d;
     border-radius: 25px;
+}
+
+button.profile-button:hover {
+    box-shadow: -1px 3px 2px #1c24ff3d;
 }
 
 button.profile-button:hover,
 button.logout-button:hover {
     cursor: pointer;
-    border: 2px solid #010466;
 }
 
 .hidden {
@@ -46,9 +50,25 @@ button.logout-button:hover {
 }
 
 .profile-dropdown {
-    border: 2px solid #010466;
+    /* border: 1px solid #010466; */
+    border-radius: 10px;
+    box-shadow: -1px 1px 6px #1c24ff43;
     padding: 0;
     width: stretch;
+    background-color: #1c24ff08;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+.profile-dropdown > li {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-dropdown > li > button {
+    font-family: 'Montserrat', sans-serif;
+    color: #010466;
 }
 
 .list-house > li.drop-down-content {
@@ -64,6 +84,7 @@ button.logout-button:hover {
     padding-bottom: 10px;
     margin: 10px;
     border-bottom: 1px solid #010466;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .logo-icon {
