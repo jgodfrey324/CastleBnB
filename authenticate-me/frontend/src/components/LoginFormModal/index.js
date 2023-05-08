@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { login } from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useModal } from '../../context/Modal';
 import "./LoginForm.css";
 
-const LoginFormPage = () => {
+const LoginFormModal = () => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
-
-    //redirects if a session is found
-    if (sessionUser) return <Redirect to="/" />;
+    const { closeModal } = useModal();
 
     //disables button for incomplete forms
     const disabled = (credential, password) => credential.length >= 4 && password.length >= 6 ? false : true;
@@ -31,12 +28,14 @@ const LoginFormPage = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
       setErrors({});
-      return dispatch(login({ credential, password })).catch(
-        async (res) => {
+      return dispatch(login({ credential, password }))
+        .then(closeModal)
+        .catch(async (res) => {
           const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        }
-      );
+          if (data && data.errors) {
+            setErrors(data.errors);
+          }
+        });
     };
 
     return (
@@ -68,4 +67,4 @@ const LoginFormPage = () => {
     );
   }
 
-export default LoginFormPage;
+export default LoginFormModal;

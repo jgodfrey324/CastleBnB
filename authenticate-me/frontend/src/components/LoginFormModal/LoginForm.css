@@ -1,14 +1,12 @@
 /* i am here for you :) */
 div.login-house {
-    border: 1px solid #010466;
-    border-radius: 30px;
+    border-radius: 20px;
     box-shadow: 0 3px 7px #010466;
     background-color: #1c24ff08;
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* justify-content: center; */
-    margin: 70px 200px;
+    /* margin: 70px 400px; */
     padding: 80px 120px;
 }
 
