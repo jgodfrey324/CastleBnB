@@ -89,8 +89,8 @@ const SpotForm = ({ spot, formType }) => {
   };
 
   return (
-    <form id='create-spot-form' onSubmit={handleSubmit}>
-        <h1>Type of form here</h1>
+    <form id={formType} onSubmit={handleSubmit}>
+        <h1>{formType === 'post' ? 'Create a new Spot' : 'Update your Spot'}</h1>
         <div className='form-input-fields'>
             <div className="form-where">
                 <h2>Where's your place located?</h2>
@@ -118,7 +118,7 @@ const SpotForm = ({ spot, formType }) => {
                 </label>
                 {errors.address && <p className="display-errors">{errors.address}</p>}
                 <div className='form-city-state'>
-                    <label>
+                    <label id='city'>
                         City
                         <input
                         type='text'
@@ -128,8 +128,9 @@ const SpotForm = ({ spot, formType }) => {
                         onChange={(e) => setCity(e.target.value)}
                         />
                     </label>
+                    <span> , </span>
                     {errors.city && <p className="display-errors">{errors.city}</p>}
-                    <label>
+                    <label id='state'>
                         State
                         <input
                         type='text'
@@ -142,7 +143,7 @@ const SpotForm = ({ spot, formType }) => {
                     {errors.state && <p className="display-errors">{errors.state}</p>}
                 </div>
                 <div className='form-lat-lng'>
-                    <label>
+                    <label id='lat'>
                         Latitude
                         <input
                         type='number'
@@ -151,8 +152,9 @@ const SpotForm = ({ spot, formType }) => {
                         onChange={(e) => setLatitude(e.target.value)}
                         />
                     </label>
+                    <span> , </span>
                     {errors.lat && <p className="display-errors">{errors.latitude}</p>}
-                    <label>
+                    <label id='lng'>
                         Longitude
                         <input
                         type='number'
@@ -164,7 +166,7 @@ const SpotForm = ({ spot, formType }) => {
                     {errors.lng && <p className="display-errors">{errors.longitude}</p>}
                 </div>
             </div>
-            <div className='form-desciption'>
+            <div className='form-description'>
                 <h2>Describe your place to guests</h2>
                 <p>Mention the best feature of your space, any special amenities like fast wifi or parking, and what you love about the neighborhood.</p>
                 <label>
@@ -246,7 +248,9 @@ const SpotForm = ({ spot, formType }) => {
                 </label>
             </div>
         </div>
-        <button className='form-submit-button'>Create Spot</button>
+        <div className='form-button-house'>
+            <button>Create Spot</button>
+        </div>
     </form>
   );
 };
