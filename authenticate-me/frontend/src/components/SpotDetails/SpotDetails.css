@@ -1,6 +1,6 @@
 .spot-details-house {
     /* border: 3px solid green; */
-    margin: 20px 100px;
+    margin: 20px 80px;
     font-family: 'Montserrat', sans-serif;
     color: #010466;
 }
@@ -125,21 +125,15 @@
     border: 1px solid blue;
     height: 400px;
     margin-bottom: 20px;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 2fr 1.5fr;
-    grid-template-areas: 'a  b'
-                         'a  c';
-    gap: 10px;
+    display: flex;
 }
 
-.images-house > img {
+/* .images-house > img {
     width: 300px;
-}
+} */
 
-#preview {
-    width: 500px;
+.preview {
+    width: 450px;
     height: stretch;
     object-fit: cover;
-    grid-area: a;
 }

@@ -10,14 +10,14 @@ const SpotImages = ({ spotId }) => {
 
     const isPreview = (image) => {
         if (image.preview) return 'preview';
-        return '';
+        return 'plain-janes';
     }
 
     return (
         <div className='images-house'>
             {images.map(image => {
                 return (
-                    <img key={spot.id} src={image.url} alt={`Gallery of ${spot.name}`} id={isPreview(image)}></img>
+                    <img key={spot.id} src={image.url} alt={`Gallery of ${spot.name}`} className={isPreview(image)}></img>
                 )
             })}
         </div>
