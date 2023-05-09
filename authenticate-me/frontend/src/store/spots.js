@@ -49,16 +49,10 @@ export const postSpot = (spot) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(spot)
     });
-    console.log('this is the res ', res);
-    const data = await res.json();
-    console.log('this is the data ', data);
     if (res.ok) {
         const data = await res.json();
         dispatch(createSpot(data));
         return data;
-    } else {
-        const data = await res.json();
-        console.log('result from failed post to spots-> ', data);
     }
 }
 

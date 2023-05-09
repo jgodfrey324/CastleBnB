@@ -77,7 +77,7 @@ module.exports = (sequelize, DataTypes) => {
           });
 
           if (flag) {
-            throw new Error('City must be capitalized')
+            throw new Error('State must be capitalized')
           }
         }
       }
@@ -98,7 +98,7 @@ module.exports = (sequelize, DataTypes) => {
           });
 
           if (flag) {
-            throw new Error('City must be capitalized')
+            throw new Error('Country must be capitalized')
           }
         }
       }
