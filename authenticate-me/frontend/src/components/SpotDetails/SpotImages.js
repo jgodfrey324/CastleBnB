@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 const SpotImages = ({ spotId }) => {
     const spot = useSelector(state => state.spots[spotId]);
     const images = spot.SpotImages;
-    console.log('images: ', images);
 
     if (!spot) return null;
     if (!images.length) return <p>No current images</p>
@@ -22,7 +21,6 @@ const SpotImages = ({ spotId }) => {
             })}
         </div>
     )
-    // return <p>i'm the images, i'm here</p>;
 }
 
 export default SpotImages;

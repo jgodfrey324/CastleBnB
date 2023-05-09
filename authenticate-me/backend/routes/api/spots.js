@@ -417,7 +417,7 @@ router.get('/:spotId', async (req, res, next) => {
         spotObj.avgStarRating = Number((starAvg).toFixed(1));
     } else {
         spotObj.numReviews = 'No reviews yet';
-        spotObj.avgRating = 'No reviews yet';
+        spotObj.avgStarRating = 'No reviews yet';
     }
 
     return res.json(spotObj);
