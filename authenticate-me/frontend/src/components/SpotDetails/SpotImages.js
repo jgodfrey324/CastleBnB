@@ -16,7 +16,7 @@ const SpotImages = ({ spotId }) => {
         <div className='images-house'>
             {images.map(image => {
                 return (
-                    <img key={spot.id} src={image.url} alt={`Gallery of ${spot.name}`} className={isPreview(image)}></img>
+                    <img key={image.id} src={image.url} alt={`Gallery of ${spot.name}`} className={isPreview(image)}></img>
                 )
             })}
         </div>

@@ -21,11 +21,11 @@ const Reviews = ({ spotId }) => {
         return returnDate;
     }
 
-    if (!reviews) return null;
-
     if (user && (spot.ownerId !== user.id) && spot.avgStarRating === 'No reviews yet') return (
         <p>Be the first to post a review!</p>
     )
+
+    if (!reviews) return null;
 
     return (
         <>

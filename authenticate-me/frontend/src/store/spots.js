@@ -43,11 +43,15 @@ export const getOneSpot = (spotId) => async (dispatch) => {
 }
 
 export const postSpot = (spot) => async (dispatch) => {
+    console.log('i made it to the post spot thunk');
     const res = await csrfFetch('/api/spots', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(spot)
     });
+    console.log('this is the res ', res);
+    const data = await res.json();
+    console.log('this is the data ', data);
     if (res.ok) {
         const data = await res.json();
         dispatch(createSpot(data));
@@ -65,15 +69,15 @@ const spotsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_SPOTS:
-            newState = {...state, ...state.allSpots, ...state.singleSpot};
+            newState = {...state, allSpots: {}, singleSpot: {}};
             action.spots.Spots.forEach(spot => newState.allSpots[spot.id] = spot);
             return newState;
         case LOAD_SPOT_DETAILS:
-            newState = {...state, ...state.allSpots, ...state.singleSpot};
+            newState = {...state, allSpots: {}, singleSpot: {}};
             newState.singleSpot[action.spot.id] = action.spot;
             return newState;
         case CREATE_SPOT:
-            newState = {...state, ...state.allSpots, ...state.singleSpot};
+            newState = {...state, allSpots: {...state.allSpots}, singleSpot: {}};
             newState.allSpots[action.spot.id] = action.spot;
             return newState;
         default:
