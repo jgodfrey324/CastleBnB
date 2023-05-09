@@ -4,9 +4,10 @@ import { getReviews } from '../../store/reviews';
 
 const Reviews = ({ spotId }) => {
     const dispatch = useDispatch();
-    const reviews = useSelector(state => state.reviews);
-    const user = useSelector(state => state.session);
-    const spot = useSelector(state => state.spots[spotId]);
+    const reviewsFromState = useSelector(state => state.reviews.spot);
+    const reviews = Object.values(reviewsFromState);
+    const user = useSelector(state => state.session.user);
+    const spot = useSelector(state => state.spots.singleSpot[spotId]);
 
     useEffect (() => {
         dispatch(getReviews(spotId));
@@ -20,15 +21,15 @@ const Reviews = ({ spotId }) => {
         return returnDate;
     }
 
-    if (!reviews.Reviews) return null;
+    if (!reviews) return null;
 
-    if (user.user && (spot.ownerId !== user.user.id) && spot.avgStarRating === 'No reviews yet') return (
+    if (user && (spot.ownerId !== user.id) && spot.avgStarRating === 'No reviews yet') return (
         <p>Be the first to post a review!</p>
     )
 
     return (
         <>
-            {reviews.Reviews.map(review => {
+            {reviews.map(review => {
                 return (
                     <div key={review.id} className='single-review'>
                         <p className='review-name'>{review.User.firstName}</p>

@@ -1,0 +1,13 @@
+form {
+    font-family: 'Montserrat', sans-serif;
+    color: #010466;
+    border: 1px dashed black;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 250px;
+}
+
+.form-input-fields {
+    padding: 30px 10px;
+    border: 1px solid red;
+}

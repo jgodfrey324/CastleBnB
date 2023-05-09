@@ -20,13 +20,14 @@ export const getReviews = (spotId) => async (dispatch) => {
 }
 
 //reducer ->
-const initialState = {};
+const initialState = { spot: {}, user: {}};
 
 const reviewsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_REVIEWS:
-            newState = {...state, ...action.reviews};
+            newState = {...state, ...state.spot, ...state.user};
+            action.reviews.Reviews.forEach(review => newState.spot[review.id] = review)
             return newState;
         default:
             return state;

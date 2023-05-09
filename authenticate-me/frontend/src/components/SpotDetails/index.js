@@ -9,8 +9,7 @@ import './SpotDetails.css';
 const SpotDetails = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
-
-    const spot = useSelector(state => state.spots[spotId]);
+    const spot = useSelector(state => state.spots.singleSpot[spotId]);
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
