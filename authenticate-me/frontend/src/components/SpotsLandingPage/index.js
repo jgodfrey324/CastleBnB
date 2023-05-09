@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getSpots } from '../../store/spots';
@@ -29,7 +29,7 @@ const SpotsLanding = () => {
                             console.log('spot ->', spot)
                             history.push(`/spots/${spot.id}`);
                             }}>
-                        <img src={spot.previewImage}></img>
+                        <img src={spot.previewImage} alt={`Preview of ${spot.name}`}></img>
                         <div className='spot-city-rating'>
                             <span className='spot-city'>{spot.city}, {spot.state}</span>
                             <div className='spot-star-rating'>
