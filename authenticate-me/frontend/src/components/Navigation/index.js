@@ -13,9 +13,9 @@ const Navigation = ({ isLoaded }) => {
     return (
         <div className='header-house'>
             <ul className='list-house'>
-                <li id='link'>
+                {sessionUser && (<li id='link'>
                     <NavLink to='/spots/new'>Create a New Spot</NavLink>
-                </li>
+                </li>)}
                 {isLoaded && (
                     <li className='drop-down-content'>
                         <ProfileButton user={sessionUser} />
