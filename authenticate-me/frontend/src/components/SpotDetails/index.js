@@ -49,7 +49,8 @@ const SpotDetails = () => {
                             <span id='star'>{starRating(spot)}</span>
                             <span id='review'>{numRatings(spot)} review/s</span>
                         </div>
-                        <button className='reserve-button'>Reserve</button>
+                        <button className='reserve-button'
+                            onClick={() => alert('Feature coming soon')}>Reserve</button>
                     </div>
                 </div>
             </div>
