@@ -1,0 +1,145 @@
+.spot-details-house {
+    /* border: 3px solid green; */
+    margin: 20px 100px;
+    font-family: 'Montserrat', sans-serif;
+    color: #010466;
+}
+
+.spot-name-place > h1 {
+    font-size: 35px;
+}
+.spot-name-place > h1,
+.spot-name-place > p {
+    font-family: 'MedievalSharp', cursive;
+    margin-bottom: 20px;
+}
+
+.spot-name-place > p {
+    text-decoration: underline;
+    font-size: 16px;
+}
+
+.spot-details {
+    /* border: 1px dashed red; */
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.description-text > h2 {
+    /* font-family: 'MedievalSharp', cursive; */
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.description-text > p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.spot-description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.description-reserve-box {
+    border: 1px solid #b3900220;
+    box-shadow: 1px 2px 8px #b3900247;
+    border-radius: 10px;
+    padding: 15px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    color: #665200;
+    background-color: #b3900216;
+}
+
+.description-box-star-rating {
+    /* border: 1px dashed black; */
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#night,
+#star {
+    margin-left: 5px;
+}
+
+#review {
+    margin-left: 12px;
+}
+
+.description-box-star-rating > i {
+    margin-left: 66px;
+}
+
+.description-box-star-rating > h3 {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.description-box-star-rating > span {
+    font-size: 14px;
+}
+
+/* .spot-reviews {
+    border: 3px solid teal;
+} */
+
+.spot-reviews > p {
+    border: 1px solid blue;
+    margin: 20px 0;
+    padding: 300px 100px;
+}
+
+.spot-rating-header {
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#star-two {
+    margin-left: 5px;
+}
+
+#reviews-two {
+    margin-left: 20px;
+}
+
+.reserve-button {
+    padding: 10px;
+    background-color: #b3900280;
+    border: 1px solid #665200;
+    font-size: 18px;
+    box-shadow: 3px 2px 0 #665200;
+    border: 1px solid #665200;
+    font-family: 'MedievalSharp', cursive;
+}
+
+.reserve-button:hover {
+    cursor: pointer;
+}
+
+.images-house {
+    border: 1px solid blue;
+    height: 400px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 2fr 1.5fr;
+    grid-template-areas: 'a  b'
+                         'a  c';
+    gap: 10px;
+}
+
+.images-house > img {
+    width: 300px;
+}
+
+#preview {
+    width: 500px;
+    height: stretch;
+    object-fit: cover;
+    grid-area: a;
+}

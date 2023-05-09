@@ -103,7 +103,7 @@ button.logout-button:hover {
 .logo-icon {
     /* border: 2px solid red; */
     text-decoration: none;
-    color: #010466;
+    color: #665200;
     height: fit-content;
     padding: 10px;
     margin: 20px 0 20px 20px;
@@ -116,7 +116,7 @@ button.logout-button:hover {
 .logo-buddy {
     margin-top: 35px;
     font-family: 'MedievalSharp', cursive;
-    color: #010466;
+    color: #665200;
     font-size: 18px;
     text-decoration: none;
 }
