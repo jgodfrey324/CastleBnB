@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 
 const SpotImages = ({ spotId }) => {
-    const spot = useSelector(state => state.spots[spotId]);
+    const spot = useSelector(state => state.spots.singleSpot[spotId]);
     const images = spot.SpotImages;
 
-    if (!spot) return null;
+    if (!spot.address) return null;
     if (!images.length) return <p>No current images</p>
 
     const isPreview = (image) => {

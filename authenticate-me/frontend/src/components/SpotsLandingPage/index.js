@@ -7,11 +7,12 @@ import './SpotsLanding.css';
 const SpotsLanding = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const spots = useSelector(state => state.spots);
+    const spotsFromState = useSelector(state => state.spots.allSpots);
+    const spots = Object.values(spotsFromState);
 
     useEffect (() => {
         dispatch(getSpots());
-    }, [dispatch])
+    }, [dispatch]);
 
     const starRating = (spot) => {
         if (spot.avgRating === 'No reviews yet') return 'New';
@@ -23,11 +24,11 @@ const SpotsLanding = () => {
         return spot.avgRating;
     }
 
-    if (!spots.Spots) return null;
+    if (!spots) return null;
 
     return (
         <div className='spots-house'>
-            {spots.Spots.map(spot => {
+            {spots.map(spot => {
                 return (
                     <div key={spot.id} className='spot-room'
                         onClick={() => {

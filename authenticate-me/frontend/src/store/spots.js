@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 //actions -->
 const LOAD_SPOTS = 'spots/loadSpots';
 const LOAD_SPOT_DETAILS = 'spots/loadSpotDetails';
+const CREATE_SPOT = 'spots/createSpot';
 
 //action creators -->
 const loadSpots = (spots) => {
@@ -15,6 +16,13 @@ const loadSpots = (spots) => {
 const loadSpotDetails = (spot) => {
     return {
         type: LOAD_SPOT_DETAILS,
+        spot
+    }
+}
+
+const createSpot = (spot) => {
+    return {
+        type: CREATE_SPOT,
         spot
     }
 }
@@ -34,17 +42,39 @@ export const getOneSpot = (spotId) => async (dispatch) => {
     return data;
 }
 
+export const postSpot = (spot) => async (dispatch) => {
+    const res = await csrfFetch('/api/spots', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(spot)
+    });
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(createSpot(data));
+        return data;
+    } else {
+        const data = await res.json();
+        console.log('result from failed post to spots-> ', data);
+    }
+}
+
 //set intial state on load
-const initialState = {};
+const initialState = { allSpots: {}, singleSpot: {} };
 //reducer -->
 const spotsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_SPOTS:
-            newState = {...state, ...action.spots};
+            newState = {...state, ...state.allSpots, ...state.singleSpot};
+            action.spots.Spots.forEach(spot => newState.allSpots[spot.id] = spot);
             return newState;
         case LOAD_SPOT_DETAILS:
-            newState = {...state, [action.spot.id]: action.spot};
+            newState = {...state, ...state.allSpots, ...state.singleSpot};
+            newState.singleSpot[action.spot.id] = action.spot;
+            return newState;
+        case CREATE_SPOT:
+            newState = {...state, ...state.allSpots, ...state.singleSpot};
+            newState.allSpots[action.spot.id] = action.spot;
             return newState;
         default:
             return state;
