@@ -21,12 +21,6 @@ const validateSpot = [
     check('country')
         .exists({ checkFalsy: true })
         .withMessage('Country is required.'),
-    check('lat')
-        .exists({ checkFalsy: true })
-        .withMessage('Latitude is not valid.'),
-    check('lng')
-        .exists({ checkFalsy: true })
-        .withMessage('Longitude is not valid.'),
     check('name')
         .exists({ checkFalsy: true })
         .isLength({ max: 50 })
@@ -199,12 +193,16 @@ router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
             address
         }
     });
-    const foundCoordinates = await Spot.findOne({
-        where: {
-            lat,
-            lng
-        }
-    });
+
+    let foundCoordinates;
+    if (lat !== '0' && lng !== '0') {
+        foundCoordinates = await Spot.findOne({
+            where: {
+                lat,
+                lng
+            }
+        });
+    }
 
     if (foundAddress) {
         errors.address = "Spot with that address already exists";
@@ -222,18 +220,32 @@ router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
         return next(err);
     }
 
-    const newSpot = await Spot.create({
-        ownerId: req.user.id,
-        address,
-        city,
-        state,
-        country,
-        lat: Number(lat),
-        lng: Number(lng),
-        name,
-        description,
-        price: Number(price)
-    });
+    let newSpot;
+    if (lat && lng) {
+        newSpot = await Spot.create({
+            ownerId: req.user.id,
+            address,
+            city,
+            state,
+            country,
+            lat: Number(lat),
+            lng: Number(lng),
+            name,
+            description,
+            price: Number(price)
+        });
+    } else {
+        newSpot = await Spot.create({
+            ownerId: req.user.id,
+            address,
+            city,
+            state,
+            country,
+            name,
+            description,
+            price: Number(price)
+        });
+    }
 
     return res.status(201).json(newSpot);
 });

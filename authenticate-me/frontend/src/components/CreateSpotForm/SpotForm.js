@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { postSpot } from '../../store/spots';
 import './SpotForm.css';
 
+
+
 const SpotForm = ({ spot, formType }) => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -37,25 +39,37 @@ const SpotForm = ({ spot, formType }) => {
     e.preventDefault();
     setErrors({});
 
-    if (!latitude) setLatitude(0);
-    if (!longitude) setLongitude(0);
-    const spotObj = {
-        ...spot,
-        country,
-        address,
-        city,
-        state,
-        lat: latitude,
-        lng: longitude,
-        description,
-        name,
-        price
+    if (!latitude && !longitude) {
+        spot = {
+            ...spot,
+            country,
+            address,
+            city,
+            state,
+            description,
+            name,
+            price
+        }
+    } else {
+        spot = {
+            ...spot,
+            country,
+            address,
+            city,
+            state,
+            lat: latitude,
+            lng: longitude,
+            description,
+            name,
+            price
+        }
     }
 
+    console.log('this is new spot obj to send ------------> ', spot);
     let newSpot;
 
     if (formType === 'post') {
-        newSpot = dispatch(postSpot(spotObj))
+        newSpot = dispatch(postSpot(spot))
           .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
@@ -70,7 +84,7 @@ const SpotForm = ({ spot, formType }) => {
     console.log('errors obj: ', errors);
 
     reset();
-    return history.push(`/spots/${newSpot.spot.id}`);
+    // return history.push(`/spots/${newSpot.spot.id}`);
   };
 
   return (
@@ -136,7 +150,7 @@ const SpotForm = ({ spot, formType }) => {
                         onChange={(e) => setLatitude(e.target.value)}
                         />
                     </label>
-                    {errors.latitude && <p className="display-errors">{errors.latitude}</p>}
+                    {errors.lat && <p className="display-errors">{errors.latitude}</p>}
                     <label>
                         Longitude
                         <input
@@ -146,7 +160,7 @@ const SpotForm = ({ spot, formType }) => {
                         onChange={(e) => setLongitude(e.target.value)}
                         />
                     </label>
-                    {errors.longitude && <p className="display-errors">{errors.longitude}</p>}
+                    {errors.lng && <p className="display-errors">{errors.longitude}</p>}
                 </div>
             </div>
             <div className='form-desciption'>
