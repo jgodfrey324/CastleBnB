@@ -15,6 +15,11 @@ const SpotsLanding = () => {
 
     const starRating = (spot) => {
         if (spot.avgRating === 'No reviews yet') return 'New';
+        if (spot.avgRating.toString().split('.').length === 1) {
+            let newRating = spot.avgRating.toString();
+            newRating = newRating + '.0';
+            return newRating;
+        };
         return spot.avgRating;
     }
 
@@ -26,7 +31,6 @@ const SpotsLanding = () => {
                 return (
                     <div key={spot.id} className='spot-room'
                         onClick={() => {
-                            console.log('spot ->', spot)
                             history.push(`/spots/${spot.id}`);
                             }}>
                         <img src={spot.previewImage} alt={`Preview of ${spot.name}`}></img>

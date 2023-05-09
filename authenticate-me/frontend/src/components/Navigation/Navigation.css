@@ -15,11 +15,9 @@ ul.profile-dropdown {
 
 .list-house {
     padding: 0;
-}
-
-ul.list-house > li {
-    /* border: 1px solid red; */
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 button.logout-button {
@@ -81,7 +79,7 @@ button.logout-button:hover {
 .list-house > li.drop-down-content {
     display: flex;
     flex-direction: column;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     padding: 0;
     width: 150px;
 }

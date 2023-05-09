@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import { restoreUser } from "./store/session";
 import SpotsLanding from './components/SpotsLandingPage';
 import SpotDetails from './components/SpotDetails';
+import CreateSpotForm from "./components/CreateSpotForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path='/spots/new'>
+            <CreateSpotForm />
+          </Route>
           <Route exact path='/'>
             <SpotsLanding />
           </Route>

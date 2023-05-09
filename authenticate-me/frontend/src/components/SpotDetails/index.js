@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getOneSpot } from '../../store/spots';
 import SpotImages from './SpotImages';
+import Reviews from './Reviews';
 import './SpotDetails.css';
 
 const SpotDetails = () => {
@@ -11,19 +12,24 @@ const SpotDetails = () => {
 
     const spot = useSelector(state => state.spots[spotId]);
 
-    console.log(spot);
     useEffect(() => {
         dispatch(getOneSpot(spotId));
     }, [dispatch, spotId]);
 
     const starRating = (spot) => {
         if (spot.avgStarRating === 'No reviews yet') return 'New';
+        if (spot.avgStarRating.toString().split('.').length === 1) {
+            let newRating = spot.avgStarRating.toString();
+            newRating = newRating + '.0';
+            return newRating;
+        };
         return spot.avgStarRating;
-    };
+    }
 
     const numRatings = (spot) => {
-        if (spot.numReviews === 'No reviews yet') return 0;
-        return spot.numReviews;
+        if (spot.numReviews === 'No reviews yet') return '';
+        if (spot.numReviews === 1) return '1 review';
+        return `${spot.numReviews} reviews`;
     }
 
     if (!spot) return null;
@@ -47,7 +53,7 @@ const SpotDetails = () => {
                             <span id='night'>night</span>
                             <i className="fa-solid fa-star" style={{color: '#b39003'}}></i>
                             <span id='star'>{starRating(spot)}</span>
-                            <span id='review'>{numRatings(spot)} review/s</span>
+                            <span id='review'>{numRatings(spot)}</span>
                         </div>
                         <button className='reserve-button'
                             onClick={() => alert('Feature coming soon')}>Reserve</button>
@@ -58,9 +64,9 @@ const SpotDetails = () => {
                 <div className='spot-rating-header'>
                     <i className="fa-solid fa-star" style={{color: '#b39003'}}></i>
                     <span id='star-two'>{starRating(spot)}</span>
-                    <span id='reviews-two'>{numRatings(spot)} review/s</span>
+                    <span id='reviews-two'>{numRatings(spot)}</span>
                 </div>
-                <p> ---- reviews comp will go here ---- </p>
+                <Reviews spotId={spot.id} />
             </div>
         </div>
     )
