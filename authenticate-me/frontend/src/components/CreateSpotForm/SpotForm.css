@@ -140,16 +140,22 @@
 
 .form-button-house > button {
     margin-top: 25px;
-    width: 40%;
-    box-shadow: 3px 2px 0 #665200;
-    border: 1px solid #665200;
-    background-color: #b3900280;
-    padding: 10px 15px;
-    font-size: 16px;
+    width: 100%;
+    box-shadow: 3px 2px 0 #01046674;
+    border: 1px solid #1c24ff3d;
+    background-color: #01046615;
+    padding: 15px 0;
+    font-size: 18px;
     font-family: 'MedievalSharp', cursive;
     font-weight: 500;
+    /* color: #010466; */
 }
 
 .form-button-house > button:hover {
     cursor: pointer;
+}
+
+.form-button-house > button.hover-off:hover {
+    /* border: 4px solid orange; */
+    cursor: not-allowed;
 }

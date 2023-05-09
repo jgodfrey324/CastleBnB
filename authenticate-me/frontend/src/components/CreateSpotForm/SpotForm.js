@@ -1,7 +1,7 @@
 //you are creating this form page next!!
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { postSpot } from '../../store/spots';
 import './SpotForm.css';
 
@@ -10,6 +10,7 @@ import './SpotForm.css';
 const SpotForm = ({ spot, formType }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
   const [country, setCountry] = useState(spot?.country);
   const [address, setAddress] = useState(spot?.address);
   const [city, setCity] = useState(spot?.city);
@@ -22,6 +23,24 @@ const SpotForm = ({ spot, formType }) => {
   const [previewImg, setPreviewImg] = useState(spot?.previewImg);
 
   const [errors, setErrors] = useState({});
+
+    if (!sessionUser) history.push('/');
+    //disable buttton if form not filled
+    const disabled = (country, address, city, state, description, name, price, previewImg) => {
+        if (!country || !address || !city || !state || !description || !name || !price || !previewImg) return true;
+        return false;
+    }
+
+    //return val of disabled func
+    const disabledFuncReturn = disabled(country, address, city, state, description, name, price, previewImg);
+
+    //set additional class name for buttons that are disabled
+    const buttonClassFunc = (disabledFuncReturn) => {
+        let buttonClass;
+        if (disabledFuncReturn) buttonClass = 'form-submit-button hover-off';
+        else buttonClass = 'form-submit-button'
+        return buttonClass;
+    }
 
   const reset = () => {
     setCountry(spot?.country);
@@ -249,7 +268,7 @@ const SpotForm = ({ spot, formType }) => {
             </div>
         </div>
         <div className='form-button-house'>
-            <button>Create Spot</button>
+            <button className={buttonClassFunc(disabledFuncReturn)} disabled={disabledFuncReturn}>Create Spot</button>
         </div>
     </form>
   );
