@@ -12,6 +12,7 @@ ul.profile-dropdown {
     /* background-color: #b390020f; */
     border-bottom: 1px solid #b3900295;
     background-color: #f2f2ff8d;
+    position: relative;
 }
 
 .list-house {
@@ -119,4 +120,25 @@ button.logout-button:hover {
     color: #665200;
     font-size: 18px;
     text-decoration: none;
+}
+
+#link {
+    font-family: 'Montserrat', sans-serif;
+    /* border: 2px solid purple; */
+    margin-top: 15px;
+    font-size: 12px;
+    position: absolute;
+    right: 115px;
+    top: 20px;
+    text-decoration: none;
+}
+
+#link > a {
+    text-decoration: none;
+    color: #010466;
+}
+
+#link:hover {
+    font-weight: 500;
+    /* font-weight: bold; */
 }

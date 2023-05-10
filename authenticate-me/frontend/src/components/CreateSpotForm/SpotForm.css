@@ -39,7 +39,7 @@
 }
 
 .form-where > label,
-.form-city-state > label,
+.form-city-state.errors-under-labels > label,
 .form-lat-lng > label {
     /* font-family: 'MedievalSharp', cursive; */
     font-size: 14px;
@@ -60,12 +60,14 @@
     border-radius: 4px;
 }
 
-#state,
+#state {
+    margin-left: 28px;
+}
+
 #lng {
     margin-left: 15px;
 }
 
-#state > input,
 #lat > input,
 #lng > input {
     width: 100%;
@@ -74,8 +76,23 @@
     border-radius: 4px;
 }
 
+#city,
+#state {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #665200;
+}
+
+#state > input {
+    width: 85%;
+    border: 2px solid #010466;
+    background-color: #b390023b;
+    border-radius: 4px;
+    margin-left: 30px;
+}
+
 #city > input {
-    width: 132%;
+    width: 121%;
     border: 2px solid #010466;
     background-color: #b390023b;
     border-radius: 4px;
@@ -165,4 +182,37 @@
 .form-button-house > button.hover-off:hover {
     /* border: 4px solid orange; */
     cursor: not-allowed;
+}
+
+.errors-under-labels {
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 200px;
+    margin-bottom: 10px;
+    /* border: 2px solid green; */
+}
+
+.errors-under-labels > p {
+   padding: 5px 0;
+   /* border: 1px solid red; */
+   width: fit-content;
+}
+
+#state-errors {
+    margin-left: 30px;
+}
+
+.form-where > p.display-errors {
+    color: #B37414;
+    font-size: 11px;
+    font-family: 'Montserrat', sans-serif;
+    width: 300px;
+    /* padding-left: 20px; */
+}
+
+.errors-under-labels > p.display-errors {
+    /* border: 3px solid red; */
+    color: #B37414;
+    font-size: 11px;
+    font-family: 'Montserrat', sans-serif;
 }

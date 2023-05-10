@@ -17,15 +17,6 @@ div#root {
 
 
 /* signup and login form styling ----------------------> */
-p.display-errors {
-    color: #B37414;
-    font-size: 14px;
-    font-family: 'Courier New', Courier, monospace;
-    width: 300px;
-    padding-left: 20px;
-    /* border: 1px solid red; */
-}
-
 button.nice-button {
     display: flex;
     align-items: center;

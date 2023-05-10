@@ -45,7 +45,7 @@ const SpotForm = ({ spot, formType }) => {
   const reset = () => {
     setCountry(spot?.country);
     setAddress(spot?.address);
-    setCity(spot?.address);
+    setCity(spot?.city);
     setState(spot?.state);
     setLatitude(spot?.latitude);
     setLongitude(spot?.longitude);
@@ -90,11 +90,20 @@ const SpotForm = ({ spot, formType }) => {
           .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
-              setErrors(data.errors);
+              return setErrors(data.errors);
             }
         });
     } else if (formType === 'put') {
         console.log('put spot is coming soon');
+    }
+
+    //errors load into state on next refresh, so console logging a current error will display error,
+    //but it won't show in state until next refresh
+    //therefore this check is one behind and the redirect doesn't hit...
+
+    //by the time the errors are caught up, the spot is added and not the address is no longer unique
+    if (errors !== {}) {
+        return alert('Whoops! Looks like you need to check some fields');
     }
 
     reset();
@@ -131,29 +140,33 @@ const SpotForm = ({ spot, formType }) => {
                 </label>
                 {errors.address && <p className="display-errors">{errors.address}</p>}
                 <div className='form-city-state'>
-                    <label id='city'>
-                        City
-                        <input
-                        type='text'
-                        value={city}
-                        placeholder='City'
-                        required
-                        onChange={(e) => setCity(e.target.value)}
-                        />
-                    </label>
+                    <div className='errors-under-labels'>
+                        <label id='city'>
+                            City
+                            <input
+                            type='text'
+                            value={city}
+                            placeholder='City'
+                            required
+                            onChange={(e) => setCity(e.target.value)}
+                            />
+                        </label>
+                        {errors.city && <p className="display-errors">{errors.city}</p>}
+                    </div>
                     <span> , </span>
-                    {errors.city && <p className="display-errors">{errors.city}</p>}
-                    <label id='state'>
-                        State
-                        <input
-                        type='text'
-                        value={state}
-                        placeholder='State'
-                        required
-                        onChange={(e) => setState(e.target.value)}
-                        />
-                    </label>
-                    {errors.state && <p className="display-errors">{errors.state}</p>}
+                    <div className='errors-under-labels'>
+                        <label id='state'>
+                            State
+                            <input
+                            type='text'
+                            value={state}
+                            placeholder='State'
+                            required
+                            onChange={(e) => setState(e.target.value)}
+                            />
+                        </label>
+                        {errors.state && <p className="display-errors" id='state-errors'>{errors.state}</p>}
+                    </div>
                 </div>
                 <div className='form-lat-lng'>
                     <label id='lat'>
@@ -262,7 +275,9 @@ const SpotForm = ({ spot, formType }) => {
             </div>
         </div>
         <div className='form-button-house'>
-            <button className={buttonClassFunc(disabledFuncReturn)} disabled={disabledFuncReturn}>Create Spot</button>
+            <button className={buttonClassFunc(disabledFuncReturn)}
+                    disabled={disabledFuncReturn}
+                    >Create Spot</button>
         </div>
     </form>
   );

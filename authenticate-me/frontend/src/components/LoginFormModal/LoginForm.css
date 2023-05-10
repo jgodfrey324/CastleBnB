@@ -29,3 +29,15 @@ div.login-house > h1 {
     cursor: pointer;
     font-weight: bold;
 }
+
+.login-house > form > p.display-errors {
+    color: #B37414;
+    font-size: 11px;
+    font-family: 'Montserrat', sans-serif;
+    width: 300px;
+    padding-left: 20px;
+}
+
+/* #password {
+    margin-bottom: 15px;
+} */
