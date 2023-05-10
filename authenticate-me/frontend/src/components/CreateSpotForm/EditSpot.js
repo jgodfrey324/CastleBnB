@@ -7,12 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 const EditSpot = () => {
     // const dispatch = useDispatch;
     const { spotId } = useParams();
+    console.log('spotId from useParams() -----------> ', spotId);
     const spotFromState = useSelector(state => state.spots.currentUserSpots[spotId]);
+    console.log('spot from state', spotFromState);
     const { country, address, city, state, lat, lng, description, name, price, previewImage } = spotFromState;
-
-    // useEffect(() => {
-    //     dispatch(getUserSpots(spotId));
-    // }, [dispatch, spotId])
 
     const spot = {
         country,

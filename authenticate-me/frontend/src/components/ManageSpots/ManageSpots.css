@@ -34,7 +34,8 @@ button#delete:hover {
 
 .manage-spots-button {
     margin: 0 72px;
-    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 5px;
     box-shadow: 3px 2px 0 #01046674;
     border: 2px solid #1c24ff3d;
     background-color: #f2f2ff8d;

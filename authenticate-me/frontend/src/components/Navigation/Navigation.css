@@ -110,18 +110,26 @@ button.logout-button:hover {
     height: fit-content;
     padding: 10px;
     margin: 20px 0 20px 20px;
+    /* border: 1px solid orange; */
 }
 
 .logo-house {
     display: flex;
+    /* border: 1px solid red; */
 }
 
+.logo-icon:hover,
+.logo-buddy:hover {
+    cursor: pointer;
+}
 .logo-buddy {
     margin-top: 35px;
     font-family: 'MedievalSharp', cursive;
     color: #665200;
     font-size: 18px;
     text-decoration: none;
+    /* border: 1px solid pink; */
+    height: fit-content;
 }
 
 #link {

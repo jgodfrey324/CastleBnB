@@ -447,15 +447,18 @@ router.put('/:spotId', [requireAuth, validateSpot, checkAuthorization], async (r
             address
         }
     });
-    const checkCoordinates = await Spot.findOne({
-        where: {
-            lat,
-            lng
-        }
-    });
+
+    let checkCoordinates;
+    if (lat !== '0' && lng !== '0') {
+        checkCoordinates = await Spot.findOne({
+            where: {
+                lat,
+                lng
+            }
+        });
+    }
 
     if (checkAddress && checkAddress.id !== Number(req.params.spotId)) {
-        console.log("I went in here******************************************************")
         errors.address = "Spot with that address already exists";
     }
     if (checkCoordinates && checkCoordinates.id !== Number(req.params.spotId)) {

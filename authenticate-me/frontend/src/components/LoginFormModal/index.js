@@ -61,7 +61,7 @@ const LoginFormModal = () => {
               required
             />
           </label>
-          {errors.credential && <p className="display-errors">{errors.credential}</p>}
+          {errors.credential && <p className="display-errors">*{errors.credential}</p>}
           <button type="submit" disabled={disabledFuncReturn} className={buttonClassFunc(disabledFuncReturn)}>Log In</button>
         </form>
         <DemoUser />
