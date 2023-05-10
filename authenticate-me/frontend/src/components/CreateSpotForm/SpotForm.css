@@ -62,17 +62,9 @@
     border-radius: 4px;
 }
 
-#state {
-    margin-left: 28px;
-}
-
-#lng {
-    margin-left: 15px;
-}
-
 #lat > input,
 #lng > input {
-    width: 100%;
+    width: stretch;
     border: 2px solid #010466;
     background-color: #b390023b;
     border-radius: 4px;
@@ -86,29 +78,40 @@
 }
 
 #state > input {
-    width: 85%;
+    width: stretch;
     border: 2px solid #010466;
     background-color: #b390023b;
     border-radius: 4px;
-    margin-left: 30px;
+    /* margin-left: 30px; */
 }
 
 #city > input {
-    width: 121%;
+    width: stretch;
     border: 2px solid #010466;
     background-color: #b390023b;
     border-radius: 4px;
 }
 
-.form-city-state,
-.form-lat-lng {
+.form-city-state {
+    display: grid;
+    grid-template-columns: 62% 2% 36%;
+    /* justify-content: space-between; */
+}
+
+.form-city-state > span,
+.form-lat-lng > span {
+    /* border: 2px solid red; */
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 8px;
 }
 
 .form-lat-lng {
     border-bottom: 1px solid #b3900295;
     padding-bottom: 10px;
+    display: grid;
+    grid-template-columns: 49% 2% 49%;
 }
 
 .form-description > h2,
@@ -191,6 +194,7 @@
     align-items: flex-end;
     width: 200px;
     margin-bottom: 10px;
+    width: stretch;
     /* border: 2px solid green; */
 }
 

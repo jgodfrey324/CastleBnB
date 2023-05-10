@@ -9,16 +9,25 @@ const PostReviewModal = ({ spotId }) => {
     const { closeModal } = useModal();
     const [review, setReview] = useState('');
     const [stars, setStars] = useState('');
+    const [errors, setErrors] = useState({});
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const newReview = {
             review,
             stars
         }
-        dispatch(postReview(newReview, spotId));
-        closeModal();
+
+        dispatch(postReview(newReview, spotId))
+          .then(closeModal)
+          .catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) {
+              setErrors(data.errors);
+              return alert('Review must be filled out');
+            }
+        });
     }
 
     const disableButton = (review, stars) => {
@@ -32,13 +41,19 @@ const PostReviewModal = ({ spotId }) => {
 
 
     return (
-        <div className='add-review-house'>
+        <form className='add-review-house' onSubmit={handleSubmit}>
             <h1>How was your stay?</h1>
             <textarea
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
                 placeholder='Leave your review here...'
                 />
+            {(errors.review || errors.stars) && (
+            <>
+                <p className='display-errors'>*{errors.review}</p>
+                <p className='display-errors'>*{errors.stars}</p>
+            </>
+                )}
             <div className='star-box-span-house'>
                 <div className='stars-box'>
                     <i className={className} style={{color: '#b39003'}}
@@ -70,11 +85,9 @@ const PostReviewModal = ({ spotId }) => {
                 <span>Stars</span>
 
             </div>
-            <button className='submit-review-button'
-                    onClick={(e) => handleSubmit(e)}
-                    disabled={disableButton(review, stars)}
+            <button className='submit-review-button' disabled={disableButton(review, stars)}
             >Submit Your Review</button>
-        </div>
+        </form>
     )
 }
 
