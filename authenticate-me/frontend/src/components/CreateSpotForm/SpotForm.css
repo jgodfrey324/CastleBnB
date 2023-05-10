@@ -1,4 +1,5 @@
-#post {
+#post,
+#put {
     font-family: 'Montserrat', sans-serif;
     color: #010466;
     /* border: 1px dashed black; */
@@ -12,7 +13,8 @@
     /* border: 1px solid red; */
 }
 
-#post > h1 {
+#post > h1,
+#put > h1 {
     font-weight: 500;
     font-family: 'MedievalSharp', cursive;
     font-size: 35px;

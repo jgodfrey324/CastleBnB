@@ -24,7 +24,7 @@ ul.profile-dropdown {
 
 button.logout-button {
     padding: 10px 15px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-bottom: 10px;
     border-radius: 10px;
     border: 1px solid #1c24ff3d;
@@ -99,6 +99,8 @@ button.logout-button:hover {
 
 .dropdown-user-greeting {
     margin-bottom: 5px;
+    color: #010466;
+    font-size: 12px;
 }
 
 .logo-icon {
@@ -138,7 +140,25 @@ button.logout-button:hover {
     color: #010466;
 }
 
-#link:hover {
+#link:hover,
+#manage-spots-link:hover {
     font-weight: 500;
     /* font-weight: bold; */
+}
+
+#manage-spots-link > a {
+    text-decoration: none;
+    color: #010466;
+    padding: 5px 19px 15px 19px;
+    border-bottom: 1px solid #01046689;
+}
+
+#manage-spots-link {
+    margin-top: 5px;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    padding-bottom: 12px;
+    /* border: 1px solid red; */
+    /* padding-left: 30px; */
+    /* width: fit-content; */
 }
