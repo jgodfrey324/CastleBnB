@@ -21,7 +21,9 @@ const DeleteSpotModal = ({ spotId }) => {
                 <button className="delete-modal-buttons"
                         id='yes-button'
                         onClick={handleDelete}>Yes (Delete Spot)</button>
-                <button className="delete-modal-buttons" id='no-button'>No (Keep Spot)</button>
+                <button className="delete-modal-buttons"
+                        id='no-button'
+                        onClick={() => closeModal()}>No (Keep Spot)</button>
             </div>
         </div>
     )

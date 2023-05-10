@@ -144,7 +144,7 @@ const SpotForm = ({ spot, formType }) => {
                     onChange={(e) => setCountry(e.target.value)}
                     />
                 </label>
-                {errors.country && <p className="display-errors">{errors.country}</p>}
+                {errors.country && <p className="display-errors">*{errors.country}</p>}
                 <label>
                     Street Address
                     <input
@@ -155,7 +155,7 @@ const SpotForm = ({ spot, formType }) => {
                     onChange={(e) => setAddress(e.target.value)}
                     />
                 </label>
-                {errors.address && <p className="display-errors">{errors.address}</p>}
+                {errors.address && <p className="display-errors">*{errors.address}</p>}
                 <div className='form-city-state'>
                     <div className='errors-under-labels'>
                         <label id='city'>
@@ -168,7 +168,7 @@ const SpotForm = ({ spot, formType }) => {
                             onChange={(e) => setCity(e.target.value)}
                             />
                         </label>
-                        {errors.city && <p className="display-errors">{errors.city}</p>}
+                        {errors.city && <p className="display-errors">*{errors.city}</p>}
                     </div>
                     <span> , </span>
                     <div className='errors-under-labels'>
@@ -182,7 +182,7 @@ const SpotForm = ({ spot, formType }) => {
                             onChange={(e) => setState(e.target.value)}
                             />
                         </label>
-                        {errors.state && <p className="display-errors" id='state-errors'>{errors.state}</p>}
+                        {errors.state && <p className="display-errors" id='state-errors'>*{errors.state}</p>}
                     </div>
                 </div>
                 <div className='form-lat-lng'>
@@ -196,7 +196,7 @@ const SpotForm = ({ spot, formType }) => {
                         />
                     </label>
                     <span> , </span>
-                    {errors.lat && <p className="display-errors">{errors.latitude}</p>}
+                    {errors.lat && <p className="display-errors">*{errors.latitude}</p>}
                     <label id='lng'>
                         Longitude
                         <input
@@ -206,7 +206,7 @@ const SpotForm = ({ spot, formType }) => {
                         onChange={(e) => setLongitude(e.target.value)}
                         />
                     </label>
-                    {errors.lng && <p className="display-errors">{errors.longitude}</p>}
+                    {errors.lng && <p className="display-errors">*{errors.longitude}</p>}
                 </div>
             </div>
             <div className='form-description'>
@@ -221,7 +221,7 @@ const SpotForm = ({ spot, formType }) => {
                     minLength={30}
                     />
                 </label>
-                {errors.description && <p className="display-errors">{errors.description}</p>}
+                {errors.description && <p className="display-errors">*{errors.description}</p>}
             </div>
             <div className='form-title'>
                 <h2>Create a title for your spot</h2>
@@ -236,7 +236,7 @@ const SpotForm = ({ spot, formType }) => {
                     onChange={(e) => setName(e.target.value)}
                     />
                 </label>
-                {errors.name && <p className="display-errors">{errors.name}</p>}
+                {errors.name && <p className="display-errors">*{errors.name}</p>}
             </div>
             <div className='form-price'>
                 <h2>Set a base price for your spot</h2>
@@ -251,7 +251,7 @@ const SpotForm = ({ spot, formType }) => {
                     min={0}
                     />
                 </label>
-                {errors.price && <p className="display-errors">{errors.price}</p>}
+                {errors.price && <p className="display-errors">*{errors.price}</p>}
             </div>
             <div className='form-images'>
                 <h2>Liven up your spot with photos</h2>

@@ -24,8 +24,8 @@ div.signup-house {
 }
 
 .signup-house > form > p.display-errors {
-    color: #B37414;
-    font-size: 11px;
+    color: red;
+    font-size: 12px;
     font-family: 'Montserrat', sans-serif;
     width: 300px;
     padding-left: 20px;

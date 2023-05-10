@@ -19,8 +19,8 @@
 .spots-house {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 0 40px;
+    justify-content: flex-start;
+    padding: 0 55px;
     font-family: 'Montserrat', sans-serif;
     color: #010466;
     font-size: 14px;

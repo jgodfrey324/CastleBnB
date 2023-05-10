@@ -71,7 +71,7 @@ const SignupFormModal = () => {
             required
           />
         </label>
-        {errors.email && <p className="display-errors">{errors.email}</p>}
+        {errors.email && <p className="display-errors">*{errors.email}</p>}
         <label className="box-label">
           Username
           <input
@@ -81,7 +81,7 @@ const SignupFormModal = () => {
             required
           />
         </label>
-        {errors.username && <p className="display-errors">{errors.username}</p>}
+        {errors.username && <p className="display-errors">*{errors.username}</p>}
         <label className="box-label">
           First Name
           <input
@@ -91,7 +91,7 @@ const SignupFormModal = () => {
             required
           />
         </label>
-        {errors.firstName && <p className="display-errors">{errors.firstName}</p>}
+        {errors.firstName && <p className="display-errors">*{errors.firstName}</p>}
         <label className="box-label">
           Last Name
           <input
@@ -101,7 +101,7 @@ const SignupFormModal = () => {
             required
           />
         </label>
-        {errors.lastName && <p className="display-errors">{errors.lastName}</p>}
+        {errors.lastName && <p className="display-errors">*{errors.lastName}</p>}
         <label className="box-label">
           Password
           <input
@@ -111,7 +111,7 @@ const SignupFormModal = () => {
             required
           />
         </label>
-        {errors.password && <p className="display-errors">{errors.password}</p>}
+        {errors.password && <p className="display-errors">*{errors.password}</p>}
         <label className="box-label">
           Confirm Password
           <input
