@@ -1,6 +1,6 @@
 //you are creating this form page next!!
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { postSpot } from '../../store/spots';
 import { putSpot } from '../../store/spots';
@@ -9,8 +9,11 @@ import './SpotForm.css';
 
 
 const SpotForm = ({ spot, formType }) => {
+    console.log('spot from props ', spot);
+
   const history = useHistory();
   const dispatch = useDispatch();
+  const { spotId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
   const [country, setCountry] = useState(spot?.country);
   const [address, setAddress] = useState(spot?.address);
@@ -101,7 +104,7 @@ const SpotForm = ({ spot, formType }) => {
             }
         });
     } else if (formType === 'put') {
-        newSpot = dispatch(putSpot(spot))
+        newSpot = dispatch(putSpot(spot, spotId))
           .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
@@ -109,7 +112,7 @@ const SpotForm = ({ spot, formType }) => {
             }
         });
     }
-
+    console.log('errors', errors);
     //errors load into state on next refresh, so console logging a current error will display error,
     //but it won't show in state until next refresh
     //therefore this check is one behind and the redirect doesn't hit...
@@ -121,7 +124,7 @@ const SpotForm = ({ spot, formType }) => {
 
     reset();
     //navigate to details of new spot after successful submission
-    return history.push('/');
+    return history.push(`/spots/${spotId}`);
   };
 
   return (
