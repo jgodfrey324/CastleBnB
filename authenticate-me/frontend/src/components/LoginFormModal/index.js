@@ -52,7 +52,7 @@ const LoginFormModal = () => {
               required
             />
           </label>
-          <label className="box-label">
+          <label className="box-label" id='password'>
             Password
             <input
               type="password"
