@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { postSpot } from '../../store/spots';
+import { putSpot } from '../../store/spots';
 import './SpotForm.css';
 
 
@@ -20,6 +21,8 @@ const SpotForm = ({ spot, formType }) => {
   const [description, setDescription] = useState(spot?.description);
   const [name, setName] = useState(spot?.name);
   const [price, setPrice] = useState(spot?.price);
+
+  //preview image recieved from spot sent as prop is not showing up....
   const [previewImg, setPreviewImg] = useState(spot?.previewImg);
 
   const [errors, setErrors] = useState({});
@@ -42,6 +45,7 @@ const SpotForm = ({ spot, formType }) => {
         return buttonClass;
     }
 
+    //reset form after successful submition
   const reset = () => {
     setCountry(spot?.country);
     setAddress(spot?.address);
@@ -54,10 +58,12 @@ const SpotForm = ({ spot, formType }) => {
     setPrice(spot?.price);
   }
 
+  //handle submition func
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
 
+    //setting spot according to incorporation of lat and lng
     if (!latitude && !longitude) {
         spot = {
             ...spot,
@@ -84,6 +90,7 @@ const SpotForm = ({ spot, formType }) => {
         }
     }
 
+    //trying to capture the return of the dispatch in order to get the new spots id
     let newSpot;
     if (formType === 'post') {
         newSpot = dispatch(postSpot(spot))
@@ -94,7 +101,13 @@ const SpotForm = ({ spot, formType }) => {
             }
         });
     } else if (formType === 'put') {
-        console.log('put spot is coming soon');
+        newSpot = dispatch(putSpot(spot))
+          .catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) {
+              return setErrors(data.errors);
+            }
+        });
     }
 
     //errors load into state on next refresh, so console logging a current error will display error,
@@ -107,6 +120,7 @@ const SpotForm = ({ spot, formType }) => {
     }
 
     reset();
+    //navigate to details of new spot after successful submission
     return history.push('/');
   };
 

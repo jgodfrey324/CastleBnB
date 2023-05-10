@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { logout } from '../../store/session';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
@@ -52,9 +53,11 @@ const ProfileButton = ({ user }) => {
           <>
             <div className="drop-down-user-info">
               <li className='dropdown-user-greeting'>Hello, {user.firstName}</li>
-              <li>{user.email}</li>
+              <li className='dropdown-user-greeting'>{user.email}</li>
             </div>
-            <li>MANAGE SPOTS HERE</li>
+            <li id='manage-spots-link'>
+              <NavLink to='/spots/current'>Manage Spots</NavLink>
+            </li>
             <li>
               <button className="logout-button" onClick={(e) => {
                 e.preventDefault();

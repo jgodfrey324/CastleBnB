@@ -6,6 +6,8 @@ import { restoreUser } from "./store/session";
 import SpotsLanding from './components/SpotsLandingPage';
 import SpotDetails from './components/SpotDetails';
 import CreateSpotForm from "./components/CreateSpotForm";
+import ManageSpots from "./components/ManageSpots";
+import EditSpot from "./components/CreateSpotForm/EditSpot";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +26,12 @@ function App() {
         <Switch>
           <Route path='/spots/new'>
             <CreateSpotForm />
+          </Route>
+          <Route path='/spots/current'>
+            <ManageSpots />
+          </Route>
+          <Route path='/spots/:spotId/edit'>
+            <EditSpot />
           </Route>
           <Route exact path='/'>
             <SpotsLanding />
