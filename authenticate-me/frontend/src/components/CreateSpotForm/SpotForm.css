@@ -57,6 +57,7 @@
     width: stretch;
     border: 2px solid #010466;
     background-color: #b390023b;
+    border-radius: 4px;
 }
 
 #state,
@@ -70,12 +71,14 @@
     width: 100%;
     border: 2px solid #010466;
     background-color: #b390023b;
+    border-radius: 4px;
 }
 
 #city > input {
     width: 132%;
     border: 2px solid #010466;
     background-color: #b390023b;
+    border-radius: 4px;
 }
 
 .form-city-state,
@@ -101,6 +104,7 @@
     height: 150px;
     background-color: #b390023b;
     border: 2px solid #010466;
+    border-radius: 4px;
 }
 
 .form-description,
@@ -114,6 +118,7 @@
     width: stretch;
     background-color: #b390023b;
     border: 2px solid #010466;
+    border-radius: 4px;
 }
 
 .form-price > label > input {
@@ -121,6 +126,7 @@
     margin-left: 5px;
     background-color: #b390023b;
     border: 2px solid #010466;
+    border-radius: 4px;
 }
 
 .form-images > label > input {
@@ -129,6 +135,7 @@
     margin-bottom: 25px;
     background-color: #b390023b;
     border: 2px solid #010466;
+    border-radius: 4px;
 }
 
 .form-button-house {
@@ -142,8 +149,8 @@
     margin-top: 25px;
     width: 100%;
     box-shadow: 3px 2px 0 #01046674;
-    border: 1px solid #1c24ff3d;
-    background-color: #01046615;
+    border: 2px solid #1c24ff3d;
+    background-color: #f2f2ff8d;
     padding: 15px 0;
     font-size: 18px;
     font-family: 'MedievalSharp', cursive;

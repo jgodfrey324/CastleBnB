@@ -11,6 +11,7 @@ ul.profile-dropdown {
     justify-content: space-between;
     /* background-color: #b390020f; */
     border-bottom: 1px solid #b3900295;
+    background-color: #f2f2ff8d;
 }
 
 .list-house {
@@ -38,6 +39,7 @@ button.profile-button {
     margin: 15px 50px 10px 50px;
     border: .5px solid #1c24ff3d;
     border-radius: 25px;
+    background-color: #f2f2ff;
 }
 
 button.profile-button:hover {
@@ -59,11 +61,10 @@ button.logout-button:hover {
     box-shadow: 1px 2px 8px #1c24ff4b;
     padding: 0;
     width: stretch;
-    background-color: #1c24ff08;
+    background-color: #f2f2ff;
     margin-right: 5px;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
+    position: absolute;
+    top: 70px;
 }
 
 .profile-dropdown > li {
@@ -82,6 +83,7 @@ button.logout-button:hover {
     /* margin-top: 5px; */
     padding: 0;
     width: 150px;
+    position: relative;
 }
 
 .drop-down-user-info {

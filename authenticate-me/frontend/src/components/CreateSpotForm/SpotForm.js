@@ -84,13 +84,11 @@ const SpotForm = ({ spot, formType }) => {
         }
     }
 
-    console.log('this is new spot obj to send ------------> ', spot);
     let newSpot;
-    let data;
     if (formType === 'post') {
         newSpot = dispatch(postSpot(spot))
           .catch(async (res) => {
-            data = await res.json();
+            const data = await res.json();
             if (data && data.errors) {
               setErrors(data.errors);
             }
@@ -99,12 +97,8 @@ const SpotForm = ({ spot, formType }) => {
         console.log('put spot is coming soon');
     }
 
-    console.log('data', data);
-    console.log('new spot after dispatch: ', newSpot);
-    console.log('errors obj: ', errors);
-
     reset();
-    // return history.push(`/spots/${newSpot.spot.id}`);
+    return history.push('/');
   };
 
   return (

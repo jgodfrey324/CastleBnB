@@ -43,7 +43,6 @@ export const getOneSpot = (spotId) => async (dispatch) => {
 }
 
 export const postSpot = (spot) => async (dispatch) => {
-    console.log('i made it to the post spot thunk');
     const res = await csrfFetch('/api/spots', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
