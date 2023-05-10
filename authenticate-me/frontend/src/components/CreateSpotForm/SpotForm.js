@@ -9,8 +9,6 @@ import './SpotForm.css';
 
 
 const SpotForm = ({ spot, formType }) => {
-    console.log('spot from props ', spot);
-
   const history = useHistory();
   const dispatch = useDispatch();
   const { spotId } = useParams();
@@ -64,7 +62,6 @@ const SpotForm = ({ spot, formType }) => {
   //handle submition func
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors({});
 
     //setting spot according to incorporation of lat and lng
     if (!latitude && !longitude) {
@@ -94,23 +91,28 @@ const SpotForm = ({ spot, formType }) => {
     }
 
     //trying to capture the return of the dispatch in order to get the new spots id
-    let newSpot;
     if (formType === 'post') {
-        newSpot = dispatch(postSpot(spot))
+        dispatch(postSpot(spot))
+          .then(spotInfo => history.push(`/spots/${spotInfo.id}`))
           .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
-              return setErrors(data.errors);
+              setErrors(data.errors);
+              return alert('Whoops! Looks like you need to check some fields');
             }
         });
+        return reset();
     } else if (formType === 'put') {
-        newSpot = dispatch(putSpot(spot, spotId))
+        dispatch(putSpot(spot, spotId))
+          .then(spotInfo => history.push(`/spots/${spotInfo.id}`))
           .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
-              return setErrors(data.errors);
+              setErrors(data.errors);
+              return alert('Whoops! Looks like you need to check some fields');
             }
         });
+        return reset();
     }
     console.log('errors', errors);
     //errors load into state on next refresh, so console logging a current error will display error,
@@ -118,13 +120,8 @@ const SpotForm = ({ spot, formType }) => {
     //therefore this check is one behind and the redirect doesn't hit...
 
     //by the time the errors are caught up, the spot is added and not the address is no longer unique
-    if (errors !== {}) {
-        return alert('Whoops! Looks like you need to check some fields');
-    }
-
-    reset();
-    //navigate to details of new spot after successful submission
-    return history.push(`/spots/${spotId}`);
+    setErrors({});
+    return alert('Whoops! Looks like you need to check some fields');
   };
 
   return (

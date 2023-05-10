@@ -44,63 +44,21 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 50],
-        isCapitalized(value) {
-          const parts = value.split(' ');
-          let flag = false;
-
-          parts.forEach(part => {
-            if (part[0] !== part[0].toUpperCase()) {
-              flag = true;
-            }
-          });
-
-          if (flag) {
-            throw new Error('City must be capitalized')
-          }
-        }
+        len: [3, 50]
       }
     },
     state: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 50],
-        isCapitalized(value) {
-          const parts = value.split(' ');
-          let flag = false;
-
-          parts.forEach(part => {
-            if (part[0] !== part[0].toUpperCase()) {
-              flag = true;
-            }
-          });
-
-          if (flag) {
-            throw new Error('State must be capitalized')
-          }
-        }
+        len: [3, 50]
       }
     },
     country: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [2, 50],
-        isCapitalized(value) {
-          const parts = value.split(' ');
-          let flag = false;
-
-          parts.forEach(part => {
-            if (part[0] !== part[0].toUpperCase() && part.length > 3) {
-              flag = true;
-            }
-          });
-
-          if (flag) {
-            throw new Error('Country must be capitalized')
-          }
-        }
+        len: [2, 50]
       }
     },
     lat: {

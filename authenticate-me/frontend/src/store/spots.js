@@ -115,10 +115,8 @@ const spotsReducer = (state = initialState, action) => {
             action.spots.Spots.forEach(spot => newState.allSpots[spot.id] = spot);
             return newState;
         case LOAD_SPOT_DETAILS:
-            newState = {...state, allSpots: {}, singleSpot: { SpotImages: [], Owner: {} }, currentUserSpots: {}};
+            newState = {...state, allSpots: {}, singleSpot: {}, currentUserSpots: {}};
             newState.singleSpot[action.spot.id] = action.spot;
-            newState.singleSpot.SpotImages = [ ...action.spot.SpotImages ];
-            newState.singleSpot.Owner = { ...action.spot.Owner };
             return newState;
         case CREATE_SPOT:
             newState = {...state, allSpots: {...state.allSpots}, singleSpot: {}, currentUserSpots: {}};
