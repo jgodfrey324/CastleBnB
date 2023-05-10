@@ -2,14 +2,29 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getOneSpot } from '../../store/spots';
+import { getUserReviews } from '../../store/reviews';
 import SpotImages from './SpotImages';
 import Reviews from './Reviews';
 import './SpotDetails.css';
+import PostReviewModal from './PostReviewModal';
+import OpenModalButton from '../OpenModalButton';
 
 const SpotDetails = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spots.singleSpot[spotId]);
+
+    const userReviews = Object.values(useSelector(state => state.reviews.user));
+    const userReviewSpotList = [];
+    userReviews.forEach(review => userReviewSpotList.push(review.Spot.id));
+    const alreadyHaveReview = userReviewSpotList.find( id => id === spotId);
+
+    console.log('review already had ', alreadyHaveReview);
+
+    useEffect(() => {
+        dispatch(getUserReviews());
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
@@ -65,6 +80,13 @@ const SpotDetails = () => {
                     <span id='star-two'>{starRating(spot)}</span>
                     <span id='reviews-two'>{numRatings(spot)}</span>
                 </div>
+                {sessionUser && (sessionUser.id !== spot.Owner.id) && !alreadyHaveReview && (
+                    <OpenModalButton
+                        id='post-review'
+                        buttonText="Post Your Review"
+                        modalComponent={<PostReviewModal spotId={spotId} />}
+                    />
+                )}
                 <Reviews spotId={spot.id} />
             </div>
         </div>

@@ -1,0 +1,72 @@
+.add-review-house {
+    padding: 20px;
+    width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 3px 7px #010466;
+    background-color: #1c24ff0b;
+}
+
+.add-review-house > h1 {
+    font-family: 'MedievalSharp', cursive;
+    color: #010466;
+    margin-bottom: 12px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+    /* margin: 10px 0; */
+}
+
+.add-review-house > textarea {
+    width: stretch;
+    height: 150px;
+    margin-top: 10px;
+    background-color: #b390023b;
+    border: 2px solid #010466;
+    border-radius: 4px;
+}
+
+.stars-box > i {
+    padding: 0 3px;
+    /* display: flex;
+    flex-wrap: nowrap; */
+}
+
+.stars-box > i:hover {
+    cursor: pointer;
+}
+
+.star-box-span-house {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0 28px 0;
+}
+
+.star-box-span-house > span {
+    margin-left: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: #665200;
+}
+
+.submit-review-button {
+    width: stretch;
+    padding: 15px 0;
+    margin-bottom: 5px;
+    box-shadow: 3px 2px 0 #01046674;
+    border: 2px solid #1c24ff3d;
+    background-color: #e4e4ff;
+    font-size: 17px;
+    font-family: 'MedievalSharp', cursive;
+    font-weight: 500;
+    /* color: #010466; */
+}
+
+.submit-review-button:hover {
+    cursor: pointer;
+}
+
+.filled {
+    background-color: #B39002;
+}
