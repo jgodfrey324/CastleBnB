@@ -16,11 +16,7 @@ const SpotDetails = () => {
     const spot = useSelector(state => state.spots.singleSpot[spotId]);
 
     const userReviews = Object.values(useSelector(state => state.reviews.user));
-    const userReviewSpotList = [];
-    userReviews.forEach(review => userReviewSpotList.push(review.Spot.id));
-    const alreadyHaveReview = userReviewSpotList.find( id => id === spotId);
-
-    console.log('review already had ', alreadyHaveReview);
+    const alreadyHaveReview = userReviews.find( review => review.Spot.id === parseInt(spotId));
 
     useEffect(() => {
         dispatch(getUserReviews());

@@ -22,22 +22,20 @@ const SpotForm = ({ spot, formType }) => {
   const [description, setDescription] = useState(spot?.description);
   const [name, setName] = useState(spot?.name);
   const [price, setPrice] = useState(spot?.price);
-
   //preview image recieved from spot sent as prop is not showing up....
   const [previewImg, setPreviewImg] = useState(spot?.previewImg);
-
   const [errors, setErrors] = useState({});
 
+    //if a user logs out on this form they should be redirected to home
     if (!sessionUser) history.push('/');
+
     //disable buttton if form not filled
     const disabled = (country, address, city, state, description, name, price, previewImg) => {
         if (!country || !address || !city || !state || !description || !name || !price || !previewImg) return true;
         return false;
     }
-
     //return val of disabled func
     const disabledFuncReturn = disabled(country, address, city, state, description, name, price, previewImg);
-
     //set additional class name for buttons that are disabled
     const buttonClassFunc = (disabledFuncReturn) => {
         let buttonClass;
@@ -90,17 +88,20 @@ const SpotForm = ({ spot, formType }) => {
         }
     }
 
-    //trying to capture the return of the dispatch in order to get the new spots id
+    //checking for type to dispatch correct action
     if (formType === 'post') {
         dispatch(postSpot(spot))
+        //getting data from dispatch, awaiting it, then using data to redirect to new spot details
           .then(spotInfo => history.push(`/spots/${spotInfo.id}`))
           .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
               setErrors(data.errors);
+              //sending alert so the errors on screen are noticed
               return alert('Whoops! Looks like you need to check some fields');
             }
         });
+        //reseting form if spot created/updated
         return reset();
     } else if (formType === 'put') {
         dispatch(putSpot(spot, spotId))
@@ -114,18 +115,11 @@ const SpotForm = ({ spot, formType }) => {
         });
         return reset();
     }
-    console.log('errors', errors);
-    //errors load into state on next refresh, so console logging a current error will display error,
-    //but it won't show in state until next refresh
-    //therefore this check is one behind and the redirect doesn't hit...
-
-    //by the time the errors are caught up, the spot is added and not the address is no longer unique
-    setErrors({});
-    return alert('Whoops! Looks like you need to check some fields');
   };
 
   return (
     <form id={formType} onSubmit={handleSubmit}>
+        {/* displaying different title based on form type */}
         <h1>{formType === 'post' ? 'Create a new Spot' : 'Update your Spot'}</h1>
         <div className='form-input-fields'>
             <div className="form-where">
