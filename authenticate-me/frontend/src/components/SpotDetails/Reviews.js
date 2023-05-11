@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviews } from '../../store/reviews';
+import DeleteReviewModal from './DeleteReviewModal';
+import OpenModalButton from '../OpenModalButton';
 
 const Reviews = ({ spotId }) => {
     const dispatch = useDispatch();
@@ -46,6 +48,13 @@ const Reviews = ({ spotId }) => {
                         <p className='review-name'>{review.User.firstName}</p>
                         <p className='review-date'>{makeDate(review)}</p>
                         <p className='review-text'>{review.review}</p>
+                        {user && (user.id === review.userId) && (
+                            <OpenModalButton
+                                id='delete-review'
+                                buttonText="Delete"
+                                modalComponent={<DeleteReviewModal reviewId={review.id} />}
+                            />
+                        )}
                     </div>
                 )
             })}

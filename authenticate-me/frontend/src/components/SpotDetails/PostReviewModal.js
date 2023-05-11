@@ -19,7 +19,7 @@ const PostReviewModal = ({ spotId }) => {
             stars
         }
 
-        dispatch(postReview(newReview, spotId))
+        return dispatch(postReview(newReview, spotId))
           .then(closeModal)
           .catch(async (res) => {
             const data = await res.json();
