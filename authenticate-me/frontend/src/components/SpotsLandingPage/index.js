@@ -14,6 +14,8 @@ const SpotsLanding = () => {
         dispatch(getSpots());
     }, [dispatch]);
 
+    if (!spots) return null;
+
     const starRating = (spot) => {
         if (spot.avgRating === 'No reviews yet') return 'New';
         if (spot.avgRating.toString().split('.').length === 1) {
@@ -23,8 +25,6 @@ const SpotsLanding = () => {
         };
         return spot.avgRating;
     }
-
-    if (!spots) return null;
 
     return (
         <div className='spots-house'>

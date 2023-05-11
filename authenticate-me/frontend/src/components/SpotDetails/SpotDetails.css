@@ -27,6 +27,13 @@
     border-bottom: 1px solid #b3900295;
 }
 
+.description-text {
+    /* border: 2px solid orange; */
+    width: 62%;
+    margin-right: 10px;
+    /* justify-content: space-between; */
+}
+
 .description-text > h2 {
     /* font-family: 'MedievalSharp', cursive; */
     margin-bottom: 10px;
@@ -34,14 +41,24 @@
     font-size: 22px;
 }
 
-.description-text > p {
+.description-p-room > p {
     margin-bottom: 10px;
     font-size: 14px;
+    /* border: 1px solid purple; */
+    overflow-wrap: break-word;
+    /* color: black; */
+}
+
+.description-p-room {
+    /* border: 3px solid green; */
+    height: stretch;
 }
 
 .spot-description {
     display: flex;
     justify-content: space-between;
+    /* border: 1px solid red; */
+    /* width: 600px; */
 }
 
 .description-reserve-box {
@@ -124,7 +141,7 @@
 }
 
 .images-house {
-    border: 1px solid blue;
+    /* border: 3px solid blue; */
     height: 400px;
     margin-bottom: 20px;
     display: flex;
@@ -135,16 +152,39 @@
 } */
 
 .preview {
-    width: 445px;
-    height: stretch;
-    object-fit: cover;
     margin-right: 5px;
+    /* border: 5px solid red; */
+    width: 50%;
+    height: 100%;
+}
+
+.preview > img {
+    object-fit: cover;
+    /* width: 50%; */
+    height: stretch;
+    width: stretch;
+    border-radius: 10px;
 }
 
 .plain-janes {
-    width: 210px;
-    height: 50%;
+    width: 50%;
+    height: 100%;
     object-fit: cover;
+    /* border: 3px solid green; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 2px;
+}
+
+.plain-janes > img {
+    /* width: 50%; */
+    width: 49%;
+    height: 49%;
+    /* height: stretch; */
+    object-fit: cover;
+    margin: 1px;
+    border-radius: 10px;
 }
 
 .spot-rating-header {

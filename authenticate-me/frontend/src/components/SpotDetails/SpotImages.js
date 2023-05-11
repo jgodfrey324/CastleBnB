@@ -8,17 +8,30 @@ const SpotImages = ({ spotId }) => {
     if (!images.length) return <p>No current images</p>
 
     const isPreview = (image) => {
-        if (image.preview) return 'preview';
-        return 'plain-janes';
+        if (image.preview) return true;
+        return false;
     }
 
     return (
         <div className='images-house'>
-            {images.map(image => {
-                return (
-                    <img key={image.id} src={image.url} alt={`Gallery of ${spot.name}`} className={isPreview(image)}></img>
-                )
-            })}
+            <div className='preview'>
+                {images.map(image => {
+                    if (isPreview(image)) {
+                        return (
+                            <img key={image.id} src={image.url} alt={`Gallery of ${spot.name}`}></img>
+                        )
+                    }
+                })}
+            </div>
+            <div className='plain-janes'>
+                {images.map(image => {
+                    if (!isPreview(image)) {
+                        return (
+                            <img key={image.id} src={image.url} alt={`Gallery of ${spot.name}`}></img>
+                        )
+                    }
+                })}
+            </div>
         </div>
     )
 }
