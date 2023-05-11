@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getOneSpot } from '../../store/spots';
@@ -12,6 +12,7 @@ import OpenModalButton from '../OpenModalButton';
 const SpotDetails = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
     //keeps track of when review is deleted
     const [deleted, setDeleted] = useState(false);
     //keeps track of when review is posted
@@ -65,17 +66,19 @@ const SpotDetails = () => {
                             <p>{spot.description}</p>
                         </div>
                     </div>
-                    <div className='description-reserve-box'>
-                        <div className='description-box-star-rating'>
-                            <h3>${spot.price}</h3>
-                            <span id='night'>night</span>
-                            <i className="fa-solid fa-star" style={{color: '#b39003'}}></i>
-                            <span id='star'>{starRating(spot)}</span>
-                            <span id='review'>{numRatings(spot)}</span>
+                    {sessionUser && (
+                        <div className='description-reserve-box'>
+                            <div className='description-box-star-rating'>
+                                <h3>${spot.price}</h3>
+                                <span id='night'>night</span>
+                                <i className="fa-solid fa-star" style={{color: '#b39003'}}></i>
+                                <span id='star'>{starRating(spot)}</span>
+                                <span id='review'>{numRatings(spot)}</span>
+                            </div>
+                            <button className='reserve-button'
+                                onClick={() => alert('Feature coming soon')}>Reserve</button>
                         </div>
-                        <button className='reserve-button'
-                            onClick={() => alert('Feature coming soon')}>Reserve</button>
-                    </div>
+                    )}
                 </div>
             </div>
             <div className='spot-reviews'>
@@ -86,7 +89,6 @@ const SpotDetails = () => {
                 </div>
                 {sessionUser && (sessionUser.id !== spot.Owner.id) && !alreadyHaveReview && (
                     <OpenModalButton
-                        id='post-review'
                         buttonText="Post Your Review"
                         modalComponent={<PostReviewModal spotId={spotId} setPosted={setPosted} />}
                     />

@@ -281,56 +281,58 @@ const SpotForm = ({ spot, formType }) => {
                 </label>
                 {errors.price && <p className="display-errors">*{errors.price}</p>}
             </div>
-            <div className='form-images'>
-                <h2>Liven up your spot with photos</h2>
-                <p>Submit a link to at least one photo to publish your spot</p>
-                <label>
-                    <input
-                    type='url'
-                    value={previewImg}
-                    placeholder='Preview Image URL'
-                    required
-                    onChange={(e) => setPreviewImg(e.target.value)}
-                    />
-                </label>
-                <label>
-                    <input
-                    type='url'
-                    value={img1}
-                    placeholder='Image URL'
-                    onChange={(e) => setImg1(e.target.value)}
-                    />
-                </label>
-                <label>
-                    <input
-                    type='url'
-                    value={img2}
-                    placeholder='Image URL'
-                    onChange={(e) => setImg2(e.target.value)}
-                    />
-                </label>
-                <label>
-                    <input
-                    type='url'
-                    value={img3}
-                    placeholder='Image URL'
-                    onChange={(e) => setImg3(e.target.value)}
-                    />
-                </label>
-                <label>
-                    <input
-                    type='url'
-                    value={img4}
-                    placeholder='Image URL'
-                    onChange={(e) => setImg4(e.target.value)}
-                    />
-                </label>
-            </div>
+            {formType === 'post' && (
+                <div className='form-images'>
+                    <h2>Liven up your spot with photos</h2>
+                    <p>Submit a link to at least one photo to publish your spot</p>
+                    <label>
+                        <input
+                        type='url'
+                        value={previewImg}
+                        placeholder='Preview Image URL'
+                        required
+                        onChange={(e) => setPreviewImg(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        <input
+                        type='url'
+                        value={img1}
+                        placeholder='Image URL'
+                        onChange={(e) => setImg1(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        <input
+                        type='url'
+                        value={img2}
+                        placeholder='Image URL'
+                        onChange={(e) => setImg2(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        <input
+                        type='url'
+                        value={img3}
+                        placeholder='Image URL'
+                        onChange={(e) => setImg3(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        <input
+                        type='url'
+                        value={img4}
+                        placeholder='Image URL'
+                        onChange={(e) => setImg4(e.target.value)}
+                        />
+                    </label>
+                </div>
+            )}
         </div>
         <div className='form-button-house'>
             <button className={buttonClassFunc(disabledFuncReturn)}
                     disabled={disabledFuncReturn}
-                    >Create Spot</button>
+                    >{formType === 'post' ? 'Create Spot' : 'Update Spot'}</button>
         </div>
     </form>
   );

@@ -5,10 +5,12 @@
     display: flex;
 }
 
-#edit {
+#edit,
+.manage-buttons > button.modal-button {
     box-shadow: 3px 2px 0 #665200;
     border: 1px solid #665200;
-    background-color: #b3900259;
+    border-radius: 0;
+    background-color: #b3900244;
     padding: 5px 5px;
     /* width: fit-content; */
     font-size: 13px;
@@ -16,13 +18,14 @@
     /* color: #010466; */
 }
 
-#edit:hover,
-button#delete:hover {
-    cursor: pointer;
+#edit {
+    margin-right: 10px;
+    background-color: #b390027c;
 }
 
-#delete {
-    border: 1px solid red;
+#edit:hover,
+.manage-buttons > button.modal-button:hover {
+    cursor: pointer;
 }
 
 .manage-spots-house > h1 {
