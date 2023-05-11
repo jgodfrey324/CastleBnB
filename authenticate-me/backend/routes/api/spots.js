@@ -18,6 +18,9 @@ const validateSpot = [
     check('state')
         .exists({ checkFalsy: true })
         .withMessage('State is required.'),
+    check('state')
+        .isLength({ min: 3 })
+        .withMessage('State cannot be abbreviated.'),
     check('country')
         .exists({ checkFalsy: true })
         .withMessage('Country is required.'),
@@ -29,6 +32,9 @@ const validateSpot = [
         .exists({ checkFalsy: true })
         .isLength({ min: 30 })
         .withMessage('Description is required.'),
+    check('description')
+        .isLength({ max: 1000 })
+        .withMessage('Shorter description is required.'),
     check('price')
         .exists({ checkFalsy: true })
         .withMessage('Price per day is required.'),

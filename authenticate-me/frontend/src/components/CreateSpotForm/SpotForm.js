@@ -2,8 +2,7 @@
 import { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { postSpot } from '../../store/spots';
-import { putSpot } from '../../store/spots';
+import { postSpot, putSpot, postSpotImage } from '../../store/spots';
 import './SpotForm.css';
 
 
@@ -23,7 +22,11 @@ const SpotForm = ({ spot, formType }) => {
   const [name, setName] = useState(spot?.name);
   const [price, setPrice] = useState(spot?.price);
   //preview image recieved from spot sent as prop is not showing up....
-  const [previewImg, setPreviewImg] = useState(spot?.previewImg);
+  const [previewImg, setPreviewImg] = useState(spot?.previewImage);
+  const [img1, setImg1] = useState('');
+  const [img2, setImg2] = useState('');
+  const [img3, setImg3] = useState('');
+  const [img4, setImg4] = useState('');
   const [errors, setErrors] = useState({});
 
     //if a user logs out on this form they should be redirected to home
@@ -88,9 +91,42 @@ const SpotForm = ({ spot, formType }) => {
         }
     }
 
+    const previewImage = {
+        url: previewImg,
+        preview: true
+    }
+
+    const image1 = {
+        url: img1,
+        preview: false
+    }
+
+    const image2 = {
+        url: img2,
+        preview: false
+    }
+
+    const image3 = {
+        url: img3,
+        preview: false
+    }
+
+    const image4 = {
+        url: img4,
+        preview: false
+    }
+
+    let newSpot;
     //checking for type to dispatch correct action
     if (formType === 'post') {
         dispatch(postSpot(spot))
+          .then(spotInfo => {
+            dispatch(postSpotImage(spotInfo.id, previewImage));
+            if(image1.url) dispatch(postSpotImage(spotInfo.id, image1));
+            if(image2.url) dispatch(postSpotImage(spotInfo.id, image2));
+            if(image3.url) dispatch(postSpotImage(spotInfo.id, image3));
+            if(image4.url) dispatch(postSpotImage(spotInfo.id, image4));
+          })
         //getting data from dispatch, awaiting it, then using data to redirect to new spot details
           .then(spotInfo => history.push(`/spots/${spotInfo.id}`))
           .catch(async (res) => {
@@ -101,6 +137,7 @@ const SpotForm = ({ spot, formType }) => {
               return alert('Whoops! Looks like you need to check some fields');
             }
         });
+        console.log('new spot saved? ', newSpot);
         //reseting form if spot created/updated
         return reset();
     } else if (formType === 'put') {
@@ -115,6 +152,7 @@ const SpotForm = ({ spot, formType }) => {
         });
         return reset();
     }
+
   };
 
   return (
@@ -259,25 +297,33 @@ const SpotForm = ({ spot, formType }) => {
                 <label>
                     <input
                     type='url'
+                    value={img1}
                     placeholder='Image URL'
+                    onChange={(e) => setImg1(e.target.value)}
                     />
                 </label>
                 <label>
                     <input
                     type='url'
+                    value={img2}
                     placeholder='Image URL'
+                    onChange={(e) => setImg2(e.target.value)}
                     />
                 </label>
                 <label>
                     <input
                     type='url'
+                    value={img3}
                     placeholder='Image URL'
+                    onChange={(e) => setImg3(e.target.value)}
                     />
                 </label>
                 <label>
                     <input
                     type='url'
+                    value={img4}
                     placeholder='Image URL'
+                    onChange={(e) => setImg4(e.target.value)}
                     />
                 </label>
             </div>

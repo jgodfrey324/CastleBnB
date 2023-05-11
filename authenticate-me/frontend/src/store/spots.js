@@ -5,7 +5,8 @@ const LOAD_SPOTS = 'spots/loadSpots';
 const LOAD_SPOT_DETAILS = 'spots/loadSpotDetails';
 const CREATE_SPOT = 'spots/createSpot';
 const LOAD_USER_SPOTS = 'spots/loadUserSpots';
-const REMOVE_SPOT = 'spots/removeSpot'
+const REMOVE_SPOT = 'spots/removeSpot';
+const ADD_IMAGE = 'spots/addImage';
 
 //action creators -->
 const loadSpots = (spots) => {
@@ -40,6 +41,13 @@ const removeSpot = (spotId) => {
     return {
         type: REMOVE_SPOT,
         spotId
+    }
+}
+
+const addImage = (image) => {
+    return {
+        type: ADD_IMAGE,
+        image
     }
 }
 
@@ -104,6 +112,19 @@ export const getUserSpots = () => async (dispatch) => {
     }
 }
 
+export const postSpotImage = (spotId, image) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${spotId}/images`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(image)
+    });
+    if (res.ok) {
+        const data = res.json();
+        dispatch(addImage(data));
+        return data;
+    }
+}
+
 //set intial state on load
 const initialState = { allSpots: {}, singleSpot: {}, currentUserSpots: {} };
 //reducer -->
@@ -130,6 +151,10 @@ const spotsReducer = (state = initialState, action) => {
             newState = {...state, allSpots: {...state.allSpots}, singleSpot: {}, currentUserSpots: {...state.currentUserSpots}};
             delete newState.allSpots[action.spotId];
             delete newState.currentUserSpots[action.spotId];
+            return newState;
+        case ADD_IMAGE:
+            newState = {...state, allSpots: {}, singleSpot: {...state.singleSpot}, currentUserSpots: {}};
+            // newState.singleSpot.SpotImages.push(action.image);
             return newState;
         default:
             return state;
