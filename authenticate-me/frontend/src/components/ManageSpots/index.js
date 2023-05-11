@@ -11,7 +11,9 @@ const ManageSpots = () => {
     const history = useHistory();
     const userSpots = useSelector(state => state.spots.currentUserSpots);
     const spots = Object.values(userSpots);
-    console.log('user spots', spots);
+
+    //if a user logs out on this form they should be redirected to home
+    if (!sessionUser) history.push('/');
 
     useEffect(() => {
         dispatch(getUserSpots());
