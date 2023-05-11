@@ -4,7 +4,7 @@ import { getReviews } from '../../store/reviews';
 import DeleteReviewModal from './DeleteReviewModal';
 import OpenModalButton from '../OpenModalButton';
 
-const Reviews = ({ spotId }) => {
+const Reviews = ({ spotId, setDeleted }) => {
     const dispatch = useDispatch();
     const reviews = Object.values(useSelector(state => state.reviews.spot));
     const user = useSelector(state => state.session.user);
@@ -45,14 +45,14 @@ const Reviews = ({ spotId }) => {
             {reviews.map(review => {
                 return (
                     <div key={review.id} className='single-review'>
-                        <p className='review-name'>{review.User.firstName}</p>
+                        <p className='review-name'>{review.User?.firstName}</p>
                         <p className='review-date'>{makeDate(review)}</p>
                         <p className='review-text'>{review.review}</p>
                         {user && (user.id === review.userId) && (
                             <OpenModalButton
                                 id='delete-review'
                                 buttonText="Delete"
-                                modalComponent={<DeleteReviewModal reviewId={review.id} />}
+                                modalComponent={<DeleteReviewModal reviewId={review.id} setDeleted={setDeleted} />}
                             />
                         )}
                     </div>

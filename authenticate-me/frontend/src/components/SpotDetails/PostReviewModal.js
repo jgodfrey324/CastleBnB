@@ -1,10 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { postReview } from '../../store/reviews';
+import { postReview, getReviews, getUserReviews } from '../../store/reviews';
+import { getOneSpot } from '../../store/spots';
 import { useModal } from '../../context/Modal';
 import './PostReviewModal.css';
 
-const PostReviewModal = ({ spotId }) => {
+const PostReviewModal = ({ spotId, setPosted }) => {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const [review, setReview] = useState('');
@@ -20,12 +21,13 @@ const PostReviewModal = ({ spotId }) => {
         }
 
         return dispatch(postReview(newReview, spotId))
-          .then(closeModal)
-          .catch(async (res) => {
+            .then(setPosted(true))
+            .then(closeModal)
+            .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
-              setErrors(data.errors);
-              return alert('Review must be filled out');
+                setErrors(data.errors);
+                return alert('Review must be filled out');
             }
         });
     }

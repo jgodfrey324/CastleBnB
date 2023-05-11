@@ -116,7 +116,6 @@ const SpotForm = ({ spot, formType }) => {
         preview: false
     }
 
-    let newSpot;
     //checking for type to dispatch correct action
     if (formType === 'post') {
         dispatch(postSpot(spot))
@@ -126,6 +125,7 @@ const SpotForm = ({ spot, formType }) => {
             if(image2.url) dispatch(postSpotImage(spotInfo.id, image2));
             if(image3.url) dispatch(postSpotImage(spotInfo.id, image3));
             if(image4.url) dispatch(postSpotImage(spotInfo.id, image4));
+            return spotInfo;
           })
         //getting data from dispatch, awaiting it, then using data to redirect to new spot details
           .then(spotInfo => history.push(`/spots/${spotInfo.id}`))
@@ -137,7 +137,6 @@ const SpotForm = ({ spot, formType }) => {
               return alert('Whoops! Looks like you need to check some fields');
             }
         });
-        console.log('new spot saved? ', newSpot);
         //reseting form if spot created/updated
         return reset();
     } else if (formType === 'put') {

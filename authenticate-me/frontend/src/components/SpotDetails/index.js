@@ -12,20 +12,25 @@ import OpenModalButton from '../OpenModalButton';
 const SpotDetails = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
+    //keeps track of when review is deleted
+    const [deleted, setDeleted] = useState(false);
+    //keeps track of when review is posted
+    const [posted, setPosted] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spots.singleSpot[spotId]);
-    // const [numReviews, setNumReviews] = useState(0);
-    // console.log('num reviews from state ', numReviews);
     const userReviews = Object.values(useSelector(state => state.reviews.user));
     const alreadyHaveReview = userReviews.find( review => review.Spot.id === parseInt(spotId));
 
     useEffect(() => {
         dispatch(getUserReviews());
-    }, [dispatch])
+        setPosted(false);
+    }, [dispatch, posted])
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
-    }, [dispatch, spotId]);
+        setDeleted(false);
+        setPosted(false);
+    }, [dispatch, spotId, deleted, posted]);
 
     const starRating = (spot) => {
         if (spot.avgStarRating === 'No reviews yet') return 'New';
@@ -83,10 +88,10 @@ const SpotDetails = () => {
                     <OpenModalButton
                         id='post-review'
                         buttonText="Post Your Review"
-                        modalComponent={<PostReviewModal spotId={spotId} />}
+                        modalComponent={<PostReviewModal spotId={spotId} setPosted={setPosted} />}
                     />
                 )}
-                <Reviews spotId={spot.id} />
+                <Reviews spotId={spot.id} setDeleted={setDeleted} />
             </div>
         </div>
     )

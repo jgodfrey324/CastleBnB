@@ -29,10 +29,9 @@
 
 .description-text {
     /* border: 2px solid orange; */
-    display: flex;
-    flex-direction: column;
-    width: stretch;
+    width: 62%;
     margin-right: 10px;
+    /* justify-content: space-between; */
 }
 
 .description-text > h2 {
@@ -47,6 +46,7 @@
     font-size: 14px;
     /* border: 1px solid purple; */
     overflow-wrap: break-word;
+    /* color: black; */
 }
 
 .description-p-room {
