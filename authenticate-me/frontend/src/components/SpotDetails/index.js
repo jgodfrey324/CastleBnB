@@ -1,4 +1,4 @@
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getOneSpot } from '../../store/spots';
@@ -12,7 +12,6 @@ import OpenModalButton from '../OpenModalButton';
 const SpotDetails = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
-    const history = useHistory();
     //keeps track of when review is deleted
     const [deleted, setDeleted] = useState(false);
     //keeps track of when review is posted

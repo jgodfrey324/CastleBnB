@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { logout } from '../../store/session';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
@@ -8,6 +8,7 @@ import SignupFormModal from '../SignupFormModal';
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   //grab ref of the <ul> that the maps to the vDOM
   const ulRef = useRef();
@@ -63,6 +64,7 @@ const ProfileButton = ({ user }) => {
                 e.preventDefault();
                 dispatch(logout());
                 closeMenu();
+                history.push('/');
                 }}>Log Out</button>
             </li>
           </>

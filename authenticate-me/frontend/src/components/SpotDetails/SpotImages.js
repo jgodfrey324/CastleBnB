@@ -21,6 +21,7 @@ const SpotImages = ({ spotId }) => {
                             <img key={image.id} src={image.url} alt={`Gallery of ${spot.name}`}></img>
                         )
                     }
+                    return null;
                 })}
             </div>
             <div className='plain-janes'>
@@ -30,6 +31,7 @@ const SpotImages = ({ spotId }) => {
                             <img key={image.id} src={image.url} alt={`Gallery of ${spot.name}`}></img>
                         )
                     }
+                    return null;
                 })}
             </div>
         </div>
