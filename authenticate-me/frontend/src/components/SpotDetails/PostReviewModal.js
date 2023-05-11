@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { postReview, getReviews, getUserReviews } from '../../store/reviews';
-import { getOneSpot } from '../../store/spots';
+import { postReview } from '../../store/reviews';
 import { useModal } from '../../context/Modal';
 import './PostReviewModal.css';
 
