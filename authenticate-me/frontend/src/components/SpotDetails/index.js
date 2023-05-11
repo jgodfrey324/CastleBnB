@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getOneSpot } from '../../store/spots';
 import { getUserReviews } from '../../store/reviews';
 import SpotImages from './SpotImages';
@@ -14,7 +14,8 @@ const SpotDetails = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spots.singleSpot[spotId]);
-
+    // const [numReviews, setNumReviews] = useState(0);
+    // console.log('num reviews from state ', numReviews);
     const userReviews = Object.values(useSelector(state => state.reviews.user));
     const alreadyHaveReview = userReviews.find( review => review.Spot.id === parseInt(spotId));
 
