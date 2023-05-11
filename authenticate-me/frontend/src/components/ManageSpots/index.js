@@ -41,6 +41,7 @@ const ManageSpots = () => {
                     return (
                         <div key={spot.id} className="manage-spots-house">
                             <div className='spot-room'
+                                title={spot.name}
                                 onClick={() => {
                                     history.push(`/spots/${spot.id}`);
                                     }}>
@@ -58,7 +59,6 @@ const ManageSpots = () => {
                             <div className="manage-buttons">
                                 <button id='edit' onClick={() => history.push(`/spots/${spot.id}/edit`)}>Edit</button>
                                 <OpenModalButton
-                                    id='delete'
                                     buttonText="Delete"
                                     modalComponent={<DeleteSpotModal spotId={spot.id} />}
                                 />

@@ -4,7 +4,6 @@ import { useModal } from '../../context/Modal';
 import '../ManageSpots/DeleteModal.css';
 
 const DeleteReviewModal = ({ reviewId, setDeleted }) => {
-    // console.log('revewId ', reviewId);
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 

@@ -62,6 +62,7 @@ const ProfileButton = ({ user }) => {
               <button className="logout-button" onClick={(e) => {
                 e.preventDefault();
                 dispatch(logout());
+                closeMenu();
                 }}>Log Out</button>
             </li>
           </>

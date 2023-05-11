@@ -30,7 +30,9 @@ const SpotsLanding = () => {
         <div className='spots-house'>
             {spots.map(spot => {
                 return (
-                    <div key={spot.id} className='spot-room'
+                    <div key={spot.id}
+                        className='spot-room'
+                        title={spot.name}
                         onClick={() => {
                             history.push(`/spots/${spot.id}`);
                             }}>
