@@ -9,6 +9,7 @@ import OpenModalButton from '../OpenModalButton';
 const ManageSpots = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user);
     const userSpots = useSelector(state => state.spots.currentUserSpots);
     const spots = Object.values(userSpots);
 
