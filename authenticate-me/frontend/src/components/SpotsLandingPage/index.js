@@ -7,8 +7,7 @@ import './SpotsLanding.css';
 const SpotsLanding = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const spotsFromState = useSelector(state => state.spots.allSpots);
-    const spots = Object.values(spotsFromState);
+    const spots = Object.values(useSelector(state => state.spots.allSpots));
 
     useEffect (() => {
         dispatch(getSpots());
