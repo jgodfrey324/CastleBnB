@@ -45,9 +45,6 @@ const PostReviewModal = ({ spotId, setPosted }) => {
       return buttonClass;
     }
 
-    // console.log('stars', stars);
-    // console.log('hovered', hoveredStar);
-
     return (
         <form className='add-review-house' onSubmit={handleSubmit}>
             <h1>How was your stay?</h1>
@@ -67,7 +64,7 @@ const PostReviewModal = ({ spotId, setPosted }) => {
                     {[...Array(5)].map((spot, i) => {
                         const starVal = i + 1;
                         return (
-                            <label>
+                            <label key={starVal}>
                                 <input
                                     type='radio'
                                     value={starVal}
