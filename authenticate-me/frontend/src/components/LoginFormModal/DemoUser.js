@@ -8,8 +8,8 @@ const dispatch = useDispatch();
 const { closeModal } = useModal();
 
 const handleClick = () => {
-    const credential = 'Demo-lition';
-    const password = 'password';
+    const credential = 'sherlock-holmes';
+    const password = 'password1';
 
     return dispatch(login({ credential, password }))
         .then(closeModal)
