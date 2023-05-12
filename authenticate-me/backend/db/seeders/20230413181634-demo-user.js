@@ -22,32 +22,60 @@ module.exports = {
    options.tableName = 'Users';
    await queryInterface.bulkInsert(options, [
     {
-      firstName: 'Demo',
-      lastName: 'User',
-      email: 'demo@user.io',
-      username: 'Demo-lition',
-      hashedPassword: bcrypt.hashSync('password')
+      firstName: 'Sherlock',
+      lastName: 'Holmes',
+      email: 'sherly@holmes.io',
+      username: 'sherlock-holmes',
+      hashedPassword: bcrypt.hashSync('password1')
     },
     {
-      firstName: 'Fake',
-      lastName: 'User',
-      email: 'user1@user.io',
-      username: 'FakeUser1',
+      firstName: 'Elizabeth',
+      lastName: 'Bennet',
+      email: 'liz@bennet.io',
+      username: 'liz-bennet',
       hashedPassword: bcrypt.hashSync('password2')
     },
     {
-      firstName: 'Fakie',
-      lastName: 'McFaker',
-      email: 'user2@user.io',
-      username: 'FakeUser2',
+      firstName: 'Holly',
+      lastName: 'Golightly',
+      email: 'holly@golightly.io',
+      username: 'holly-golightly',
       hashedPassword: bcrypt.hashSync('password3')
     },
     {
-      firstName: 'Spider',
-      lastName: 'Man',
-      email: 'spidey@spider.man',
-      username: 'i-love-spider-man',
+      firstName: 'Effie',
+      lastName: 'Trinket',
+      email: 'effie@trinket.io',
+      username: 'effie-trinket',
       hashedPassword: bcrypt.hashSync('password4')
+    },
+    {
+      firstName: 'Nurse',
+      lastName: 'Ratched',
+      email: 'nurse@ratched.io',
+      username: 'nurse-ratched',
+      hashedPassword: bcrypt.hashSync('password5')
+    },
+    {
+      firstName: 'Atticus',
+      lastName: 'Finch',
+      email: 'atticus@finch.io',
+      username: 'atticus-finch',
+      hashedPassword: bcrypt.hashSync('password6')
+    },
+    {
+      firstName: 'Clarissa',
+      lastName: 'Dalloway',
+      email: 'clarissa@dalloway.io',
+      username: 'clarissa-dalloway',
+      hashedPassword: bcrypt.hashSync('password7')
+    },
+    {
+      firstName: 'Holden',
+      lastName: 'Caulfield',
+      email: 'holden@caulfield.io',
+      username: 'holden-caulfield',
+      hashedPassword: bcrypt.hashSync('password8')
     }
    ])
   },
