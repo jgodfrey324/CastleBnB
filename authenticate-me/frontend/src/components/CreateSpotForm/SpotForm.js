@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { postSpot, putSpot, postSpotImage } from '../../store/spots';
+import { postSpot, putSpot, postSpotImage, getOneSpot } from '../../store/spots';
 import './SpotForm.css';
 
 
@@ -127,6 +127,7 @@ const SpotForm = ({ spot, formType }) => {
             if(image4.url) dispatch(postSpotImage(spotInfo.id, image4));
             return spotInfo;
           })
+          .then(spotInfo => dispatch(getOneSpot(spotInfo.id)))
         //getting data from dispatch, awaiting it, then using data to redirect to new spot details
           .then(spotInfo => history.push(`/spots/${spotInfo.id}`))
           .catch(async (res) => {
