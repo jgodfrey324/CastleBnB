@@ -45,7 +45,11 @@ const validateSpot = [
 const validateReview = [
     check('review')
         .exists({ checkFalsy: true })
+        .isLength({ min: 4 })
         .withMessage('Review text is required.'),
+    check('review')
+        .isLength({ max: 1000 })
+        .withMessage('Review has too many characters.'),
     check('stars')
         .exists({ checkFalsy: true })
         .isInt({ min: 1, max: 5 })

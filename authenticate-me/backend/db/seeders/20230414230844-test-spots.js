@@ -143,7 +143,7 @@ module.exports = {
       ownerId: 3,
       address: '2116 Eltz Plaza',
       city: 'Wierschem',
-      state: 'Rhineland',
+      state: 'Rhineland-Palatinate',
       country: 'Germany',
       lat: -7,
       lng: 53,
@@ -185,9 +185,111 @@ module.exports = {
       country: 'Romania',
       lat: -10,
       lng: 53,
-      name: 'Castle Corvin',
-      description: `The castle has three large areas: the Knight's Hall, the Diet Hall and the circular stairway. The halls are rectangular in shape and are decorated with marble. The Diet Hall was used for ceremonies or formal receptions whilst the Knight's Hall was used for feasts. In 1456, John Hunyadi died and work on the castle stagnated. Starting with 1458, new commissions were being undergone to construct the Matia Wing of the castle. In 1480, work was completely stopped on the castle and it was recognised as being one of the biggest and most impressive buildings in Eastern Europe.`,
+      name: 'Hunyad Castle',
+      description: `This castle (also known as Corvin Castle) has three large areas: the Knight's Hall, the Diet Hall and the circular stairway. The halls are rectangular in shape and are decorated with marble. The Diet Hall was used for ceremonies or formal receptions whilst the Knight's Hall was used for feasts. In 1456, John Hunyadi died and work on the castle stagnated. Starting with 1458, new commissions were being undergone to construct the Matia Wing of the castle. In 1480, work was completely stopped on the castle and it was recognised as being one of the biggest and most impressive buildings in Eastern Europe.`,
       price: 9023
+    },
+    {
+      ownerId: 4,
+      address: '3441 Chapelle Street',
+      city: 'Paris',
+      state: 'Île-de-France',
+      country: 'France',
+      lat: -11,
+      lng: 53,
+      name: 'La Sainte-Chapelle',
+      description: `While the name of the original architect of the Sainte-Chapelle de Paris remains unconfirmed to this day, some texts have mentioned the name Pierre de Montreuil. At the start of the project in 1240, the architect of the Sainte-Chapelle must already have been a man of a certain age, who possessed quite a bit of favour with the king. Thus in 1242, construction work begins. The project is completed just six years later in 1248, an impressive accomplishment considering the complex gothic architecture of the chapel. It is a architectural masterpiece combining fine workmanship and precision.`,
+      price: 1121
+    },
+    {
+      ownerId: 4,
+      address: '3442 del Monte Plaza',
+      city: 'Andria',
+      state: 'Apulia',
+      country: 'Italy',
+      lat: -12,
+      lng: 53,
+      name: 'Castel del Monte',
+      description: `Castel del Monte is a 13th-century citadel and castle situated on a hill in Andria in the Apulia region of southeast Italy. It was built during the 1240s by King Frederick II, who had inherited the lands from his mother Constance of Sicily. In the 18th century, the castle's interior marbles and remaining furnishings were removed. It has neither a moat nor a drawbridge and some considered it never to have been intended as a defensive fortress. However, archaeological work has suggested that it originally had a curtain wall.Because of its relatively small size, it was once considered to be no more than a "hunting lodge", but scholars now believe it originally had a curtain wall and did serve as a citadel.`,
+      price: 7552
+    },
+    {
+      ownerId: 4,
+      address: '3443 Glamis Lane',
+      city: 'Glamis',
+      state: 'Scotland',
+      country: 'Scotland',
+      lat: -13,
+      lng: 53,
+      name: 'Glamis',
+      description: `Glamis Castle is situated beside the village of Glamis in Angus, Scotland. It is the home of the Earl of Strathmore and Kinghorne.
+
+      Glamis Castle has been the home of the Lyon family since the 14th century, though the present building dates largely from the 17th century. Glamis Castle was the childhood home of the late Queen Elizabeth, The Queen Mother. Her second daughter, Princess Margaret was born there on 21 August 1930.`,
+      price: 2220
+    },
+    {
+      ownerId: 4,
+      address: '3444 Doges Street',
+      city: 'City of Venice',
+      state: 'Venice',
+      country: 'Italy',
+      lat: -14,
+      lng: 53,
+      name: "Doge's Palace",
+      description: `The Doge's Palace is a palace built in Venetian Gothic style, and one of the main landmarks of the city of Venice in northern Italy. The palace was the residence of the Doge of Venice, the supreme authority of the former Republic of Venice. It was built in 1340 and extended and modified in the following centuries.`,
+      price: 19005
+    },
+    {
+      ownerId: 5,
+      address: '921 Malbork Ave',
+      city: 'Malbork',
+      state: 'Pomeranian Voivodeship',
+      country: 'Poland',
+      lat: -15,
+      lng: 53,
+      name: "Malbork Castle",
+      description: `It was originally constructed by the Teutonic Knights, a German Catholic religious order of crusaders, in a form of an Ordensburg fortress. The Order named it Marienburg in honour of Mary, mother of Jesus. In 1457, during the Thirteen Years' War, it was sold by Bohemian mercenaries to King Casimir IV of Poland in lieu of indemnities and it then served as one of several Polish royal residences and the seat of Polish offices and institutions, interrupted by several years of Swedish occupation, fulfilling this function until the First Partition of Poland in 1772. From then on the castle was under German rule for over 170 years until 1945, albeit largely falling into disrepair as military technological advances rendered the castle a mere historical point of interest. The construction period is a point of debate, however, most historians generally accept the 132 years between 1274 and 1406 as the construction time.`,
+      price: 5400
+    },
+    {
+      ownerId: 5,
+      address: '922 Chambord Place',
+      city: 'Chambord',
+      state: 'Centre-Val de Loire',
+      country: 'France',
+      lat: -16,
+      lng: 53,
+      name: "Château de Chambord",
+      description: `The Château de Chambord in Chambord, Centre-Val de Loire, France, is one of the most recognisable châteaux in the world because of its very distinctive French Renaissance architecture, which blends traditional French medieval forms with classical Renaissance structures. The building was constructed by the king of France, Francis I.
+
+      Chambord is the largest château in the Loire Valley; it was built to serve as a hunting lodge for Francis I, who maintained his royal residences at the Château de Blois and Amboise. The original design of the château is attributed to the Tuscan architect Domenico da Cortona; Leonardo da Vinci may have also influenced the design.`,
+      price: 10100
+    },
+    {
+      ownerId: 5,
+      address: '923 Boji Road',
+      city: 'Bojnice',
+      state: 'Trenčín',
+      country: 'Slovakia',
+      lat: -17,
+      lng: 53,
+      name: "Bojnice Castle",
+      description: `Bojnice Castle was first mentioned in written records in 1113, in a document held at the Zobor Abbey. Originally built as a wooden fort, it was gradually replaced by stone, with the outer walls being shaped according to the uneven rocky terrain. Its first owner was Hungarian nobleman Matthew III Csák, who received it in 1302 from the King Ladislaus V of Hungary. Later, in the 15th century, it was owned by King Matthias Corvinus of Hungary, who gave it to his illegitimate son John Corvinus in 1489. Matthias liked to visit Bojnice and it was here that he worked on his royal decrees. He used to dictate them under a linden tree, which is now known as the "Linden tree of King Matthias". After his death the castle became the property of the Zápolya family, a Hungarian noble family. The Thurzós, the richest family in the northern Kingdom of Hungary, acquired the castle in 1528 and undertook its major reconstruction. The former fortress was turned into a Renaissance castle.`,
+      price: 2300
+    },
+    {
+      ownerId: 5,
+      address: '924 Hohen Alley',
+      city: 'Bisingen',
+      state: 'Baden-Württemberg',
+      country: 'Germany',
+      lat: -18,
+      lng: 53,
+      name: "Hohenzollern",
+      description: `The current castle was built by Hohenzollern scion Crown Prince Frederick William IV of Prussia. Traveling through southern Germany en route to Italy in 1819, he wished to learn about his family's roots, so climbed to the top of Mount Hohenzollern.
+
+      He engaged Friedrich August Stüler, who had been appointed Architect of the King for the rebuilding of Stolzenfels Castle in 1842 while still a student and heir of Karl Friedrich Schinkel, to design a new castle. Stüler began work on an ornate design influenced by English Gothic Revival architecture and the Châteaux of the Loire Valley in 1846. The impressive entryway is the work of the Engineer-Officer Moritz Karl Ernst von Prittwitz, considered the leading fortifications engineer in Prussia. The sculptures around and inside the castle are the work of Gustav Willgohs.`,
+      price: 2300
     }
    ], {})
   },
