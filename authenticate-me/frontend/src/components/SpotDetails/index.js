@@ -94,7 +94,7 @@ const SpotDetails = () => {
                         modalComponent={<PostReviewModal spotId={spotId} setPosted={setPosted} />}
                     />
                 )}
-                <Reviews spotId={spot.id} setDeleted={setDeleted} />
+                <Reviews spotId={spot.id} setDeleted={setDeleted} posted={posted} setPosted={setPosted} />
             </div>
         </div>
     )

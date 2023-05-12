@@ -52,7 +52,6 @@ export const postReview = (review, spotId) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(createReview(data));
-        console.log('data returned from posting to reviews ', data);
         return data;
     }
 }

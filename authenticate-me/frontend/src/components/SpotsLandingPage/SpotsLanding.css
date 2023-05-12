@@ -30,8 +30,10 @@
 .spot-city-rating {
     display: flex;
     justify-content: space-between;
+    width: stretch;
     /* border: 1px dashed green; */
     margin: 8px 0 12px 0;
+    border: 1px solid blue;
 }
 
 .spot-star-rating > i {
@@ -40,4 +42,12 @@
 
 .spot-price {
     font-weight: 600;
+}
+
+.spot-city {
+    font-size: 14px;
+    border: 1px solid red;
+    /* margin-right: 5px; */
+    width: 75%;
+    overflow-wrap: break-word;
 }

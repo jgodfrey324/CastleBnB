@@ -4,7 +4,7 @@ import { getReviews } from '../../store/reviews';
 import DeleteReviewModal from './DeleteReviewModal';
 import OpenModalButton from '../OpenModalButton';
 
-const Reviews = ({ spotId, setDeleted }) => {
+const Reviews = ({ spotId, setDeleted, posted, setPosted }) => {
     const dispatch = useDispatch();
     const reviews = Object.values(useSelector(state => state.reviews.spot));
     const user = useSelector(state => state.session.user);
@@ -13,7 +13,8 @@ const Reviews = ({ spotId, setDeleted }) => {
     //getting reviews of current spot
     useEffect (() => {
         dispatch(getReviews(spotId));
-    }, [dispatch, spotId]);
+        setPosted(false);
+    }, [dispatch, spotId, posted, setPosted]);
 
     //sorting reviews so most recent appears first
     const compareDates = (a, b) => {
