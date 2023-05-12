@@ -263,7 +263,7 @@ router.post('/', [requireAuth, validateSpot], async (req, res, next) => {
 router.get('/', validateQueryFilters, async (req, res) => {
     let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
     if (!page) page = 1;
-    if (!size) size = 20;
+    if (!size) size = 100;
 
     const limit = size;
     const offset = size * (page - 1);
