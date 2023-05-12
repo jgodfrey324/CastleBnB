@@ -72,6 +72,7 @@ const SpotDetails = () => {
                                 <span id='night'>night</span>
                                 <i className="fa-solid fa-star" style={{color: '#b39003'}}></i>
                                 <span id='star'>{starRating(spot)}</span>
+                                {/* <i className="fa-solid fa-circle dot"></i> */}
                                 <span id='review'>{numRatings(spot)}</span>
                             </div>
                             <button className='reserve-button'
@@ -84,6 +85,7 @@ const SpotDetails = () => {
                 <div className='spot-rating-header'>
                     <i className="fa-solid fa-star" style={{color: '#b39003'}}></i>
                     <span id='star-two'>{starRating(spot)}</span>
+                    {/* <i className="fa-solid fa-circle dot"></i> */}
                     <span id='reviews-two'>{numRatings(spot)}</span>
                 </div>
                 {sessionUser && (sessionUser.id !== spot.Owner.id) && !alreadyHaveReview && (
