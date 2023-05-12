@@ -38,7 +38,7 @@ const SpotsLanding = () => {
                             }}>
                         <img src={spot.previewImage} alt={`Preview of ${spot.name}`}></img>
                         <div className='spot-city-rating'>
-                            <span className='spot-city'>{spot.city}, {spot.state}</span>
+                            <span className='spot-city' >{spot.city}, {spot.state}</span>
                             <div className='spot-star-rating'>
                                 <i className="fa-solid fa-star" style={{color: '#b39003'}}></i>
                                 <span>{starRating(spot)}</span>
