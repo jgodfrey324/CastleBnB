@@ -243,7 +243,7 @@ const SpotForm = ({ spot, formType }) => {
                 <label>
                     <textarea
                     value={description}
-                    placeholder='Please write at least 30 characters'
+                    placeholder='Please write at least 30 characters...'
                     required
                     onChange={(e) => setDescription(e.target.value)}
                     minLength={30}

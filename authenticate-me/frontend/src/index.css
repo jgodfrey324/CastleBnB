@@ -15,6 +15,16 @@ div#root {
     /* font-family:'Courier New', Courier, monospace; */
 }
 
+input[type='text'],
+input[type='number'],
+input[type='url'] {
+    font-family: 'Montserrat', sans-serif;
+}
+
+textarea {
+    font-family: 'Montserrat', sans-serif;
+}
+
 
 /* signup and login form styling ----------------------> */
 button.nice-button {
