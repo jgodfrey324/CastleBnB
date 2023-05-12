@@ -30,14 +30,19 @@
 .spot-city-rating {
     display: flex;
     justify-content: space-between;
-    width: stretch;
+    width: 275px;
     /* border: 1px dashed green; */
     margin: 8px 0 12px 0;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .spot-star-rating > i {
     margin-right: 5px;
+    font-size: 12px;
+}
+
+.spot-star-rating > span {
+    font-size: 12px;
 }
 
 .spot-price {
@@ -46,7 +51,7 @@
 
 .spot-city {
     font-size: 14px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     /* margin-right: 5px; */
     width: 75%;
     overflow-wrap: break-word;
