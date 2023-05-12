@@ -50,6 +50,7 @@ const PostReviewModal = ({ spotId, setPosted }) => {
             <h1>How was your stay?</h1>
             <textarea
                 value={review}
+                maxLength={1000}
                 onChange={(e) => setReview(e.target.value)}
                 placeholder='Leave your review here...'
                 />

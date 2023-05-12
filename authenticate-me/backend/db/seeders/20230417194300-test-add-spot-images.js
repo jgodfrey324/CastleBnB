@@ -320,6 +320,206 @@ module.exports = {
       url: 'https://img.myloview.com/stickers/corvin-castle-a-gothic-castle-in-transylvania-romania-700-269572040.jpg',
       preview: false
     },
+    {
+      spotId: 13,
+      url: 'https://cdn.pariscityvision.com/library/image/4020.jpg',
+      preview: true
+    },
+    {
+      spotId: 13,
+      url: 'https://snippetsofparis.com/wp-content/uploads/2022/03/IMG_5905-Sainte-chapelle-2-1.jpg',
+      preview: false
+    },
+    {
+      spotId: 13,
+      url: 'https://lifeaperture.files.wordpress.com/2012/01/dsc0051.jpg',
+      preview: false
+    },
+    {
+      spotId: 13,
+      url: 'https://lp-cms-production.s3.amazonaws.com/public/2021-05/GettyRF_561145625.jpg',
+      preview: false
+    },
+    {
+      spotId: 13,
+      url: 'https://www.timographie360.fr/photos/realisations/sliders/hd/visite-virtuelle-sainte-chapelle-01_517.jpg',
+      preview: false
+    },
+    {
+      spotId: 14,
+      url: 'https://admin.visititaly.eu/uploads/articoli/paragrafo/20190320123650Castel%20del%20Monte.jpg',
+      preview: true
+    },
+    {
+      spotId: 14,
+      url: 'https://www.borgocasteldelmonte.com/wp-content/uploads/2020/03/Gallery-casteldelmonte-borgo-gransasso-transumanza-chiocciola.jpg',
+      preview: false
+    },
+    {
+      spotId: 14,
+      url: 'https://imaginapulia.com/wp-content/uploads/2018/06/castel-del-monte-room-window-detail.jpg',
+      preview: false
+    },
+    {
+      spotId: 14,
+      url: 'https://casteldelmonte.gocity.it/media/castel_del_monte_aerea.jpg',
+      preview: false
+    },
+    {
+      spotId: 14,
+      url: 'https://live.staticflickr.com/4553/38359980146_ce4405c78c_b.jpg',
+      preview: false
+    },
+    {
+      spotId: 15,
+      url: 'https://www.visitdundee.com/wp-content/uploads/2021/05/glamis.jpg',
+      preview: true
+    },
+    {
+      spotId: 15,
+      url: 'https://media.houseandgarden.co.uk/photos/618950e251c95671034bbf4c/3:2/w_3102,h_2068,c_limit/shutterstock_editorial_8521117l_huge.jpg',
+      preview: false
+    },
+    {
+      spotId: 15,
+      url: 'https://www.discoverbritainmag.com/wp-content/uploads/2014/08/1.3725132-image-image.jpg',
+      preview: false
+    },
+    {
+      spotId: 15,
+      url: 'https://www.discoverbritainmag.com/wp-content/uploads/2014/08/1.3725130-image-image.jpg',
+      preview: false
+    },
+    {
+      spotId: 15,
+      url: 'https://static.wixstatic.com/media/2540bd_bd37174d7d8a4ecab389413a97d05985~mv2.jpg/v1/fill/w_640,h_854,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/2540bd_bd37174d7d8a4ecab389413a97d05985~mv2.jpg',
+      preview: false
+    },
+    {
+      spotId: 16,
+      url: 'https://fullsuitcase.com/wp-content/uploads/2020/10/Doges-Palace-Venice-Italy.jpg',
+      preview: true
+    },
+    {
+      spotId: 16,
+      url: 'https://www.ulysses.travel/wp-content/uploads/2019/11/Palais-des-Doges-Venise-cour-inte%CC%81rieure.jpg',
+      preview: false
+    },
+    {
+      spotId: 16,
+      url: 'https://palazzoducale.visitmuve.it/wp-content/uploads/2021/05/MUVE-DUCALE-Maggior-Consiglio4.jpg',
+      preview: false
+    },
+    {
+      spotId: 16,
+      url: 'https://www.visit-venice-italy.com/pics/palaces/doge/chamber-of-the-great-council-doge-palace-venice-italy-02.jpg',
+      preview: false
+    },
+    {
+      spotId: 16,
+      url: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/4a/79.jpg',
+      preview: false
+    },
+    {
+      spotId: 17,
+      url: 'https://afar.brightspotcdn.com/dims4/default/98257ba/2147483647/strip/true/crop/989x679+17+0/resize/660x453!/quality/90/?url=https%3A%2F%2Fafar-media-production-web.s3.amazonaws.com%2Fbrightspot%2F7a%2F85%2F8cf32197bd8df600fc8717031bb7%2Foriginal-d458cb89a28bffb6bb836900b7b1b3c1.jpg',
+      preview: true
+    },
+    {
+      spotId: 17,
+      url: 'https://mrshuttle.com/wp-content/uploads/2021/08/Aerial-view-of-Malbork-Castle.jpg',
+      preview: false
+    },
+    {
+      spotId: 17,
+      url: 'https://www.hecktictravels.com/wp-content/uploads/2015/04/Malbork-Poland-Castle-08.jpg',
+      preview: false
+    },
+    {
+      spotId: 17,
+      url: 'https://stephentravelsdotcom.files.wordpress.com/2021/08/poland_malbork_malbork-castle_2.jpg',
+      preview: false
+    },
+    {
+      spotId: 17,
+      url: 'https://www.globeguide.ca/wp-content/uploads/2016/06/Poland-Malbork-Castle-Courtyard-9.jpg',
+      preview: false
+    },
+    {
+      spotId: 18,
+      url: 'https://ychef.files.bbci.co.uk/976x549/p086hwfw.jpg',
+      preview: true
+    },
+    {
+      spotId: 18,
+      url: 'https://live.staticflickr.com/4318/35644985680_663a943146_b.jpg',
+      preview: false
+    },
+    {
+      spotId: 18,
+      url: 'https://www.travelcaffeine.com/wp-content/uploads/2016/10/terrace-cha%CC%82teau-de-chambord-loire-valley-france.jpg',
+      preview: false
+    },
+    {
+      spotId: 18,
+      url: 'https://cdn1.chambord.org/en/wp-content/uploads/sites/3/2017/02/SL-5780-%C2%A9-DNC.-Photo-Sophie-Lloyd.-Ts-droits-jusquu2019en-f%C3%A9v.-2025-1180x550.jpg',
+      preview: false
+    },
+    {
+      spotId: 18,
+      url: 'https://e1.pxfuel.com/desktop-wallpaper/130/843/desktop-wallpaper-old-castle-gold-france-beauty-columns-fireplace-marble-palace-chambord-section-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%8C%D0%B5%D1%80-castle-interior.jpg',
+      preview: false
+    },
+    {
+      spotId: 19,
+      url: 'https://bojnicecastle.sk/wp-content/uploads/2022/03/main-img.jpg',
+      preview: true
+    },
+    {
+      spotId: 19,
+      url: 'https://bernhardherzog.com/en/wp-content/uploads/sites/3/2019/01/DJI_0158-Pano.jpg',
+      preview: false
+    },
+    {
+      spotId: 19,
+      url: 'https://aprileveryday.com/wp-content/uploads/2019/11/IMG_7207.jpg',
+      preview: false
+    },
+    {
+      spotId: 19,
+      url: 'https://lamyerda.com/wp-content/uploads/2018/04/0-02-06-6c92b7a979eac710752c8c36e4abcbb250eb493c367e9d6193be5916fc91100c_full-768x1024.jpg',
+      preview: false
+    },
+    {
+      spotId: 19,
+      url: 'https://live.staticflickr.com/7150/6655458061_464a953880_b.jpg',
+      preview: false
+    },
+    {
+      spotId: 20,
+      url: 'https://64.media.tumblr.com/aa479983ef52dfd93e2f00d957bdc028/69478bf5def48eaa-09/s1280x1920/cdef4700181dec04250b1fb2553fb40e94f4824b.jpg',
+      preview: true
+    },
+    {
+      spotId: 20,
+      url: 'https://render.fineartamerica.com/images/images-profile-flow/400/images/artworkimages/mediumlarge/2/fairy-tale-castle-ulrike-leinemann.jpg',
+      preview: false
+    },
+    {
+      spotId: 20,
+      url: 'https://farm6.staticflickr.com/5088/5281289852_a25ced7415.jpg',
+      preview: false
+    },
+    {
+      spotId: 20,
+      url: 'https://www.timetravelturtle.com/wp-content/uploads/2013/11/Germany-2013-41_new.jpg',
+      preview: false
+    },
+    {
+      spotId: 20,
+      url: 'https://c4.wallpaperflare.com/wallpaper/303/415/775/hohenzollern-castle-castle-hechingen-lighting-wallpaper-preview.jpg',
+      preview: false
+    },
    ], {})
   },
 

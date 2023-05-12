@@ -168,6 +168,7 @@ const SpotForm = ({ spot, formType }) => {
                     type="text"
                     value={country}
                     placeholder='Country'
+                    maxLength={50}
                     required
                     onChange={(e) => setCountry(e.target.value)}
                     />
@@ -179,6 +180,7 @@ const SpotForm = ({ spot, formType }) => {
                     type='text'
                     value={address}
                     placeholder='Address'
+                    maxLength={100}
                     required
                     onChange={(e) => setAddress(e.target.value)}
                     />
@@ -192,6 +194,7 @@ const SpotForm = ({ spot, formType }) => {
                             type='text'
                             value={city}
                             placeholder='City'
+                            maxLength={50}
                             required
                             onChange={(e) => setCity(e.target.value)}
                             />
@@ -206,6 +209,7 @@ const SpotForm = ({ spot, formType }) => {
                             type='text'
                             value={state}
                             placeholder='State'
+                            maxLength={50}
                             required
                             onChange={(e) => setState(e.target.value)}
                             />
@@ -247,6 +251,7 @@ const SpotForm = ({ spot, formType }) => {
                     required
                     onChange={(e) => setDescription(e.target.value)}
                     minLength={30}
+                    maxLength={1000}
                     />
                 </label>
                 {errors.description && <p className="display-errors">*{errors.description}</p>}
