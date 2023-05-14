@@ -290,6 +290,74 @@ module.exports = {
 
       He engaged Friedrich August Stüler, who had been appointed Architect of the King for the rebuilding of Stolzenfels Castle in 1842 while still a student and heir of Karl Friedrich Schinkel, to design a new castle. Stüler began work on an ornate design influenced by English Gothic Revival architecture and the Châteaux of the Loire Valley in 1846. The impressive entryway is the work of the Engineer-Officer Moritz Karl Ernst von Prittwitz, considered the leading fortifications engineer in Prussia. The sculptures around and inside the castle are the work of Gustav Willgohs.`,
       price: 2300
+    },
+    {
+      ownerId: 6,
+      address: '0021 Crow Alley',
+      city: 'Matsumoto',
+      state: 'Nagano Prefecture',
+      country: 'Japan',
+      lat: -19,
+      lng: 53,
+      name: "Matsumoto-jō",
+      description: `Matsumoto Castle, originally known as Fukashi Castle, is one of Japan's premier historic castles, along with Himeji and Kumamoto. The building is also known as the "Crow Castle" due to its black exterior. It was the seat of Matsumoto Domain under the Edo Period Tokugawa shogunate. It is located in the city of Matsumoto, in Nagano Prefecture.
+
+      The keep, which was completed in the late sixteenth century, maintains its original wooden interiors and external stonework. It is listed as a National Treasure of Japan, and is one of the twelve remaining original tenshu in Japan.
+
+      Matsumoto Castle is a flatland castle because it is not built on a hilltop or amid rivers, but on a plain. Its complete defences would have included an extensive system of inter-connecting walls, moats, and gatehouses.`,
+      price: 5021
+    },
+    {
+      ownerId: 6,
+      address: '0022 Kemi Road',
+      city: 'Kemi',
+      state: 'Lapland',
+      country: 'Finland',
+      lat: -20,
+      lng: 53,
+      name: "Kemi SnowCastle",
+      description: `The SnowCastle of Kemi is the biggest snow fort in the world. It is rebuilt every winter with a different architecture in Kemi, Finland. In 1996 the first snow castle drew 300,000 visitors.
+
+      The area covered by the castle has varied from 13,000 to over 20,000 square metres. The highest towers have been over 20 metres high and longest walls over 1,000 metres long, and the castle has had up to three stories. Despite its varying configurations, the snow castle has a few recurring elements: a chapel, a restaurant and a hotel.`,
+      price: 950
+    },
+    {
+      ownerId: 6,
+      address: '0023 Geneva Place',
+      city: 'Lake Geneva',
+      state: 'Wisconsin',
+      country: 'USA',
+      lat: -21,
+      lng: 53,
+      name: "Lake Geneva Ice Castle",
+      description: `Don't miss your chance to explore one of only five Ice Castles in the United States. A highly anticipated outdoor adventure, this illuminated ice kingdom features frozen slides, crawl spaces, cave and fountains beautifully built into a frozen outdoor landscape.`,
+      price: 203
+    },
+    {
+      ownerId: 6,
+      address: '0024 Karak Oasis',
+      city: 'al-Karak',
+      state: 'Jordan',
+      country: 'Jordan',
+      lat: -22,
+      lng: 53,
+      name: "Kerak Castle",
+      description: `Kerak Castle is a large medieval castle located in al-Karak, Jordan. It is one of the largest castles in the Levant. Construction began in the 1140s, under Pagan and Fulk, King of Jerusalem. The Crusaders called it Crac des Moabites or "Karak in Moab", as it is referred to in history books. It was also colloquially referred to as Krak of the Desert.`,
+      price: 3400
+    },
+    {
+      ownerId: 7,
+      address: '881 Sun Place',
+      city: 'Kalat',
+      state: 'Balochistan',
+      country: 'Pakistan',
+      lat: -23,
+      lng: 53,
+      name: "Sun Palace",
+      description: `The Nader Palace, the Kalat Palace or the Sun Palace is a palace in Kalat (Nader Dejh), Iran. Built in 1738-1739, it is one of the few buildings that were built during the reign of Nader Shah Afshar. Its construction was cut short however after the assassination of the Shah.
+
+      The palace was meant to house the Shah's treasury, and the jewels he had taken from India. The namesake of the palace was a wife of Nader apparently, who was named "Khorshid", meaning "Sun". After Nader's demise the construction process was halted, which is clearly visible from the state of the building and the calligraphies and paintings.`,
+      price: 5200
     }
    ], {})
   },
