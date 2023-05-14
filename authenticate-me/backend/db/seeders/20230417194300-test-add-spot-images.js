@@ -520,6 +520,131 @@ module.exports = {
       url: 'https://c4.wallpaperflare.com/wallpaper/303/415/775/hohenzollern-castle-castle-hechingen-lighting-wallpaper-preview.jpg',
       preview: false
     },
+    {
+      spotId: 21,
+      url: 'https://go-nagano.a.kuroco-img.app/v=1586155642/files/user/Matsumoto%20Castle%20and%20Cherry%20Blossoms.jpg',
+      preview: true
+    },
+    {
+      spotId: 21,
+      url: 'https://st.depositphotos.com/1035886/3433/i/450/depositphotos_34338559-stock-photo-matsumoto-jo-castle-designated-as.jpg',
+      preview: false
+    },
+    {
+      spotId: 21,
+      url: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Matsumoto_Castle09n4592.jpg',
+      preview: false
+    },
+    {
+      spotId: 21,
+      url: 'https://www.justonecookbook.com/wp-content/uploads/2021/02/Matsumoto-Castle-Guide-43-P1290340.jpg',
+      preview: false
+    },
+    {
+      spotId: 21,
+      url: 'https://img.theculturetrip.com/wp-content/uploads/2020/04/m5cf8c.jpg',
+      preview: false
+    },
+    {
+      spotId: 22,
+      url: 'https://www.lapland.fi/uploads/2018/03/lapland-kemi-finland-snow-castle-winter-kemi-tourism-ltd-1440x810.jpg',
+      preview: true
+    },
+    {
+      spotId: 22,
+      url: 'https://www.discoveringfinland.com/wp-content/uploads/2014/12/zzzz2-2.jpg',
+      preview: false
+    },
+    {
+      spotId: 22,
+      url: 'https://www.journeywonders.com/wp-content/uploads/2015/02/Snow-Restaurant-at-Kemi-Snow-Castle-800x533.jpg',
+      preview: false
+    },
+    {
+      spotId: 22,
+      url: 'https://ak-d.tripcdn.com/images/10070z000000nqryp49E6.jpg',
+      preview: false
+    },
+    {
+      spotId: 22,
+      url: 'https://cdn.modlar.com/photos/2717/img/s_1920_x/lumilinna_snow_castle_finland_5674af0106d12.jpg',
+      preview: false
+    },
+    {
+      spotId: 23,
+      url: 'https://bloximages.newyork1.vip.townnews.com/wrex.com/content/tncms/assets/v3/editorial/0/49/0493c2a2-4313-11ec-833a-2f1ad5059e1d/618d4fc62e21b.image.jpg',
+      preview: true
+    },
+    {
+      spotId: 23,
+      url: 'https://www.gettingstamped.com/wp-content/uploads/2020/01/Lake-Geneva-Ice-Castles-Wisconsin-winter-Activities-Ice-tunnel-800x450.jpg',
+      preview: false
+    },
+    {
+      spotId: 23,
+      url: 'https://media.bizj.us/view/img/11938884/icecastle-018*1200xx1700-956-0-89.jpg',
+      preview: false
+    },
+    {
+      spotId: 23,
+      url: 'https://img.atlasobscura.com/dzw9fXKiTvB7w4a4ghoFPLbo03OdN3XiO0yfA5V-tak/rt:fit/h:390/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy8wMzNm/ZGRiYS02ZTkxLTRk/ZTgtODkzMC0wNWQy/NTMwZDVkYTkwYmFm/YjhjM2E2OGUzZTU0/NjBfMTE5Mzk5NTA1/MzNfNDRjOThmMWY5/Yl9rLmpwZw.jpg',
+      preview: false
+    },
+    {
+      spotId: 23,
+      url: 'https://onmilwaukee.com/images/articles/ic/ice-castles-dells/ice-castles-dells_fullsize_story1.jpg',
+      preview: false
+    },
+    {
+      spotId: 24,
+      url: 'https://lp-cms-production.imgix.net/2019-06/fb18f2f0fca95a0a650e7eb2f08ec76a-karak-castle.jpg',
+      preview: true
+    },
+    {
+      spotId: 24,
+      url: 'https://images.memphistours.com/large/1068762908_castle2.jpg',
+      preview: false
+    },
+    {
+      spotId: 24,
+      url: 'https://streetsofnuremberg.com/wp-content/uploads/2020/01/Kerak-Castle-12-1024x768.jpg',
+      preview: false
+    },
+    {
+      spotId: 24,
+      url: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Jordan_Kerak_Castle_2496.jpg',
+      preview: false
+    },
+    {
+      spotId: 24,
+      url: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/2-kerak-castle-in-jordan-karol-kozlowski.jpg',
+      preview: false
+    },
+    {
+      spotId: 25,
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Sun_Palace_%DA%A9%D8%A7%D8%AE_%D8%AE%D9%88%D8%B1%D8%B4%DB%8C%D8%AF_-_panoramio.jpg/1280px-Sun_Palace_%DA%A9%D8%A7%D8%AE_%D8%AE%D9%88%D8%B1%D8%B4%DB%8C%D8%AF_-_panoramio.jpg',
+      preview: true
+    },
+    {
+      spotId: 25,
+      url: 'https://live.staticflickr.com/143/323148482_6b31a2748c_b.jpg',
+      preview: false
+    },
+    {
+      spotId: 25,
+      url: 'https://irantripedia.com/wp-content/uploads/2022/07/Sun-Palace-9_Irantripedia.jpg',
+      preview: false
+    },
+    {
+      spotId: 25,
+      url: 'https://media.karnaval.ir/uploads/2020/09/6876f269-3908-4f11-9d3c-d223ab63b5b3.jpg',
+      preview: false
+    },
+    {
+      spotId: 25,
+      url: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Sun_palace_%28Kaakh-e-Khorshid%29_-_Kalat_4.jpg',
+      preview: false
+    },
    ], {})
   },
 
