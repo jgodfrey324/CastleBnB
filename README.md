@@ -1,9 +1,10 @@
 <!--!!START SILENT -->
-# AirBnB Clone
+# CastleBnB
 <!--!!END -->
 <!--!!ADD -->
 <!-- # `<name of application here>` -->
 <!--!!END_ADD -->
+A site for perusing castles loosly based on AirBnB.
 
 ## Database Schema Design
 
