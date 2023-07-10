@@ -8,7 +8,6 @@ const EditSpot = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
     const spotFromState = useSelector(state => state.spots.currentUserSpots[spotId]);
-    console.log('spot from state', spotFromState);
 
     useEffect(() => {
         dispatch(getUserSpots());
