@@ -1,4 +1,3 @@
-![Screen Shot 2023-07-10 at 12 19 38 PM](https://github.com/jgodfrey324/CastleBnB/assets/122331146/f0ce7d6b-a369-43c7-a6e4-58030f842e58)<!--!!START SILENT -->
 # CastleBnB
 <!--!!END -->
 <!--!!ADD -->
@@ -27,6 +26,7 @@ Check it out here: https://castlebnb-hcgv.onrender.com
 ## Wireframe and User Stories
 
 ### Landing page
+![Screen Shot 2023-07-10 at 12 19 38 PM](https://github.com/jgodfrey324/CastleBnB/assets/122331146/f0ce7d6b-a369-43c7-a6e4-58030f842e58)<!--!!START SILENT -->
 * Any user is able to browse listings and see listing details when clicking on a listing.
   * A user may not leave a review or reserve a spot if not logged in
  
