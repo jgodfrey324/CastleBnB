@@ -272,7 +272,7 @@ module.exports = {
     },
     {
       spotId: 11,
-      url: 'https://static1.thetravelimages.com/wordpress/wp-content/uploads/2022/01/hluboka-castle-czech-republic.jpg',
+      url: 'https://delveintoeurope.com/wp-content/uploads/2021/11/zamek-hluboka.jpg',
       preview: true
     },
     {
